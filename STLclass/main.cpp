@@ -12,7 +12,8 @@
 // Visual Studio - 17.13이후 사용
 //
 
-int main() {
-
+int main( char argc, char* argv) 
+{
+	/* return 0;은 표준이 아니다.*/
 }
 
