@@ -16,7 +16,7 @@
 
 // [문제] save를 제대로 코딩해야죠!
 
-void save(const char*);
+void save(std::string);
 
 int main( char argc, char* argv) 
 {
@@ -26,7 +26,7 @@ int main( char argc, char* argv)
 	save("메인.cpp");
 }
 
-void save(const char*)
+void save(std::string)
 {
 
 
