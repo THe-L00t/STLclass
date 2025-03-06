@@ -14,9 +14,9 @@
 #include <iostream>
 
 
-// [문제] 실행되게 하라 
+// [문제] main()을 고치지 말고 컴파일되게 하라 
 
-void save(std::string);
+void save(const char*);
 
 int main( char argc, char* argv) 
 {
