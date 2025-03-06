@@ -14,7 +14,7 @@
 #include <iostream>
 
 
-// [문제] main()을 고치지 말고 실행되게 하라 
+// [문제] save를 제대로 코딩해야죠!
 
 void save(const char*);
 
@@ -29,4 +29,10 @@ int main( char argc, char* argv)
 void save(const char*)
 {
 
+
 }
+
+/* C++에서 사용X
+* 1. const char*	-> string
+* 2. T[N];			-> array
+* 3. T*;			-> unique_pointer, shared_ptr */
