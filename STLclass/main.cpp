@@ -14,7 +14,7 @@
 #include <iostream>
 
 
-// [문제] main()을 고치지 말고 컴파일되게 하라 
+// [문제] main()을 고치지 말고 실행되게 하라 
 
 void save(const char*);
 
@@ -26,3 +26,7 @@ int main( char argc, char* argv)
 	save("메인.cpp");
 }
 
+void save(const char*)
+{
+
+}
