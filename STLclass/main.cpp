@@ -14,10 +14,15 @@
 #include <iostream>
 
 
+// [문제] 실행되게 하라 
+
+void save(std::string);
 
 int main( char argc, char* argv) 
 {
 	std::cout << "2025년 1학기 STL" << std::endl;
-	/* \n과 endl은 플러싱의 차이가 있는데 거의 무의미 한 차이이다.*/
+	
+
+	save("메인.cpp");
 }
 
