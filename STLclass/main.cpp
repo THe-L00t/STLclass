@@ -11,9 +11,13 @@
 // * SDL 메모리 주소 관련 경고 무시한다 ~
 // Visual Studio - 17.13이후 사용
 //
+#include <iostream>
+
+
 
 int main( char argc, char* argv) 
 {
-	/* return 0;은 표준이 아니다.*/
+	std::cout << "2025년 1학기 STL" << std::endl;
+	/* \n과 endl은 플러싱의 차이가 있는데 거의 무의미 한 차이이다.*/
 }
 
