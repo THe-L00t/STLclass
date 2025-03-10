@@ -12,7 +12,8 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
-#include <filesystem>	// 안쓰는 헤더파일 지우기,  용량 커짐
+#include <filesystem>
+#include <chrono>
 
 // [문제] save를 제대로 코딩해야죠!
 
@@ -46,7 +47,7 @@ void save(std::string_view filename)
 
 	out << '\n' << '\n';
 	out << "=================================================" << '\n';
-	out << " 저장한 시간" << '\n';
+	out << " 저장한 시간 : " << '\n';
 	out << "=================================================" << '\n';
 	out << '\n';
 
