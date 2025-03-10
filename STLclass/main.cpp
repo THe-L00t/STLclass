@@ -13,7 +13,8 @@
 
 // [문제] save를 제대로 코딩해야죠!
 
-void save(const std::string&);
+void save( std::string_view);	// 수정 할일 이 없다면 거대한 string을 사용할 필요 없이 string_view객체 사용
+//여기에는 const & 붙이지 않는다.
 
 int main( char argc, char* argv) 
 {
@@ -23,7 +24,7 @@ int main( char argc, char* argv)
 	save("메인.cpp");
 }
 
-void save(const std::string& filename)
+void save(std::string_view filename)
 {
 	// 1. 인자로 전달된 파일을 읽기모드로 연다.
 	// 2. 쓰기 모드로 저장할 파일을 연다. 덧붙이기 모드로 
