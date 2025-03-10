@@ -12,7 +12,7 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
-#include <filesystem>
+#include <filesystem>	// 안쓰는 헤더파일 지우기,  용량 커짐
 
 // [문제] save를 제대로 코딩해야죠!
 
