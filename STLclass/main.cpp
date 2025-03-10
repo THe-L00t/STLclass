@@ -45,6 +45,9 @@ void save(std::string_view filename)
 	// 2. 쓰기 모드로 저장할 파일을 연다. 덧붙이기 모드로 
 	std::ofstream out{ "2025 1학기 STL 월910목910 강의저장.txt", std::ios::app };		// {} uniform initializer
 
+	std::chrono::system_clock::now();	// epoch로 부터 경과된 tick 수를 얻는다.
+	// epoch 시간의 기원 1970.1.1
+
 	out << '\n' << '\n';
 	out << "=================================================" << '\n';
 	out << " 저장한 시간 : " << '\n';
@@ -52,9 +55,5 @@ void save(std::string_view filename)
 	out << '\n';
 
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
-	/*std::vector<char> v(std::filesystem::file_size(filename));
-	std::copy(std::istreambuf_iterator{ in }, {}, v.begin());
-	std::copy(v.begin(), v.end(), std::ostreambuf_iterator{ out });*/
 	std::copy(std::istreambuf_iterator{ in }, {}, std::ostreambuf_iterator{ out });
-	//constexpr : 컴파일 할때 ~~한 일을 해라 
 }
