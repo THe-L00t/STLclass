@@ -11,6 +11,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
+#include <algorithm>
+#include <filesystem>
 
 // [문제] save를 제대로 코딩해야죠!
 
@@ -35,15 +38,16 @@ void save(std::string_view filename)
 		exit(20250310);
 	}
 
+	// 저장했다는 것을 화면에 표시
+	std::cout << filename << "(" << std::filesystem::file_size(filename) << "bytes) 저장하였습니다." << std::endl;
+
+
 	// 2. 쓰기 모드로 저장할 파일을 연다. 덧붙이기 모드로 
 	std::ofstream out{ "2025 1학기 STL 월910목910 강의저장.txt", std::ios::app };		// {} uniform initializer
 
 
 
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
-	char c;
-	in >> std::noskipws;
-	while (in >> c)		// 돌때마다 비교 !!!!
-		out << c;
+
 
 }
