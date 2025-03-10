@@ -36,6 +36,10 @@ void save(std::string_view filename)
 	}
 
 	// 2. 쓰기 모드로 저장할 파일을 연다. 덧붙이기 모드로 
+	std::ofstream out{}		// {} uniform initializer
+
+
+
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
 
 }
