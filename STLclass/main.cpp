@@ -44,7 +44,11 @@ void save(std::string_view filename)
 	// 2. 쓰기 모드로 저장할 파일을 연다. 덧붙이기 모드로 
 	std::ofstream out{ "2025 1학기 STL 월910목910 강의저장.txt", std::ios::app };		// {} uniform initializer
 
-
+	out << '\n' << '\n';
+	out << "=================================================" << '\n';
+	out << " 저장한 시간" << '\n';
+	out << "=================================================" << '\n';
+	out << '\n';
 
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
 	/*std::vector<char> v(std::filesystem::file_size(filename));
