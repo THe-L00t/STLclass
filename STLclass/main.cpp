@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <vector>
 #include <algorithm>
 #include <filesystem>
 
@@ -48,8 +47,9 @@ void save(std::string_view filename)
 
 
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
-	std::vector<char> v(std::filesystem::file_size(filename));
+	/*std::vector<char> v(std::filesystem::file_size(filename));
 	std::copy(std::istreambuf_iterator{ in }, {}, v.begin());
-	std::copy(v.begin(), v.end(), std::ostreambuf_iterator{ out });
+	std::copy(v.begin(), v.end(), std::ostreambuf_iterator{ out });*/
+	std::copy(std::istreambuf_iterator{ in }, {}, std::ostreambuf_iterator{ out });
 	//constexpr : 컴파일 할때 ~~한 일을 해라 
 }
