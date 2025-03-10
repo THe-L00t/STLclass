@@ -9,12 +9,13 @@
 // 
 //
 #include <iostream>
-
+#include <string>
+#include <fstream>
 
 // [문제] save를 제대로 코딩해야죠!
 
-void save( std::string_view);	// 수정 할일 이 없다면 거대한 string을 사용할 필요 없이 string_view객체 사용
-//여기에는 const & 붙이지 않는다.
+void save( std::string_view);	
+
 
 int main( char argc, char* argv) 
 {
@@ -27,12 +28,10 @@ int main( char argc, char* argv)
 void save(std::string_view filename)
 {
 	// 1. 인자로 전달된 파일을 읽기모드로 연다.
+	std::ifstream in{ filename.data()};	// 하위 호환성을 위해 최신의 기술을 맞춘다. 고로 string_view에서 data()를 이용하여 ifstream이 받아들일 수 있는 데이터만 뽑아낸다.
+										// RAII  :  in.close()사용하지 않아도 됌
+
 	// 2. 쓰기 모드로 저장할 파일을 연다. 덧붙이기 모드로 
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
 
 }
-
-/* C++에서 사용X
-* 1. const char*	-> string
-* 2. T[N];			-> array
-* 3. T*;			-> unique_pointer, shared_ptr */
