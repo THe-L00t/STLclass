@@ -43,7 +43,7 @@ void save(std::string_view filename)
 	// 3. 파일을 읽어서 저장할 파일에 덧붙인다. 
 	char c;
 	in >> std::noskipws;
-	while (in >> c)
+	while (in >> c)		// 돌때마다 비교 !!!!
 		out << c;
 
 }
