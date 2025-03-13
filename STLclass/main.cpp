@@ -16,13 +16,15 @@
 // Dog를 class로 코딩하시오
 class Dog {
 public:
-	Dog() {};
-	Dog(int a) : n{ a } {
-
-	}
+	Dog() = default;
+	Dog(int a) : n{ a } {}
 
 	int& outn();
 	void inn(int&);
+
+	//operator int(){
+	//	return n;  
+    //}
 
 	friend std::ostream& operator<<(std::ostream& ot, const Dog& rhs) {
 		ot << rhs.n;
