@@ -8,12 +8,11 @@
 //
 // 
 //
-#include <iostream>
+#include <iostream>	// 헤더 파일의 전체 코드를 가져온다. 주석은 모두 지운다. 
 #include "save.h"
 
+// 컴파일러의 동작
 
-// [문제] main을 변경하지 않고 의도대로 실행되게 코딩하라 
-// Dog를 class로 코딩하시오
 class Dog {
 public:
 	Dog() = default;
@@ -45,7 +44,7 @@ int main( char argc, char* argv)
 {
 	{
 		Dog a{ 1 }, b{ 2 };
-		change(a, b);
+		change(a, b);		//템플릿을 통해 컴파일러가 코드를 작성한다. T를 지우고 Dog형으로 
 		std::cout << a << "," << b << std::endl;	// [출력] 2,1
 	}
 
