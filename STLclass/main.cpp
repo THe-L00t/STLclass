@@ -34,7 +34,7 @@ private:
 	int n;
 };
 void change(int&, int&);
-void change(Dog&, Dog&);
+void change(Dog&, Dog&);	// 함수 오버로딩 시 컴파일러가 name mangling을 시행함
 
 // 신박한 답 #define Dog int 
 // using Dog = int;
