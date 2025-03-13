@@ -13,6 +13,7 @@
 
 
 // [문제] main을 변경하지 않고 의도대로 실행되게 코딩하라 
+// Dog를 class로 코딩하시오
 class Dog {
 public:
 	Dog(int a) : n{ a } {
@@ -31,6 +32,9 @@ private:
 };
 void change(int&, int&);
 void change(Dog&, Dog&);
+
+// 신박한 답 #define Dog int 
+// using Dog = int;
 
 int main( char argc, char* argv) 
 {
