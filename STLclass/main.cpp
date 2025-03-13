@@ -16,6 +16,7 @@
 // Dog를 class로 코딩하시오
 class Dog {
 public:
+	Dog() {};
 	Dog(int a) : n{ a } {
 
 	}
