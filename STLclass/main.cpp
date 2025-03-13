@@ -43,8 +43,11 @@ int main( char argc, char* argv)
 {
 	{
 		Dog a{ 1 }, b{ 2 };
-
 		change(a, b);
+		//도대체 어떤 함수를 호출하는가
+		// 1. change(Dog, Dog);
+		// 2. change(Dog&, Dog&);
+		// 3. 컴파일러인 내가 만들 순 없을까? (코드 자동화의 기능)
 		std::cout << a << "," << b << std::endl;	// [출력] 2,1
 	}
 
