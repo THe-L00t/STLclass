@@ -17,11 +17,19 @@ void change(int&, int&);
 
 int main( char argc, char* argv) 
 {
-	
-	int a{ 1 }, b{ 2 };
+	{
+		Dog a{ 1 }, b{ 2 };
 
-	change(a, b);
-	std::cout << a << "," << b << std::endl;	// [출력] 2,1
+		change(a, b);
+		std::cout << a << "," << b << std::endl;	// [출력] 2,1
+	}
+
+	{
+		int a{ 1 }, b{ 2 };
+
+		change(a, b);
+		std::cout << a << "," << b << std::endl;	// [출력] 2,1
+	}
 
 	save("main.cpp");
 }
