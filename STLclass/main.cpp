@@ -33,6 +33,10 @@ public:
 private:
 	int n;
 };
+
+// [질문] 도대체 몇 개의 change를 만들면 되겠니?
+// c++언어에서 자료형의 개수는 몇개?
+
 void change(int&, int&);
 void change(Dog&, Dog&);	// 함수 오버로딩 시 컴파일러가 name mangling을 시행함
 
@@ -44,10 +48,6 @@ int main( char argc, char* argv)
 	{
 		Dog a{ 1 }, b{ 2 };
 		change(a, b);
-		//도대체 어떤 함수를 호출하는가
-		// 1. change(Dog, Dog);
-		// 2. change(Dog&, Dog&);
-		// 3. 컴파일러인 내가 만들 순 없을까? (코드 자동화의 기능)
 		std::cout << a << "," << b << std::endl;	// [출력] 2,1
 	}
 
@@ -74,7 +74,6 @@ void change(Dog& a, Dog& b)
 	a.inn(b.outn());
 	b.inn(temp);
 }
-//확인할 수 없는 외부 기호 "void __cdecl change(class Dog &,class Dog &)" (? change@@YAXAEAVDog@@0@Z)
 int& Dog::outn()
 {
 	return n;
