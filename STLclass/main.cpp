@@ -22,10 +22,6 @@ public:
 	int& outn();
 	void inn(int&);
 
-	//operator int(){
-	//	return n;  
-    //}
-
 	friend std::ostream& operator<<(std::ostream& ot, const Dog& rhs) {
 		ot << rhs.n;
 		return ot;
@@ -36,9 +32,10 @@ private:
 
 // [질문] 도대체 몇 개의 change를 만들면 되겠니?
 // c++언어에서 자료형의 개수는 몇개?
+// --> 코드 생성을 자동화 하자
 
-void change(int&, int&);
-void change(Dog&, Dog&);	// 함수 오버로딩 시 컴파일러가 name mangling을 시행함
+template <class T>
+void change(T&, T&);
 
 // 신박한 답 #define Dog int 
 // using Dog = int;
@@ -61,19 +58,7 @@ int main( char argc, char* argv)
 	save("main.cpp");
 }
 
-void change(int& a, int& b)
-{
-	int temp{ a };
-	a = b;
-	b = temp;
-}
 
-void change(Dog& a, Dog& b)
-{
-	int temp{ a.outn() };
-	a.inn(b.outn());
-	b.inn(temp);
-}
 int& Dog::outn()
 {
 	return n;
@@ -82,4 +67,12 @@ int& Dog::outn()
 void Dog::inn(int& a)
 {
 	n = a;
+}
+
+template<class T>
+void change(T& a, T& b)
+{
+	T temp{ a };
+	a = b;
+	b = temp;
 }
