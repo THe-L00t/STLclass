@@ -74,7 +74,7 @@ void change(Dog& a, Dog& b)
 	a.inn(b.outn());
 	b.inn(temp);
 }
-
+//확인할 수 없는 외부 기호 "void __cdecl change(class Dog &,class Dog &)" (? change@@YAXAEAVDog@@0@Z)
 int& Dog::outn()
 {
 	return n;
