@@ -33,15 +33,7 @@ int main( char argc, char* argv)
 		a = uid(dre);
 	}
 
-	//int max = -1;		//numeric_limits<int>::min(); 이용하기 
-	//for (const int& a : n) {
-	//	std::print("{:8}", a);	
-	//	if (max < a) max = a;
-	//}
-	//// ^ 최댓값을 찾는 알고리즘 O(n)
-
-    auto pos = std::max_element(n.begin(), n.end());
-	std::cout << "가장 큰 값 " << *pos << std::endl;
+	std::cout << "가장 큰 값 " << *std::max_element(n.begin(),n.end()) << std::endl;
 	save("main.cpp");
 }
 
