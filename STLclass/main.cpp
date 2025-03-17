@@ -11,6 +11,7 @@
 #include <random>
 #include <print>
 #include <array>
+#include <algorithm>
 #include "save.h"
 
 // 컴파일러의 동작
@@ -26,16 +27,21 @@ std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
 int main( char argc, char* argv) 
 {
 	std::array<int, 1'000> n;	// T[n] --> array<T,n> ;
-	int max = -1;		//numeric_limits<int>::min(); 이용하기 
+	
 	//	일반적인 for문이라면 hard_wired coding이다. 이때 들어가는 1000이라는 숫자는 magic number.
 	for (int& a : n) {
 		a = uid(dre);
 	}
-	for (const int& a : n) {
-		std::print("{:8}", a);	
-		if (max < a) max = a;
-	}
-	std::cout << "가장 큰 값 " << max << std::endl;
+
+	//int max = -1;		//numeric_limits<int>::min(); 이용하기 
+	//for (const int& a : n) {
+	//	std::print("{:8}", a);	
+	//	if (max < a) max = a;
+	//}
+	//// ^ 최댓값을 찾는 알고리즘 O(n)
+
+    auto pos = std::max_element(n.begin(), n.end());
+	std::cout << "가장 큰 값 " << *pos << std::endl;
 	save("main.cpp");
 }
 
