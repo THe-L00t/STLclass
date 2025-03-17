@@ -26,7 +26,7 @@ int main( char argc, char* argv)
 		a = uid(dre);
 	}
 	for (int& a : n) {
-		std::print("{:10}", a);
+		std::print("{:^10}", a);	// ^ Ä³·µ ±âÈ£
 	}
 	save("main.cpp");
 }
