@@ -15,9 +15,9 @@
 // 컴파일러의 동작
 
 // [문제] 랜덤한 int 값 1000개를 화면에 출력하라
-//std::default_random_engine dre;
-std::mt19937_64 dre;								//값을 뽑아내고
-std::uniform_int_distribution uid{0,9999'9999};	//가공한다.
+std::default_random_engine dre;
+//std::mt19937_64 dre;								//값을 뽑아내고
+std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
 
 int main( char argc, char* argv) 
 {
@@ -26,7 +26,7 @@ int main( char argc, char* argv)
 		a = uid(dre);
 	}
 	for (int& a : n) {
-		std::print("{:^10}", a);	// ^ 캐럿 기호
+		std::print("{:8}", a);	
 	}
 	save("main.cpp");
 }
