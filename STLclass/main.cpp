@@ -12,13 +12,14 @@
 #include <print>
 #include <array>
 #include <algorithm>
+#include <fstream>
 #include "save.h"
 
 // 컴파일러의 동작
 
-// 랜덤 int값 1000개를 메모리에 저장하라 
-// 저장한 값 중에서 가장 큰 값이 무엇인지 찾아 화면에 출력하라 
-// 출력된 값을 답안지에도 써라 
+// [문제] 랜덤 int값 1000개 파일 "int 1000개.txt"에 저장하라. - 텍스트로  int를 저장한다. 
+// 저장한 파일은 사람이 읽을 수 있어야한다.
+// 나중에 파일에서 int 값을 읽어올 수 있어야 한다. 
 
 std::default_random_engine dre{ };
 //std::mt19937_64 dre;								//값을 뽑아내고
@@ -26,14 +27,14 @@ std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
 
 int main( char argc, char* argv) 
 {
-	std::array<int, 1'000> n;	// T[n] --> array<T,n> ;
+	std::array<int, 1'000> n;	
+	std::ofstream out{"int 1000개.txt"};
 	
-	//	일반적인 for문이라면 hard_wired coding이다. 이때 들어가는 1000이라는 숫자는 magic number.
 	for (int& a : n) {
-		a = uid(dre);
+		out << uid(dre) << ' ';
 	}
+	
 
-	std::cout << "가장 큰 값 " << *std::max_element(n.begin(),n.end()) << std::endl;
 	save("main.cpp");
 }
 
