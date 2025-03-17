@@ -9,10 +9,8 @@
 // 
 #include <iostream>	// 헤더 파일의 전체 코드를 가져온다. 주석은 모두 지운다. 
 #include <random>
-#include <print>
-#include <array>
-#include <algorithm>
 #include <fstream>
+#include <print>
 #include "save.h"
 
 // 컴파일러의 동작
@@ -27,11 +25,22 @@ std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
 
 int main( char argc, char* argv) 
 {
-	std::array<int, 1'000> n;	
-	std::ofstream out{"int 1000개.txt"};
 	
-	for (int& a : n) {
-		out << uid(dre) << ' ';
+	std::ofstream out{"int 1000개.txt"};
+	int cnt{ 0 };
+	for (size_t i = 0; i < 1000;++i) {
+		//out << uid(dre) << ' ';		// 구분자 delemeter는 뭐라도 상관없다. 
+		std::print(out, "{:8}", uid(dre));
+		if (not(++cnt % 10)) out << std::endl;
+	}
+	{
+		std::ifstream in{ "int 1000개.txt" };
+		if (not in) return 404;
+		while (in) {
+			int temp;
+			in >> temp;
+			std::cout << temp << ' ';
+		}
 	}
 	
 
