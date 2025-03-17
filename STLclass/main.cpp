@@ -14,20 +14,26 @@
 
 // 컴파일러의 동작
 
-// [문제] 랜덤한 int 값 1000개를 화면에 출력하라
+// 랜덤 int값 1000개를 메모리에 저장하라 
+// 저장한 값 중에서 가장 큰 값이 무엇인지 찾아 화면에 출력하라 
+// 출력된 값을 답안지에도 써라 
+
 std::default_random_engine dre;
 //std::mt19937_64 dre;								//값을 뽑아내고
 std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
 
 int main( char argc, char* argv) 
 {
+	int max = -1;
 	int n[1000];
 	for (int& a : n) {
 		a = uid(dre);
 	}
 	for (int& a : n) {
 		std::print("{:8}", a);	
+		if (max < a) max = a;
 	}
+	std::cout << "가장 큰 값 " << max << std::endl;
 	save("main.cpp");
 }
 
