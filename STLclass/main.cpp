@@ -9,7 +9,7 @@
 // 
 #include <iostream>	
 #include <string>
-#include <array>
+#include <array>		// 컴파일 전에 숫자가 확정 => 정적 메모리 => array만 사용하자
 #include <fstream>
 #include "save.h"
 
@@ -28,18 +28,20 @@ private:
 	int id;
 };
 
-std::array<Dog, 10'0000> arr;
+
 int main( ) 
 {
+	std::array<Dog, 10'0000> dogs;		// 읽어올 것이기 때문에 초기화 하지 말것
 	Dog dog;
 	std::ifstream in{ "Dog 10만마리" , std::ios::binary};
 	if (not in) return 10101010;
 
-	//in.read((char*)arr.data(), sizeof(Dog) * arr.size());
-	//std::cout << arr[9'9999] << std::endl;
-	while (in.read((char*)&dog, sizeof(Dog)))
-		;
-	std::cout << dog << std::endl;
+	in.read((char*)dogs.data(), sizeof(Dog) * dogs.size());
+	std::cout << dogs[9'9999] << std::endl;
+	//while (in.read((char*)&dog, sizeof(Dog)))
+	//	;
+	//std::cout << dog << std::endl;
+	std::cout << dogs[9'9999] << std::endl;
 
 	save("main.cpp");
 }
