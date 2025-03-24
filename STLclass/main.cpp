@@ -39,7 +39,7 @@ int main( char argc, char* argv)
 			in >> temp;
 			std::cout << temp << ' ';
 		}
-	}
+	} 
 	
 
 	save("main.cpp");
