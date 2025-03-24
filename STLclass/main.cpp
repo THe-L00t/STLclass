@@ -15,8 +15,7 @@
 
 // [문제] e-class 에서 다운받은 Dog 10만마리에는 Dog객체 10만개가 저장되어 있다.  
 // 파일은 binary mode로 열었고 Dog객체는 파일의 write함수를 사용하여 메모리 그대로 저장하였다. 
-// Dog객체 10만개를 메모리에 모두 저장하라
-// 모든 객체를 화면에 출력하시오
+// 메인 코드가 수정 없이 실행될 수 있도록 필요한 코딩을 추가하라
 
 class Dog {
 public:
@@ -31,19 +30,9 @@ std::array<Dog, 10'0000> dogs;		// 알아서 초기화됌
 
 int main( ) 
 {
-	Dog dog;
 	std::ifstream in{ "Dog 10만마리" , std::ios::binary};
 	if (not in) return 10101010;
 
-	in.read((char*)dogs.data(), sizeof(Dog) * dogs.size());
-	//std::cout << dogs[9'9999] << std::endl;
-
-
-	//std::cout << dog << std::endl;
-	for (const Dog& d : dogs) {
-		std::cout << d << std::endl;
-	}
-	//std::cout << dogs.back() << std::endl;	//back이 마지막 원소를 가리킴
 
 	save("main.cpp");
 }
