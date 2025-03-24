@@ -28,13 +28,15 @@ private:
 	int id;
 };
 
+std::array<Dog, 10'0000> arr;
 int main( ) 
 {
-	std::array<Dog, 10'0000> arr;
-	std::ifstream in{ "Dog 10만마리" };
+	
+	std::ifstream in{ "Dog 10만마리" , std::ios::binary};
 
 	in.read((char*)arr.data(), sizeof(Dog) * arr.size());
 	std::cout << arr[9'9999] << std::endl;
+	
 	save("main.cpp");
 }
 
