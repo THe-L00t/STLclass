@@ -19,7 +19,8 @@
 
 class Dog {
 public:
-	friend std::ifstream& operator>>(std::ifstream& is, Dog& d) {
+	
+	friend std::istream& operator>>(std::istream& is, Dog& d) {
 		return is.read((char*)&d, sizeof(Dog));
 
 	}
