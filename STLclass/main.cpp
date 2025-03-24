@@ -31,12 +31,16 @@ private:
 std::array<Dog, 10'0000> arr;
 int main( ) 
 {
-	
+	Dog dog;
 	std::ifstream in{ "Dog 10¸¸¸¶¸®" , std::ios::binary};
+	if (not in) return 10101010;
 
-	in.read((char*)arr.data(), sizeof(Dog) * arr.size());
-	std::cout << arr[9'9999] << std::endl;
-	
+	//in.read((char*)arr.data(), sizeof(Dog) * arr.size());
+	//std::cout << arr[9'9999] << std::endl;
+	while (in.read((char*)&dog, sizeof(Dog)))
+		;
+	std::cout << dog << std::endl;
+
 	save("main.cpp");
 }
 
