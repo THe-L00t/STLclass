@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------//
-// 2025.   1.  STL 월 910 수 910					3월 10일 월요일		(2주 2일)
+// 2025.   1.  STL 월 910 수 910					3월 10일 월요일		(3주 2일)
 //---------------------------------------------------------------------------//
 //
-//	많은 수의 자료를 다루기 - int 
+//	많은 수의 자료를 다루기 - int 를 메모리 크기 그대로 저장해야~
 // 
 //---------------------------------------------------------------------------
 //
@@ -10,6 +10,7 @@
 #include <iostream>	// 헤더 파일의 전체 코드를 가져온다. 주석은 모두 지운다. 
 #include <random>
 #include <fstream>
+#include <array>
 #include <print>
 #include "save.h"
 
@@ -24,23 +25,15 @@ std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
 int main( char argc, char* argv) 
 {
 	
-	std::ofstream out{"int 1000개.txt"};
-	int cnt{ 0 };
-	for (size_t i = 0; i < 1000;++i) {
-		std::print(out, "{:8}", uid(dre));
-		if (not(++cnt % 10)) out << std::endl;
-	}
+	std::ifstream in{ "진짜 랜덤 10만개",std::ios::binary };
 
-	{
-		std::ifstream in{ "int 1000개.txt" };
-		if (not in) return 404;
-		while (in) {
-			int temp;
-			in >> temp;
-			std::cout << temp << ' ';
-		}
-	} 
+	std::array<int, 10'0000> arr;
+
+	in.read((char*)arr.data(), sizeof(int) * arr.size());
 	
+	// 가장 큰 값과 작은 값을 구해라
+	// max_element() 와 min_element()는 바보같을 수 있다. 
+
 
 	save("main.cpp");
 }
