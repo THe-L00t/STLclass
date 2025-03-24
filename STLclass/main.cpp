@@ -47,5 +47,5 @@ int main( char argc, char* argv)
 
 void Dog::show() const
 {
-	std::println("[{:8}] - { }", id, name);
+	std::println("[{:8}] - {}", id, name);
 }
