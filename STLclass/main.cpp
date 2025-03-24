@@ -16,7 +16,7 @@
 // Dog 객체 10만개를 파일 "Dog 10만마리"에 저장한다. 
 
 std::default_random_engine dre;
-std::uniform_int_distribution uid{'a','z'}; //원인
+std::uniform_int_distribution<int> uid{'a','z'}; 
 
 class Dog {
 public:
