@@ -27,11 +27,10 @@ private:
 	std::string name;
 	int id;
 };
-
+std::array<Dog, 10'0000> dogs;		// 알아서 초기화됌
 
 int main( ) 
 {
-	std::array<Dog, 10'0000> dogs;		// 읽어올 것이기 때문에 초기화 하지 말것
 	Dog dog;
 	std::ifstream in{ "Dog 10만마리" , std::ios::binary};
 	if (not in) return 10101010;
