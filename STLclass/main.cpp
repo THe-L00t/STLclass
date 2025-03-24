@@ -10,12 +10,13 @@
 #include <iostream>	
 #include <string>
 #include <random>
+#include <print>
 #include "save.h"
 
 // Dog 객체 10만개를 파일 "Dog 10만마리"에 저장한다. 
 
 std::default_random_engine dre;
-std::uniform_int_distribution uid{'a','z'};
+std::uniform_int_distribution uid{'a','z'}; //원인
 
 class Dog {
 public:
@@ -25,9 +26,11 @@ public:
 			name += uid(dre);
 		}
 	};
+
+	void show() const;
 private:
 	std::string name;	// 15글자의 random 소문자로 구성
-	size_t id;			// 생성될때마다 고유번호 부여
+	int id;			// 생성될때마다 고유번호 부여
 
 	static int sid;		// scope:local, life-time:global
 };
@@ -36,10 +39,13 @@ int Dog::sid{};
 
 int main( char argc, char* argv) 
 {
-	
+	Dog dog;
 
+	dog.show();
 	save("main.cpp");
 }
 
-
-
+void Dog::show() const
+{
+	std::println("[{:8}] - { }", id, name);
+}
