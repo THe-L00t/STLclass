@@ -31,8 +31,8 @@ int main( char argc, char* argv)
 
 	in.read((char*)arr.data(), sizeof(int) * arr.size());
 	
-	std::pair res = std::minmax_element(arr.begin(), arr.end());
-	std::cout << "ÃÖ¼Ú°ª - " << *res.first << "ÃÖ´ñ°ª - " << *res.second << std::endl;
+	auto [ÃÖ¼Ú°ª, ÃÖ´ñ°ª] = std::minmax_element(arr.begin(), arr.end());
+	std::cout << "ÃÖ¼Ú°ª - " << *ÃÖ¼Ú°ª << "ÃÖ´ñ°ª - " << *ÃÖ´ñ°ª << std::endl;
 
 	save("main.cpp");
 }
