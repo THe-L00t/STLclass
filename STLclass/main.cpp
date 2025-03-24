@@ -9,49 +9,32 @@
 // 
 #include <iostream>	
 #include <string>
-#include <random>
-#include <print>
+#include <array>
 #include <fstream>
 #include "save.h"
 
-
-std::default_random_engine dre;
-std::uniform_int_distribution<int> uid{'a','z'}; 
+// [문제] e-class 에서 다운받은 Dog 10만마리에는 Dog객체 10만개가 저장되어 있다.  
+// 파일은 binary mode로 열었고 Dog객체는 파일의 write함수를 사용하여 메모리 그대로 저장하였다. 
+// Dog객체 10만개를 메모리에 모두 저장하라
+// 제일 마지막 객체의 정보를 cout으로 화면에 출력하라 
 
 class Dog {
 public:
-	Dog() : id{ ++sid } {
-		for (size_t i = 0; i < 15; i++)
-		{
-			name += uid(dre);
-		}
-	};
-
-	void show() const;
+	friend std::ostream& operator<<(std::ostream& os, Dog& d) {
+		return os << "[id] " << d.id << "[name] " << d.name;
+	}
 private:
-	std::string name;	// 15글자의 random 소문자로 구성
-	int id;			// 생성될때마다 고유번호 부여
-
-	static int sid;		// scope:local, life-time:global
+	std::string name;
+	int id;
 };
 
-int Dog::sid{};
-
-int main( char argc, char* argv) 
+int main( ) 
 {
-	// Dog 객체 10만개를 파일 "Dog 10만마리"에 저장한다. 
-	// 파일은 binary mode로 열었고 Dog객체는 파일의 write함수를 사용하여 메모리 그대로 저장하였다. 
-	std::ofstream out{ "Dog 10만마리", std::ios::binary };
-	for (size_t i = 0; i < 10'0000; ++i)
-	{
-		Dog dog;
-		out.write((char*)&dog, sizeof(dog));
-	}
+	std::array<Dog, 10'0000> arr;
+	std::ifstream in{ "Dog 10만마리" };
 
+	in.read((char*)arr.data(), sizeof(Dog) * arr.size());
+	std::cout << arr[9'9999] << std::endl;
 	save("main.cpp");
 }
 
-void Dog::show() const
-{
-	std::println("[{:8}] - {}", id, name);
-}
