@@ -11,9 +11,9 @@
 #include <string>
 #include <random>
 #include <print>
+#include <fstream>
 #include "save.h"
 
-// Dog 객체 10만개를 파일 "Dog 10만마리"에 저장한다. 
 
 std::default_random_engine dre;
 std::uniform_int_distribution<int> uid{'a','z'}; 
@@ -39,9 +39,15 @@ int Dog::sid{};
 
 int main( char argc, char* argv) 
 {
-	Dog dog;
+	// Dog 객체 10만개를 파일 "Dog 10만마리"에 저장한다. 
+	// 파일은 binary mode로 열었고 Dog객체는 파일의 write함수를 사용하여 메모리 그대로 저장하였다. 
+	std::ofstream out{ "Dog 10만마리", std::ios::binary };
+	for (size_t i = 0; i < 10'0000; ++i)
+	{
+		Dog dog;
+		out.write((char*)&dog, sizeof(dog));
+	}
 
-	dog.show();
 	save("main.cpp");
 }
 
