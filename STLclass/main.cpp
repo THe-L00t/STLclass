@@ -31,9 +31,8 @@ int main( char argc, char* argv)
 
 	in.read((char*)arr.data(), sizeof(int) * arr.size());
 	
-	// 가장 큰 값과 작은 값을 구해라
-	// max_element() 와 min_element()는 바보같을 수 있다. 
-
+	std::pair res = std::minmax_element(arr.begin(), arr.end());
+	std::cout << "최솟값 - " << *res.first << "최댓값 - " << *res.second << std::endl;
 
 	save("main.cpp");
 }
