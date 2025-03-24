@@ -36,11 +36,11 @@ int main( )
 	if (not in) return 10101010;
 
 	in.read((char*)dogs.data(), sizeof(Dog) * dogs.size());
-	std::cout << dogs[9'9999] << std::endl;
+	//std::cout << dogs[9'9999] << std::endl;
 	//while (in.read((char*)&dog, sizeof(Dog)))
 	//	;
 	//std::cout << dog << std::endl;
-	std::cout << dogs[9'9999] << std::endl;
+	std::cout << dogs.back() << std::endl;	//back이 마지막 원소를 가리킴
 
 	save("main.cpp");
 }
