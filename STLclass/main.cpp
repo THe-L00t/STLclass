@@ -19,9 +19,14 @@
 
 class Dog {
 public:
+	friend std::ifstream& operator>>(std::ifstream& is, Dog& d) {
+		return is.read((char*)&d, sizeof(Dog));
+
+	}
 	friend std::ostream& operator<<(std::ostream& os, const Dog& d) {
 		return os << "[id] " << d.id << "[name] " << d.name;
 	}
+	
 private:
 	std::string name;
 	int id;
@@ -33,6 +38,12 @@ int main( )
 	std::ifstream in{ "Dog 10만마리" , std::ios::binary};
 	if (not in) return 10101010;
 
+	for (size_t i = 0; i < dogs.size(); ++i)
+	{
+		in >> dogs[i];
+	}
+
+	// 출력
 
 	save("main.cpp");
 }
