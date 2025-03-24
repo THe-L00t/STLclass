@@ -7,20 +7,16 @@
 //---------------------------------------------------------------------------
 //
 // 
-#include <iostream>	// 헤더 파일의 전체 코드를 가져온다. 주석은 모두 지운다. 
+#include <iostream>	
 #include <random>
 #include <fstream>
 #include <array>
 #include <print>
 #include "save.h"
 
-// 컴파일러의 동작
 
-// [문제] "int 1000개.txt" 파일에서 가장 큰 값을 찾아 화면에 출력하라.
-// 출력된 값도 답지에 적어라 
-
-std::default_random_engine dre{ };				//값을 뽑아내고
-std::uniform_int_distribution uid{0,9'999'999};	//가공한다.
+std::default_random_engine dre{ };				
+std::uniform_int_distribution uid{0,9'999'999};	
 
 int main( char argc, char* argv) 
 {
@@ -28,15 +24,14 @@ int main( char argc, char* argv)
 	std::ifstream in{ "진짜 랜덤 10만개",std::ios::binary };
 
 	std::array<int, 10'0000> arr;
-
 	in.read((char*)arr.data(), sizeof(int) * arr.size());
 	
+	// structured binding
 	auto [최솟값, 최댓값] = std::minmax_element(arr.begin(), arr.end());
 	std::cout << "최솟값 - " << *최솟값 << "최댓값 - " << *최댓값 << std::endl;
 
 	save("main.cpp");
 }
 
-// STL이라도 적재적소에 사용하기
-// 최소 자원과 최소 노력
+
 
