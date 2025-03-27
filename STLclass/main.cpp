@@ -9,6 +9,7 @@
 // 
 #include <iostream>	
 #include <numeric>
+#include <memory>
 #include "save.h"
  
 class Dog {
@@ -17,21 +18,9 @@ public:
 	~Dog() { std::cout << "소멸이요" << std::endl; }
 };
 
-class 스마트 {
-public:
-	스마트() = default;
-	스마트(Dog* p) : p{ p } {}
-	~스마트() { 
-		delete p;
-	}
-private:
-	Dog* p;
-};
-
-
 
 void f() {
-	스마트 p{ new Dog };
+	std::unique_ptr<Dog> p{ new Dog };
 
 	throw 20250327;
 	std::cout << "f 함수가 끝나기 전" << std::endl;
