@@ -18,10 +18,11 @@ public:
 };
 
 void f() {
-	Dog dog;
+	Dog* p = new Dog;
 
 	throw 20250327;
-	std::cout << "함수가 끝나기 전" << std::endl;
+	std::cout << "f 함수가 끝나기 전" << std::endl;
+	delete p;
 }
 
 int main( ) 
