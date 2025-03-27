@@ -20,7 +20,7 @@ public:
 
 
 void f() {
-	std::unique_ptr<Dog> p{ new Dog };
+	std::unique_ptr<Dog[]> p{new Dog[10]};		//assignment (=) 금지 
 
 	throw 20250327;
 	std::cout << "f 함수가 끝나기 전" << std::endl;
