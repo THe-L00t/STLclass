@@ -20,20 +20,17 @@ public:
 
 
 void f() {
-	std::unique_ptr<Dog[]> p{new Dog[10]};		//assignment (=) 금지 
-
-	throw 20250327;
+	//std::unique_ptr<Dog[]> p{new Dog[10]};		//assignment (=) 금지 
+	// new delete 짝이 안맞으면 불편
+	// 결국
+	std::unique_ptr<Dog[]> p = std::make_unique<Dog[]>(10);
 	std::cout << "f 함수가 끝나기 전" << std::endl;
 }
 
 int main( ) 
 {
-	try {
 		f();
-	}	
-	catch (...) { //ellipsis
-		std::cout << "예외를 catch 하였다.";
-	}
+	
 	save("main.cpp");
 
 }
