@@ -12,23 +12,20 @@
 #include "save.h"
  
 void f() {
-	int* p = new int[20'0000'0000];		// 기본 초기화 하지 않는다. 명시적으로 초기화 하고 싶다면 {}할것
-	std::cout << "번지 - " << p << std::endl;
-	//delete[] p;
+	int* p = new int[10];		// 기본 초기화 하지 않는다. 명시적으로 초기화 하고 싶다면 {}할것
+	throw 20250327;
+	std::cout << "절대 new int로 확보한 자원이 반환될 수 없다. " << std::endl;
+	delete[] p;
 }
 
 int main( ) 
 {
-	
 	try {
-		while (true) {
-			f();
-		}
+		f();
+	}	
+	catch (...) { //ellipsis
+		std::cout << "예외를 catch 하였다.";
 	}
-	catch (const std::exception& e) {
-		std::cout << e.what() << std::endl;
-	}
-	
 	save("main.cpp");
 
 }
