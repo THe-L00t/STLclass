@@ -11,11 +11,17 @@
 #include <numeric>
 #include "save.h"
  
+class Dog {
+public: 
+	Dog() { std::cout << "생성이요" << std::endl; }
+	~Dog() { std::cout << "소멸이요" << std::endl; }
+};
+
 void f() {
-	int* p = new int[10];		// 기본 초기화 하지 않는다. 명시적으로 초기화 하고 싶다면 {}할것
+	Dog dog;
+
 	throw 20250327;
-	std::cout << "절대 new int로 확보한 자원이 반환될 수 없다. " << std::endl;
-	delete[] p;
+	std::cout << "함수가 끝나기 전" << std::endl;
 }
 
 int main( ) 
