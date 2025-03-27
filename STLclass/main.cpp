@@ -12,24 +12,21 @@
 #include "save.h"
  
 void f() {
-	int* p = new int[5];		// 기본 초기화 하지 않는다. 명시적으로 초기화 하고 싶다면 {}할것
+	int* p = new int[20'0000'0000];		// 기본 초기화 하지 않는다. 명시적으로 초기화 하고 싶다면 {}할것
 	std::cout << "번지 - " << p << std::endl;
-	for (size_t i = 0; i < 5; i++)
-	{
-		std::cout << p[i] << std::endl;
-	}
-
-	throw 13124124;
-
-	std::cout << "출력되지 않음 ";
-	delete[] p;
+	//delete[] p;
 }
 
 int main( ) 
 {
-	for (size_t i = 0; i < 10; i++)
-	{
-		f();
+	
+	try {
+		while (true) {
+			f();
+		}
+	}
+	catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
 	
 	save("main.cpp");
