@@ -12,17 +12,29 @@
 #include "save.h"
  
 class Dog {
-public: 
+public:
 	Dog() { std::cout << "생성이요" << std::endl; }
 	~Dog() { std::cout << "소멸이요" << std::endl; }
 };
 
+class 스마트 {
+public:
+	스마트() = default;
+	스마트(Dog* p) : p{ p } {}
+	~스마트() { 
+		delete p;
+	}
+private:
+	Dog* p;
+};
+
+
+
 void f() {
-	Dog* p = new Dog;
+	스마트 p{ new Dog };
 
 	throw 20250327;
 	std::cout << "f 함수가 끝나기 전" << std::endl;
-	delete p;
 }
 
 int main( ) 
