@@ -2,8 +2,8 @@
 // 2025.   1.  STL 월 910 목 910					3월 10일 월요일		(4주 1일)
 //---------------------------------------------------------------------------//
 //
-//	RAII 와 smart pointer 
-// 자원의 생명주기를 핸들러의 생명주기에 일치시키는 프로그래밍 기법
+//	Callable
+// 
 //---------------------------------------------------------------------------
 //
 // 
@@ -12,24 +12,9 @@
 #include <memory>
 #include "save.h"
  
-class Dog {
-public:
-	Dog() { std::cout << "생성이요" << std::endl; }
-	~Dog() { std::cout << "소멸이요" << std::endl; }
-};
-
-
-void f() {
-	//std::unique_ptr<Dog[]> p{new Dog[10]};		//assignment (=) 금지 
-	// new delete 짝이 안맞으면 불편
-	// 결국
-	std::unique_ptr<Dog[]> p = std::make_unique<Dog[]>(10);
-	std::cout << "f 함수가 끝나기 전" << std::endl;
-}
-
+// [문제] "메인.cpp"파일의 소문자를 대문자로 변환하여 "메인 대문자.cpp"에 저장하라 
 int main( ) 
 {
-		f();
 	
 	save("main.cpp");
 
