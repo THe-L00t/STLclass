@@ -18,6 +18,10 @@ void f() {
 	{
 		std::cout << p[i] << std::endl;
 	}
+
+	throw 13124124;
+
+	std::cout << "출력되지 않음 ";
 	delete[] p;
 }
 
