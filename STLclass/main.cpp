@@ -34,13 +34,13 @@ int main( )
 			int* numbers = new int[num];
 			//__int64 sum;
 			std::cout << std::numeric_limits<long long>::max() << std::endl;
-			long long sum =0;
+			
 			std::iota(numbers, numbers + num, 1);
-			//sum = std::accumulate(numbers, numbers + num, numbers);
-			for (size_t i = 0; i < num; i++)
+			long long sum = std::accumulate(numbers, numbers + num, 0LL);
+			/*for (size_t i = 0; i < num; i++)
 			{
 				sum += numbers[i];
-			}
+			}*/
 			std::cout << "1부터 " << num << "까지의 합계 - " << sum << std::endl;
 			delete[] numbers;
 		}
