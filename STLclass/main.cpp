@@ -8,6 +8,7 @@
 //
 // 
 #include <iostream>	
+#include <numeric>
 #include "save.h"
 
 // [문제] 양의 정수(int의 최댓값)를 입력받아 num에 저장하라 
@@ -32,17 +33,16 @@ int main( )
 			//std::unique_ptr<int> numbers{ new int[num]() };
 			int* numbers = new int[num];
 			//__int64 sum;
-			long sum;
-			for (size_t i = 0; i < num; i++)
-			{
-				numbers[i] = i+1;
-			}
+			std::cout << std::numeric_limits<long long>::max() << std::endl;
+			long long sum =0;
+			std::iota(numbers, numbers + num, 1);
+			//sum = std::accumulate(numbers, numbers + num, numbers);
 			for (size_t i = 0; i < num; i++)
 			{
 				sum += numbers[i];
 			}
 			std::cout << "1부터 " << num << "까지의 합계 - " << sum << std::endl;
-			sum = 0;
+			delete[] numbers;
 		}
 	}
 }
