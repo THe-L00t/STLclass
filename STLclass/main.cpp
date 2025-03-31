@@ -14,6 +14,7 @@
 #include <random>
 #include <print>
 #include <ranges>
+#include <chrono>
 #include "save.h"
  
 std::random_device rd;
@@ -38,13 +39,17 @@ int main( )
 	}
 
 	//STL의 sort 정렬
+	//정렬에 걸리는 시간
+	auto b = std::chrono::high_resolution_clock::now();//스톱워치 시작
 	sort(numbers.begin(), numbers.end(),내림차순 );	// generic, contiguous
+	auto e = std::chrono::high_resolution_clock::now();//스톱워치 끝
 
 	for (int& num : numbers | std::views::take(1000))
 	{
 		std::print("{:8}", num);
 	}
 
+	std::cout << std::endl << "경과시간 - " << e-b << std::endl;
 	save("main.cpp");
 
 }
