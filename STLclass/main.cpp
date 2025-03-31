@@ -21,7 +21,10 @@ int main( )
 	if (not in) return 404;
 	std::ofstream out{ "메인 대문자.cpp" };
 
-	std::transform(std::istreambuf_iterator<char>{in}, {}, std::ostreambuf_iterator<char>{out}, ???)		//들어갈 수 있는 함수 가 무엇인지, callable
+	std::transform(std::istreambuf_iterator<char>{in}, {}, std::ostreambuf_iterator<char>{out}, 
+		[](char c) {
+			return toupper(c); 
+		});		//들어갈 수 있는 함수 가 무엇인지, callable
 
 	save("main.cpp");
 
