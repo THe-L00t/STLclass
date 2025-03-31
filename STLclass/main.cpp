@@ -12,7 +12,8 @@
 #include <array>
 #include <algorithm>
 #include <random>
-#include <memory>
+#include <print>
+#include <ranges>
 #include "save.h"
  
 
@@ -23,17 +24,24 @@ std::uniform_int_distribution uid(0, 999'9999);
 // (시작) qsort로 오름차순 정렬하라.
 // 정렬한 결과 중에서 앞에서 부터 1000개만 화면 출력하라
  
+std::array<int, 1000'0000> numbers;
 
 int main( ) 
 {
-	std::unique_ptr<std::array<int, 1000'0000>> numbers{ new std::array<int,1000'0000> };
-	for (int& num : *numbers) {
+	//std::unique_ptr<std::array<int, 1000'0000>> numbers{ new std::array<int,1000'0000> };
+	for (int& num : numbers) {
 		num = uid(dre);
 	}
-	qsort((void*)numbers->data(), 1000'0000, sizeof(int), [](const void* a, const void* b)
+	qsort((void*)numbers.data(), 1000'0000, sizeof(int), [](const void* a, const void* b)
 		{
-			return a > b;
-		})
+			return (void*)(a > b);
+		});
+	for (int num : numbers|std::views::take(1000))
+	{
+		std::print("{:8}", numbers);
+		//std::cout << numbers[i];
+	}
+
 	save("main.cpp");
 
 }
