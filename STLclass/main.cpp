@@ -9,23 +9,31 @@
 //
 // 
 #include <iostream>	
-#include <fstream>
+#include <array>
 #include <algorithm>
+#include <random>
+#include <memory>
 #include "save.h"
  
-// [문제] "메인.cpp"파일의 소문자를 대문자로 변환하여 "메인 대문자.cpp"에 저장하라 
+
+std::default_random_engine dre;
+std::uniform_int_distribution uid(0, 999'9999);
+// [문제] 값의 범위가 [0,1'000'0000) 까지인 random int값 천 만개를 저장할 
+// 메모리를 확보하고 값을 채워라
+// (시작) qsort로 오름차순 정렬하라.
+// 정렬한 결과 중에서 앞에서 부터 1000개만 화면 출력하라
+ 
+
 int main( ) 
 {
-	
-	std::ifstream in{ "main.cpp" };
-	if (not in) return 404;
-	std::ofstream out{ "메인 대문자.cpp" };
-
-	std::transform(std::istreambuf_iterator<char>{in}, {}, std::ostreambuf_iterator<char>{out}, 
-		[](char c) {
-			return toupper(c); 
-		});		//들어갈 수 있는 함수 가 무엇인지, callable
-
+	std::unique_ptr<std::array<int, 1000'0000>> numbers{ new std::array<int,1000'0000> };
+	for (int& num : *numbers) {
+		num = uid(dre);
+	}
+	qsort((void*)numbers->data(), 1000'0000, sizeof(int), [](const void* a, const void* b)
+		{
+			return a > b;
+		})
 	save("main.cpp");
 
 }
