@@ -31,13 +31,19 @@ int 내림차순(const void* a, const void* b);
 
 int main( ) 
 {
+
+	// 두 가지 예외사항
+	// int[10] a;   X
+	// int(*)(const void*,const void*) fp;   X
+
+
 	int (*정렬방법)(const void*, const void*);
 	//std::unique_ptr<std::array<int, 1000'0000>> numbers{ new std::array<int,1000'0000> };
 	for (int& num : numbers) {
 		num = uid(dre);
 	}
 	
-	if (numbers[0] % 2 == 0 )정렬방법 = 오름차순;
+	if(numbers[0] %2 == 1)정렬방법 = 오름차순;
 	else 정렬방법 = 내림차순;
 
 	qsort(numbers.data(), numbers.size(), sizeof(int), 정렬방법);
@@ -64,7 +70,7 @@ int 내림차순(const void* a, const void* b)
 {
 	int A = *(int*)a;
 	int B = *(int*)b;
-	if (A < B) return -1;
-	else if (B < A) return 1;
+	if (A < B) return 1;
+	else if (B < A) return -1;
 	return 0;
 }
