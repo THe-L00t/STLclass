@@ -26,19 +26,18 @@ std::uniform_int_distribution uid(0, 999'9999);
  
 std::array<int, 1000'0000> numbers;
 
+int 오름차순(const void* a, const void* b);
+
 int main( ) 
 {
 	//std::unique_ptr<std::array<int, 1000'0000>> numbers{ new std::array<int,1000'0000> };
 	for (int& num : numbers) {
 		num = uid(dre);
 	}
-	qsort((void*)numbers.data(), 1000'0000, sizeof(int), [](const void* a, const void* b)
-		{
-			return (void*)(a > b);
-		});
-	for (int num : numbers|std::views::take(1000))
+	qsort(numbers.data(), numbers.size(), sizeof(std::array<int,1000'0000>::value_type), 오름차순);
+	for (int& num : numbers | std::views::take(1000))
 	{
-		std::print("{:8}", numbers);
+		std::print("{:8}", num);
 		//std::cout << numbers[i];
 	}
 
@@ -46,4 +45,11 @@ int main( )
 
 }
 
-
+int 오름차순(const void* a, const void* b)
+{
+	int A = *(int*)a;
+	int B = *(int*)b;
+	if (A < B) return -1;
+	else if (B < A) return 1;
+	return 0;
+}
