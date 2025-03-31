@@ -25,7 +25,10 @@ std::uniform_int_distribution uid(0, 999'9999);
 // 정렬한 결과 중에서 앞에서 부터 1000개만 화면 출력하라
  
 std::array<int, 1000'0000> numbers;
-
+bool 내림차순(int a, int b)
+{
+	return a > b;
+}
 
 int main( ) 
 {
@@ -35,7 +38,7 @@ int main( )
 	}
 
 	//STL의 sort 정렬
-	sort(numbers.begin(), numbers.end());	// generic, contiguous
+	sort(numbers.begin(), numbers.end(),내림차순 );	// generic, contiguous
 
 	for (int& num : numbers | std::views::take(1000))
 	{
