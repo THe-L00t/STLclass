@@ -10,8 +10,7 @@
 // 
 #include <iostream>	
 #include <fstream>
-#include <numeric>
-#include <memory>
+#include <algorithm>
 #include "save.h"
  
 // [문제] "메인.cpp"파일의 소문자를 대문자로 변환하여 "메인 대문자.cpp"에 저장하라 
@@ -22,14 +21,7 @@ int main( )
 	if (not in) return 404;
 	std::ofstream out{ "메인 대문자.cpp" };
 
-	char c;
-	in >> std::noskipws;
-	while (in >> c) {	//루프를 직접 만들지 말 것
-			char al = toupper(c);
-			out << al;
-		
-		out << c;
-	}
+	std::transform(std::istreambuf_iterator<char>{in}, {}, std::ostreambuf_iterator<char>{out}, ???)		//들어갈 수 있는 함수 가 무엇인지, callable
 
 	save("main.cpp");
 
