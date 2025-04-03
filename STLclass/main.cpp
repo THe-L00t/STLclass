@@ -15,26 +15,28 @@
 //
 // 
 #include <iostream>	
+#include <array>
+#include <algorithm>
 #include <functional>
 #include "save.h"
 
-class Dog {
-public:
-	void operator()(int n) const {			//함수의 번지 찍어보기
-		std::cout << "왜불러 " << std::endl;
-	}
-};
 
 int main( ) 
 {
+	std::array<int, 10> a{1,3,5,7,9,2,4,6,8,10};
 
-	void af(int);
-	void bf(int);
+	//[문제] 오름차순으로 정렬하고 출력하라
+	class Dog {
+	public:
+		bool operator()(int a, int b) const{
+			return a < b;
+		}
+	};
+	Dog dog;
+	sort(a.begin(), a.end(), dog);
 
-	std::function<void(int)> f = af;
-
-	// 예시
-	//sort(b,e, function<int (int,int)> f)
+	for (int& n : a)
+		std::cout << n << ' ' ;
 
 	save("main.cpp");
 
