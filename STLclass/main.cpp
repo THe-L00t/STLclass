@@ -16,19 +16,19 @@
 #include <iostream>	
 #include "save.h"
 
-
+class XYZ {
+public:
+	//[]() {};	[]를 oprsator()로 변경
+	void operator()() {
+		std::cout << "나는 람다야" << std::endl;
+	};
+	// 내용을 보고 리턴타입 유추
+};
  
 
 int main( ) 
 {
-	class XYZ {
-	public:
-		//[]() {};	[]를 oprsator()로 변경
-		void operator()() {
-			std::cout << "나는 람다야" << std::endl;
-		};
-		// 내용을 보고 리턴타입 유추
-	};
+	
 
 
 	XYZ f;
