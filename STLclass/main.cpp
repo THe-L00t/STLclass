@@ -4,16 +4,18 @@
 // 6주 1일 과제설명 (4월 10일 목요일) - 30점
 //---------------------------------------------------------------------------//
 //
-//	Callable types - 호출가능한 타입
+//	Callable types - 호출가능한 타입, 모든 호출가능타입을 대표하는 function
 //  1. 함수
 //  2. 함수 포인터
 //  3. 람다 - 이름없는 함수, VS에서는 함수 객체를 이용하여 람다를 구현하였다 
 //  4. 함수겍체 ( function object ) - 함수 호출 연산자를 오버로딩한 클래스의 객체 
 //  5. 멤버함수 
+// 1,2 함수 3,4 클래스 5 
 //---------------------------------------------------------------------------
 //
 // 
 #include <iostream>	
+#include <functional>
 #include "save.h"
 
 class Dog {
@@ -25,24 +27,14 @@ public:
 
 int main( ) 
 {
-	int a;
-	int b;
-
-	a = b; // a와 b는 타입이 같다.
 
 	void af(int);
 	void bf(int);
 
-	//af = bf;		// 대입 불가능 왜냐?? location velue이기 때문
+	std::function<void(int)> f = af;
 
-	void(*cf)(int) = af;
-	cf = bf;
-
-	Dog dog;
-
-	//dog.bark();
-	//++dog ==> dog.operator++();
-	dog(1); // function-call operator도 오버로딩이 가능하다
+	// 예시
+	//sort(b,e, function<int (int,int)> f)
 
 	save("main.cpp");
 
