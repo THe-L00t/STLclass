@@ -16,27 +16,21 @@
 #include <iostream>	
 #include "save.h"
 
-class XYZ {
+class Dog {
 public:
-	//[]() {};	[]를 oprsator()로 변경
-	void operator()() {
-		std::cout << "나는 람다야" << std::endl;
-	};
-	// 내용을 보고 리턴타입 유추
+	void operator()(int n) const {
+		std::cout << "왜불러 " << std::endl;
+	}
 };
- 
 
 int main( ) 
 {
-	
+	Dog dog;
 
+	//dog.bark();
+	//++dog ==> dog.operator++();
+	dog(1); // function-call operator도 오버로딩이 가능하다
 
-	XYZ f;
-
-	f();
-
-
-	std::cout << "람다의 정체 - " << typeid(f).name() << std::endl;
 	save("main.cpp");
 
 }
