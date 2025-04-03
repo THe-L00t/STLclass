@@ -21,14 +21,22 @@
 
 int main( ) 
 {
-	// 자료형, 메모리 크기, 메모리 주소를 알아볼 수 있다.
-	// sizeof, adressof, typeid
-	
-	std::cout << typeid([]() {}).name() << std::endl;
-	std::cout << typeid([]() {}).name() << std::endl;
-	std::cout << typeid([]() {}).name() << std::endl;
-	std::cout << typeid([]() {}).name() << std::endl;
+	class XYZ {
+	public:
+		//[]() {};	[]를 oprsator()로 변경
+		void operator()() {
+			std::cout << "나는 람다야" << std::endl;
+		};
+		// 내용을 보고 리턴타입 유추
+	};
 
+
+	XYZ f;
+
+	f();
+
+
+	std::cout << "람다의 정체 - " << typeid(f).name() << std::endl;
 	save("main.cpp");
 
 }
