@@ -30,6 +30,13 @@ int main( )
 
 	a = b; // a와 b는 타입이 같다.
 
+	void af(int);
+	void bf(int);
+
+	//af = bf;		// 대입 불가능 왜냐?? location velue이기 때문
+
+	void(*cf)(int) = af;
+	cf = bf;
 
 	Dog dog;
 
