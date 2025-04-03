@@ -6,7 +6,10 @@
 //
 //	Callable types - 호출가능한 타입
 //  1. 함수
-// 
+//  2. 함수 포인터
+//  3. 람다
+//  4. 함수겍체
+//  5. 멤버함수 
 //---------------------------------------------------------------------------
 //
 // 
@@ -35,26 +38,44 @@ bool 내림차순(int a, int b)
 
 int main( ) 
 {
+	{	//내림차순
+		for (int& num : numbers) {
+			num = uid(dre);
+		}
 
-	for (int& num : numbers) {
-		num = uid(dre);
+		//STL의 sort 정렬
+		//정렬에 걸리는 시간
+		auto b = std::chrono::high_resolution_clock::now();//스톱워치 시작
+		sort(numbers.begin(), numbers.end(), 내림차순);
+		auto e = std::chrono::high_resolution_clock::now();//스톱워치 끝
+
+		/*for (int& num : numbers | std::views::take(1000))
+		{
+			std::print("{:8}", num);
+		}*/
+
+		std::cout << std::endl << "경과시간(duration) - " << e - b << std::endl;
+		std::cout << "경과시간 - 함수호출(1/1000초) - " << std::chrono::duration_cast<std::chrono::milliseconds>(e - b) << std::endl;
 	}
+	{	// STL의 sort를 사용하여 정렬하라고 하면 전세계 프로그래머는 람다로 코딩할걸?
+		for (int& num : numbers) {
+			num = uid(dre);
+		}
 
-	//STL의 sort 정렬
-	//정렬에 걸리는 시간
-	auto b = std::chrono::high_resolution_clock::now();//스톱워치 시작
-	std::ranges::sort(numbers.begin(), numbers.end());	// 디폴트 오름차순
-	auto e = std::chrono::high_resolution_clock::now();//스톱워치 끝
+		//STL의 sort 정렬
+		//정렬에 걸리는 시간
+		auto b = std::chrono::high_resolution_clock::now();//스톱워치 시작
+		sort(numbers.begin(), numbers.end(), [](int a, int b) {return a > b; });
+		auto e = std::chrono::high_resolution_clock::now();//스톱워치 끝
 
-	for (int& num : numbers | std::views::take(1000))
-	{
-		std::print("{:8}", num);
+		/*for (int& num : numbers | std::views::take(1000))
+		{
+			std::print("{:8}", num);
+		}*/
+
+		std::cout << std::endl << "경과시간(duration) - " << e - b << std::endl;
+		std::cout << "경과시간 - 람다 (1/1000초) - " << std::chrono::duration_cast<std::chrono::milliseconds>(e - b) << std::endl;
 	}
-
-	std::cout << std::endl << "경과시간(duration) - " << e-b << std::endl;
-	std::cout << "경과시간(1/1000초) - " << std::chrono::duration_cast<std::chrono::milliseconds>(e - b) << std::endl;
-
-	// sort로 내림차순 
 
 
 
