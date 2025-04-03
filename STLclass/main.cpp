@@ -10,33 +10,40 @@
 //  3. 람다 - 이름없는 함수, VS에서는 함수 객체를 이용하여 람다를 구현하였다 
 //  4. 함수겍체 ( function object ) - 함수 호출 연산자를 오버로딩한 클래스의 객체 
 //  5. 멤버함수 
-// 1,2 함수 3,4 클래스 5 
+// 1,2 함수 3,4 클래스
 //---------------------------------------------------------------------------
 //
 // 
 #include <iostream>	
-#include <array>
-#include <algorithm>
-#include <functional>
+#include <fstream>
 #include "save.h"
 
+// [상황] eclass에서 다운받은 파일"Dog 십만마리"에는 
+// 정확하게 Dog객체 10만개가 저장되어있다. 
+// 파일은 
+//		ofstream out{"Dog 십만마리"};
+// Dog타입의 객체 dog를 
+//		out << dog;
+// 코드로 저장하였다. 
+
+class Dog {
+public:
+private:
+	size_t num;					// 랜덤 int값
+	std::string name;			// [3,60) 까지의 소문자로만 구성
+
+	friend std::ostream& operator<<(std::ofstream& os, const Dog& dog) {
+		return os << dog.num << " - " << dog.name << std::endl;
+	}
+
+};	
 
 int main( ) 
 {
-	std::array<int, 10> a{1,3,5,7,9,2,4,6,8,10};
-
-	//[문제] 오름차순으로 정렬하고 출력하라
-	class Dog {
-	public:
-		bool operator()(int a, int b) const{
-			return a < b;
-		}
-	};
-	Dog dog;
-	sort(a.begin(), a.end(), dog);
-
-	for (int& n : a)
-		std::cout << n << ' ' ;
+	// [문제] 파일에 저장된 10만개의 Dog객체를 모두 읽어 메모리에 저장하라. 
+	// 마지막 객체의 정보를 화면에 출력하고 출력된 내용을 답지에도 적어라.
+	// 메모리에 있는 Dog객체를 name 길이 기준 오름차순으로 정렬하라. 
+	// 정렬한 마지막 객체의 정보를 화면에 출력하고 답지에 적는다. 
 
 	save("main.cpp");
 
