@@ -25,6 +25,12 @@ public:
 
 int main( ) 
 {
+	int a;
+	int b;
+
+	a = b; // a와 b는 타입이 같다.
+
+
 	Dog dog;
 
 	//dog.bark();
