@@ -21,8 +21,15 @@
 
 int main( ) 
 {
+	// 자료형, 메모리 크기, 메모리 주소를 알아볼 수 있다.
+	// sizeof, adressof, typeid
 	
+	std::cout << typeid([]() {}).name() << std::endl;
+	std::cout << typeid([]() {}).name() << std::endl;
+	std::cout << typeid([]() {}).name() << std::endl;
+	std::cout << typeid([]() {}).name() << std::endl;
 
 	save("main.cpp");
 
 }
+// __cedcl : c언어 함수 인자 전달 방식
