@@ -68,10 +68,10 @@ int main( )
 		sort(numbers.begin(), numbers.end(), [](int a, int b) {return a > b; });
 		auto e = std::chrono::high_resolution_clock::now();//스톱워치 끝
 
-		/*for (int& num : numbers | std::views::take(1000))
+		for (int& num : numbers | std::ranges::views::reverse) //뒤집어 찍기
 		{
 			std::print("{:8}", num);
-		}*/
+		}
 
 		std::cout << std::endl << "경과시간(duration) - " << e - b << std::endl;
 		std::cout << "경과시간 - 람다 (1/1000초) - " << std::chrono::duration_cast<std::chrono::milliseconds>(e - b) << std::endl;
@@ -83,3 +83,6 @@ int main( )
 
 }
 
+// sort는 템플릿 함수 -> 템플릿 함수는 소스코드를 찍어낸다.
+// 실제 형식 : sort<array<int, 1000'0000>>(numbers.begin(), numbers.end(), [](int a, int b) {return a > b; });
+// 람다의 경우 함수 호출이 아닌 소스코드에 직접 이식된다.
