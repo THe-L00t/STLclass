@@ -17,20 +17,23 @@
 
 class STRING {
 public:
-	STRING(const std::string& a) : d{ std::make_unique<char[]>(a.size()) }, s{ a.size() } {
-
+	STRING(const char* p) : s{ strlen(p) }, d{ std::make_unique<char[]>(s) } {
+		//d.release();   디폴트 초기화시 상관 없음
+		memcpy(d.get(), p, s);		//DMA 가 가능하다. 
 	}
 
-	STRING& operator=(const STRING& rhs) {
+	const STRING& operator=(const STRING& rhs) {
 		d = std::make_unique<char[]>(rhs.size());
+		memcpy(d.get(), rhs.d.get(), s);
 		s = rhs.size();
+		return *this;
 	}
 	size_t size() const{
 		return s;
 	}
 private:
-	std::unique_ptr<char[]> d;
-	size_t s;
+	size_t s{};
+	std::unique_ptr<char[]> d{};
 
 	friend std::ostream& operator<<(std::ostream& os, const STRING& str) {
 		return os << str.d.get();
