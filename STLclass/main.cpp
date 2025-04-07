@@ -4,97 +4,21 @@
 // 6주 1일 과제설명 (4월 10일 목요일) - 30점
 //---------------------------------------------------------------------------//
 //
-//	Callable types - 호출가능한 타입, 모든 호출가능타입을 대표하는 function
-//  1. 함수
-//  2. 함수 포인터
-//  3. 람다 - 이름없는 함수, VS에서는 함수 객체를 이용하여 람다를 구현하였다 
-//  4. 함수겍체 ( function object ) - 함수 호출 연산자를 오버로딩한 클래스의 객체 
-//  5. 멤버함수 
-// 1,2 함수 3,4 클래스
+// class STRING 작성 시작 - std::string과 유사한 동작을 한다.  
+//
+//
 //---------------------------------------------------------------------------
 //
 // 
 #include <iostream>	
-#include <array>
-#include <string>
-#include <fstream>
-#include <print>
-#include <algorithm>
+
 #include "save.h"
-
-// [상황] eclass에서 다운받은 파일"Dog 십만마리"에는 
-// 정확하게 Dog객체 10만개가 저장되어있다. 
-// 파일은 
-//		ofstream out{"Dog 십만마리"};
-// Dog타입의 객체 dog를 
-//		out << dog;
-// 코드로 저장하였다. 
-
-class Dog {
-public:
-	bool operator<(const Dog& rhs) const;
-
-	const std::string& getName() const;
-	void show();
-	
-private:
-	size_t num;					// 랜덤 int값
-	std::string name;			// [3,60) 까지의 소문자로만 구성
-
-	friend std::ostream& operator<<(std::ofstream& os, const Dog& dog) {
-		return os << dog.num << " " << dog.name << " " << std::endl;
-	}
-
-	friend std::istream& operator>>(std::istream& is, Dog& dog) {
-		return is >> dog.num >> dog.name;
-	}
-
-};	
-
-	// [문제] "Dog 십만마리" 파일에 저장된 10만개의 Dog객체를 모두 읽어 메모리에 저장하라. 
-	// 마지막 객체의 정보를 화면에 출력하고 출력된 내용을 답지에도 적어라.
-	// 메모리에 있는 Dog객체를 name 길이 기준 오름차순으로 정렬하라. 
-	// 정렬한 마지막 객체의 정보를 화면에 출력하고 답지에 적는다. 
-std::array<Dog, 10'0000> dogs;
 
 int main( ) 
 {
-	std::ifstream in{ "Dog 십만마리" };
 
-	size_t num;
-	std::string name;
-
-	int i{ 0 };
-	while (in >> dogs[i++]) {
-	}
-
-	dogs.back().show();
-	//std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
-
-	std::cout << "이름 길이를 기준으로 오름차순 정렬합니다. " << std::endl;
-	sort(dogs.begin(), dogs.end());
-
-	//sort 는 기본 정렬 연산자로 <를 사용한다.			* less<>{}를 사용하게됌 17.20부터
-	//따라서 Dog < Dog 가 가능하다면 아무 문제가 없다. 
-
-	dogs.back().show();
-	// 732167960 - yzcbbclzhnbhguidmwpllipauevfvoeryadftxydptrynwnjfcawxvvnpmj
 	save("main.cpp");
 
 }
 // __cedcl : c언어 함수 인자 전달 방식
 
-bool Dog::operator<(const Dog& rhs) const
-{
-	return name.length() > rhs.name.length();
-}
-
-const std::string& Dog::getName() const
-{
-	return name;
-}
-
-void Dog::show()
-{
-	std::println("{:12} - {:}", num, name);
-}
