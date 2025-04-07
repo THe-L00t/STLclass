@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------//
-// 2025.   1.  STL 월 910 목 910					4월 3일 월요일		(5주 1일)
+// 2025.   1.  STL 월 910 목 910					4월 3일 월요일		(5주 2일)
 // 8주 1일 중간고사 (4월 24일 목요일) - 30점
 // 6주 1일 과제설명 (4월 10일 목요일) - 30점
 //---------------------------------------------------------------------------//
@@ -15,6 +15,8 @@
 //
 // 
 #include <iostream>	
+#include <array>
+#include <string>
 #include <fstream>
 #include "save.h"
 
@@ -33,18 +35,28 @@ private:
 	std::string name;			// [3,60) 까지의 소문자로만 구성
 
 	friend std::ostream& operator<<(std::ofstream& os, const Dog& dog) {
-		return os << dog.num << " - " << dog.name << std::endl;
+		return os << dog.num << " " << dog.name << " " << std::endl;
 	}
 
 };	
 
-int main( ) 
-{
-	// [문제] 파일에 저장된 10만개의 Dog객체를 모두 읽어 메모리에 저장하라. 
+	// [문제] "Dog 십만마리" 파일에 저장된 10만개의 Dog객체를 모두 읽어 메모리에 저장하라. 
 	// 마지막 객체의 정보를 화면에 출력하고 출력된 내용을 답지에도 적어라.
 	// 메모리에 있는 Dog객체를 name 길이 기준 오름차순으로 정렬하라. 
 	// 정렬한 마지막 객체의 정보를 화면에 출력하고 답지에 적는다. 
+std::array<Dog, 10'0000> dogs;
 
+int main( ) 
+{
+	std::ifstream in{ "Dog 십만마리" };
+
+	size_t num;
+	std::string name;
+
+	int i{ 0 };
+	while (in >> num >> name) {
+	}
+	std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
 	save("main.cpp");
 
 }
