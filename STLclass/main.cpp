@@ -19,6 +19,7 @@
 #include <string>
 #include <fstream>
 #include <print>
+#include <algorithm>
 #include "save.h"
 
 // [상황] eclass에서 다운받은 파일"Dog 십만마리"에는 
@@ -31,7 +32,9 @@
 
 class Dog {
 public:
+	 const std::string& getName() const;
 	void show();
+	
 private:
 	size_t num;					// 랜덤 int값
 	std::string name;			// [3,60) 까지의 소문자로만 구성
@@ -64,11 +67,24 @@ int main( )
 	}
 
 	dogs.back().show();
-	std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
+	//std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
+
+	std::cout << "이름 길이를 기준으로 오름차순 정렬합니다. " << std::endl;
+	sort(dogs.begin(), dogs.end(), [](const Dog& dog1, const Dog& dog2) {
+		return dog1.getName().size() < dog2.getName().size();
+		});
+
+	dogs.back().show();
+	// 732167960 - yzcbbclzhnbhguidmwpllipauevfvoeryadftxydptrynwnjfcawxvvnpmj
 	save("main.cpp");
 
 }
 // __cedcl : c언어 함수 인자 전달 방식
+
+const std::string& Dog::getName() const
+{
+	return name;
+}
 
 void Dog::show()
 {
