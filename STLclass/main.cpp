@@ -18,6 +18,7 @@
 #include <array>
 #include <string>
 #include <fstream>
+#include <print>
 #include "save.h"
 
 // [상황] eclass에서 다운받은 파일"Dog 십만마리"에는 
@@ -30,12 +31,17 @@
 
 class Dog {
 public:
+	void show();
 private:
 	size_t num;					// 랜덤 int값
 	std::string name;			// [3,60) 까지의 소문자로만 구성
 
 	friend std::ostream& operator<<(std::ofstream& os, const Dog& dog) {
 		return os << dog.num << " " << dog.name << " " << std::endl;
+	}
+
+	friend std::istream& operator>>(std::istream& is, Dog& dog) {
+		return is >> dog.num >> dog.name;
 	}
 
 };	
@@ -54,10 +60,17 @@ int main( )
 	std::string name;
 
 	int i{ 0 };
-	while (in >> num >> name) {
+	while (in >> dogs[i++]) {
 	}
+
+	dogs[dogs.size()-1].show() ;
 	std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
 	save("main.cpp");
 
 }
 // __cedcl : c언어 함수 인자 전달 방식
+
+void Dog::show()
+{
+	std::println("{:12} - {:}", num, name);
+}
