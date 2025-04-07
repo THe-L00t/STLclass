@@ -32,7 +32,9 @@
 
 class Dog {
 public:
-	 const std::string& getName() const;
+	bool operator<(const Dog& rhs) const;
+
+	const std::string& getName() const;
 	void show();
 	
 private:
@@ -70,9 +72,10 @@ int main( )
 	//std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
 
 	std::cout << "이름 길이를 기준으로 오름차순 정렬합니다. " << std::endl;
-	sort(dogs.begin(), dogs.end(), [](const Dog& dog1, const Dog& dog2) {
-		return dog1.getName().size() < dog2.getName().size();
-		});
+	sort(dogs.begin(), dogs.end());
+
+	//sort 는 기본 정렬 연산자로 <를 사용한다.			* less<>{}를 사용하게됌 17.20부터
+	//따라서 Dog < Dog 가 가능하다면 아무 문제가 없다. 
 
 	dogs.back().show();
 	// 732167960 - yzcbbclzhnbhguidmwpllipauevfvoeryadftxydptrynwnjfcawxvvnpmj
@@ -80,6 +83,11 @@ int main( )
 
 }
 // __cedcl : c언어 함수 인자 전달 방식
+
+bool Dog::operator<(const Dog& rhs) const
+{
+	return name.length() > rhs.name.length();
+}
 
 const std::string& Dog::getName() const
 {
