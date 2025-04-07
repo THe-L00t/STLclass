@@ -63,7 +63,7 @@ int main( )
 	while (in >> dogs[i++]) {
 	}
 
-	dogs[dogs.size()-1].show() ;
+	dogs.back().show();
 	std::cout << num << ", " << name << std::endl;	//584335134, meyioibmgucjgbiauulpkzkkrwktvvotfefeclvvhdnnczrjssqxd
 	save("main.cpp");
 
