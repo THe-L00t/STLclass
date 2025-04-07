@@ -11,12 +11,41 @@
 //
 // 
 #include <iostream>	
-
+#include <string>
+#include <memory>
 #include "save.h"
+
+class STRING {
+public:
+	STRING(const std::string& a) : d{ std::make_unique<char[]>(a.size()) }, s{ a.size() } {
+
+	}
+
+	STRING& operator=(const STRING& rhs) {
+		d = std::make_unique<char[]>(rhs.size());
+		s = rhs.size();
+	}
+	size_t size() const{
+		return s;
+	}
+private:
+	std::unique_ptr<char[]> d;
+	size_t s;
+
+	friend std::ostream& operator<<(std::ostream& os, const STRING& str) {
+		return os << str.d.get();
+	}
+};
 
 int main( ) 
 {
+	STRING s{ "std::string과 유사한 클래스" };
 
+	std::cout << "s가 관리하는 자원의 바이트 수 :" << s.size() << std::endl;
+	//STRING t = s;
+
+	//std::cout << t << std::endl;
+	std::cout << s << std::endl;
 	save("main.cpp");
 
 }
