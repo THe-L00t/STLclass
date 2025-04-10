@@ -13,8 +13,9 @@ STRING::STRING(const char* p)
 
 STRING::STRING(const STRING& other) 
 	: s{ other.s } {
-	d = std::make_unique<char[]>(s);
-	memcpy(d.get(), other.d.get(), s);
+	*this = other;
+	/*d = std::make_unique<char[]>(s);
+	memcpy(d.get(), other.d.get(), s);*/
 }
 
 STRING& STRING::operator=(const STRING& other) {
