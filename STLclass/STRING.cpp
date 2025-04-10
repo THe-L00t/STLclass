@@ -11,7 +11,8 @@ STRING::STRING(const char* p)
 	memcpy(d.get(), p, s);		//DMA 가 가능하다. 
 }
 
-STRING::STRING(const STRING& other) : s{ other.s } {
+STRING::STRING(const STRING& other) 
+	: s{ other.s } {
 	d = std::make_unique<char[]>(s);
 	memcpy(d.get(), other.d.get(), s);
 }
@@ -30,6 +31,6 @@ size_t STRING::size() const {
 	return s;
 }
 
-std::ostream& operator<<(std::ostream& os, const STRING& str) {
+ std::ostream& operator<<(std::ostream& os, const STRING& str) {
 	return os << str.d.get();
 }
