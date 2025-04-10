@@ -18,7 +18,7 @@ STRING::STRING(const STRING& other)
 }
 
 STRING& STRING::operator=(const STRING& other) {
-	if (this == &other)
+	if (this == &other)		//& addressof
 		return *this;
 	d.release();
 	s = other.size();
