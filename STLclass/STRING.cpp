@@ -5,10 +5,23 @@
 //-------------------------------------------
 
 #include "STRING.h"
-STRING::STRING(const char* p) 
-	: s{ strlen(p) }, d{ std::make_unique<char[]>(s) } {
+
+size_t STRING::gid{ 0 };
+
+STRING::STRING()
+	:id{ gid++ }
+{
+	std::println("[{:6}] - {:16} ", id, "생성자");
+}
+STRING::~STRING()
+{
+	std::println("[{:6}] - {:16}", id, "소멸자");
+}
+STRING::STRING(const char* p)
+	: s{ strlen(p) }, d{ std::make_unique<char[]>(s) }, id{ gid++ } {
 	//d.release();   디폴트 초기화시 상관 없음
 	memcpy(d.get(), p, s);		//DMA 가 가능하다. 
+	std::println("[{:6}] - {:16}", id, "생성자");
 }
 
 STRING::STRING(const STRING& other) 
@@ -16,6 +29,7 @@ STRING::STRING(const STRING& other)
 	*this = other;
 	/*d = std::make_unique<char[]>(s);
 	memcpy(d.get(), other.d.get(), s);*/
+	std::println("[{:6}] - {:16}", id, "복사생성자");
 }
 
 STRING& STRING::operator=(const STRING& other) {
@@ -25,6 +39,8 @@ STRING& STRING::operator=(const STRING& other) {
 	s = other.size();
 	d = std::make_unique<char[]>(s);
 	memcpy(d.get(), other.d.get(), s);
+	id = gid++;
+	std::println("[{:6}] - {:16}", id, "복사할당연산자");
 	return *this;
 }
 

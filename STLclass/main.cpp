@@ -24,7 +24,8 @@ int main( )
 
 	std::cout << t << std::endl;
 	std::cout << s << std::endl;
-	save("main.cpp");
 
+	save("main.cpp");
+	save("STRING.cpp");
 }
 
