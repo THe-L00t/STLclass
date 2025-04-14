@@ -10,15 +10,19 @@
 //
 // 
 #include <iostream>	
-#include <string>
-#include <memory>
+#include <array>
+#include <algorithm>
 #include "save.h"
 #include "STRING.h"
 
 int main( ) 
 {
-	STRING s{ "std::string과 유사한 클래스" };
-	STRING t = s;
+	std::array<STRING, 5> a{ "1","333","55555","22","4444"};
+	//[문제] a의 원소를 길이기준 오름차순으로 정렬하고 화면에 출력하라
+	std::sort(a.begin(), a.end());
+	for (const STRING& s : a) {
+		std::cout << s << std::endl;
+	}
 
 	save("main.cpp");
 	save("STRING.cpp");

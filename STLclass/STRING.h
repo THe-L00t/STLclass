@@ -20,6 +20,7 @@ public:
 	STRING(const STRING& other);
 
 	STRING& operator=(const STRING& other);
+	bool operator<(const STRING& other);
 
 	// 인터페이스 함수들
 	size_t size() const;

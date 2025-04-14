@@ -21,7 +21,7 @@ STRING::STRING(const char* p)
 	: s{ strlen(p) }, d{ std::make_unique<char[]>(s) }, id{ gid++ } {
 	//d.release();   디폴트 초기화시 상관 없음
 	memcpy(d.get(), p, s);		//DMA 가 가능하다. 
-	std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "생성자", s, (void*)this,(void*)d.get());
+	std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:16}", id, "생성자", s, (void*)this,(void*)d.get());
 }
 
 STRING::STRING(const STRING& other) 
@@ -42,6 +42,11 @@ STRING& STRING::operator=(const STRING& other) {
 	id = gid++;
 	std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "복사할당연산자", s, (void*)this, (void*)d.get());
 	return *this;
+}
+
+bool STRING::operator<(const STRING& other)
+{
+	return this->s < other.s;
 }
 
 size_t STRING::size() const {
