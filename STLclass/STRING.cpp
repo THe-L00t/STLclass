@@ -49,13 +49,22 @@ STRING& STRING::operator=(const STRING& other) {
 }
 
 STRING::STRING(STRING&& other)
+	:s{other.s}, id{gid++}
 {
-
+	d.reset(other.d.release());
+	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "이동생성자", s, (void*)this, (void*)d.get()); }
 }
 
 STRING& STRING::operator=(STRING&& other)
 {
-	// TODO: 여기에 return 문을 삽입합니다.
+	if (this == &other)		//& addressof
+		return *this;
+	d.release();
+	d.reset(other.d.release());
+	s = other.size();
+	id = gid++ ;
+	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "이동할당연산자", s, (void*)this, (void*)d.get()); }
+	return *this;
 }
 
 bool STRING::operator<(const STRING& other)
