@@ -62,7 +62,6 @@ STRING& STRING::operator=(STRING&& other)
 	d.release();
 	d.reset(other.d.release());
 	s = other.size();
-	id = gid++ ;
 	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "이동할당연산자", s, (void*)this, (void*)d.get()); }
 	return *this;
 }
@@ -77,5 +76,9 @@ size_t STRING::size() const {
 }
 
  std::ostream& operator<<(std::ostream& os, const STRING& str) {
-	return os << str.d.get();
+	 for (size_t i = 0; i < str.s; i++)
+	 {
+		 os << str.d[i];
+	 }
+	 return os;
 }

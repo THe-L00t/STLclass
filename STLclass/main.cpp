@@ -19,30 +19,19 @@
 extern bool 관찰;
 int main( ) 
 {
-	// 이동의미론 move sementic
-	// 하위 호환성에 의해 이동연산을 모르는 클래스여도 move사용 시 프로그램이 죽으면 안된다.
-	// 결국 프로그램은 문제없이 돌아간다. 
-	// 다만 결과는 복사와 같다.
+
+	std::array<STRING, 5> a{ "1","333","55555","22","4444"};
+	//[문제] a의 원소를 길이기준 오름차순으로 정렬하고 화면에 출력하라
+	//std::sort(a.begin(), a.end());
 	관찰 = true;
-	STRING a{ "a 확보 자원" };
-	STRING b =std::move(a);
-
-	std::cout << a << std::endl;	// nullptr 참조하지 않기
-	std::cout << b << std::endl;
+	//람다버전
+	std::sort(a.begin(), a.end(), [](const STRING& lhs, const STRING& rhs) {
+		return lhs.size() < rhs.size();
+		});
 	관찰 = false;
-
-	//std::array<STRING, 5> a{ "1","333","55555","22","4444"};
-	////[문제] a의 원소를 길이기준 오름차순으로 정렬하고 화면에 출력하라
-	////std::sort(a.begin(), a.end());
-	//관찰 = true;
-	////람다버전
-	//std::sort(a.begin(), a.end(), [](const STRING& lhs, const STRING& rhs) {
-	//	return lhs.size() < rhs.size();
-	//	});
-	//관찰 = false;
-	//for (const STRING& s : a) {
-	//	std::cout << s << std::endl;
-	//}
+	for (const STRING& s : a) {
+		std::cout << s << std::endl;
+	}
 	save("main.cpp");
 	save("STRING.cpp");
 }
