@@ -16,11 +16,15 @@
 #include "save.h"
 #include "STRING.h"
 
+// [문제] main.cpp에 있는 단어를 처음부터 50개를 메모리(STRING)에 저장해보자
+// 길이 오름차순으로 정렬하자
+// 결과를 화면에 출력하자
+// 제일 첫 단어를 답지에 적어라
 
 extern bool 관찰;
 int main( ) 
 {
-	// [문제]
+	
 
 	std::ifstream in{ "main.cpp" };
 	if (not in) {
@@ -29,7 +33,7 @@ int main( )
 
 	STRING s;
 	size_t cnt{};
-	while (in >> s) {
+	while (in >> s && cnt < 50) {
 		std::cout << s << std::endl;
 		++cnt;
 	}
