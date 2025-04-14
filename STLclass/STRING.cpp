@@ -66,9 +66,9 @@ STRING& STRING::operator=(STRING&& other)
 	return *this;
 }
 
-bool STRING::operator<(const STRING& other)
+bool STRING::operator<(const STRING& other) const
 {
-	return this->size() < other.size();
+	return size() < other.size();
 }
 
 size_t STRING::size() const {
