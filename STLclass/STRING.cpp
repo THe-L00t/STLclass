@@ -28,6 +28,7 @@ STRING::STRING(const char* p)
 
 STRING::STRING(const STRING& other) 
 	: s{ other.s } {
+	id = gid++;
 	*this = other;
 	/*d = std::make_unique<char[]>(s);
 	memcpy(d.get(), other.d.get(), s);*/
@@ -41,7 +42,7 @@ STRING& STRING::operator=(const STRING& other) {
 	s = other.size();
 	d = std::make_unique<char[]>(s);
 	memcpy(d.get(), other.d.get(), s);
-	id = gid++;
+	
 	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "복사할당연산자", s, (void*)this, (void*)d.get()); }
 	return *this;
 }
