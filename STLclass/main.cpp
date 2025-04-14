@@ -27,9 +27,10 @@ int main( )
 	STRING a{ "a 확보 자원" };
 	STRING b =std::move(a);
 
-	std::cout << a << std::endl;
+	std::cout << a << std::endl;	// nullptr 참조하지 않기
 	std::cout << b << std::endl;
 	관찰 = false;
+
 	//std::array<STRING, 5> a{ "1","333","55555","22","4444"};
 	////[문제] a의 원소를 길이기준 오름차순으로 정렬하고 화면에 출력하라
 	////std::sort(a.begin(), a.end());
