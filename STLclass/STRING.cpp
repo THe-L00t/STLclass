@@ -23,7 +23,7 @@ STRING::STRING(const char* p)
 	: s{ strlen(p) }, d{ std::make_unique<char[]>(s) }, id{ gid++ } {
 	//d.release();   디폴트 초기화시 상관 없음
 	memcpy(d.get(), p, s);		//DMA 가 가능하다. 
-	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:16}", id, "생성자", s, (void*)this, (void*)d.get()); }
+	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "생성자", s, (void*)this, (void*)d.get()); }
 }
 
 STRING::STRING(const STRING& other) 

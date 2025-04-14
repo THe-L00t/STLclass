@@ -15,15 +15,19 @@
 #include "save.h"
 #include "STRING.h"
 
+
+extern bool 관찰;
 int main( ) 
 {
+	
 	std::array<STRING, 5> a{ "1","333","55555","22","4444"};
 	//[문제] a의 원소를 길이기준 오름차순으로 정렬하고 화면에 출력하라
+	관찰 = true;
 	std::sort(a.begin(), a.end());
+	관찰 = false;
 	for (const STRING& s : a) {
 		std::cout << s << std::endl;
 	}
-
 	save("main.cpp");
 	save("STRING.cpp");
 }
