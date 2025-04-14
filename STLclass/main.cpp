@@ -10,6 +10,7 @@
 //
 // 
 #include <iostream>	
+#include <fstream>
 #include <array>
 #include <algorithm>
 #include "save.h"
@@ -19,19 +20,20 @@
 extern bool 관찰;
 int main( ) 
 {
+	// [문제]
 
-	std::array<STRING, 5> a{ "1","333","55555","22","4444"};
-	//[문제] a의 원소를 길이기준 오름차순으로 정렬하고 화면에 출력하라
-	//std::sort(a.begin(), a.end());
-	관찰 = true;
-	//람다버전
-	std::sort(a.begin(), a.end(), [](const STRING& lhs, const STRING& rhs) {
-		return lhs.size() < rhs.size();
-		});
-	관찰 = false;
-	for (const STRING& s : a) {
-		std::cout << s << std::endl;
+	std::ifstream in{ "main.cpp" };
+	if (not in) {
+		return 20250414;
 	}
+
+	std::string s;
+	size_t cnt{};
+	while (in >> s) {
+		std::cout << s << std::endl;
+		++cnt;
+	}
+	std::cout << "총 " << cnt << "개의 단어를 읽었습니다. " << std::endl;
 	save("main.cpp");
 	save("STRING.cpp");
 }
