@@ -18,12 +18,7 @@
 int main( ) 
 {
 	STRING s{ "std::string과 유사한 클래스" };
-
-	std::cout << "s가 관리하는 자원의 바이트 수 :" << s.size() << std::endl;
 	STRING t = s;
-
-	std::cout << t << std::endl;
-	std::cout << s << std::endl;
 
 	save("main.cpp");
 	save("STRING.cpp");
