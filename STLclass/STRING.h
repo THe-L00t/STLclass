@@ -14,17 +14,17 @@ public:
 	// 스페셜 함수들
 	STRING();
 	~STRING();
-	STRING(const char* p);
+	STRING(const char* );
 
 	//복사생성자와 복사할당연산자 2025.4.10
-	STRING(const STRING& other);
-	STRING& operator=(const STRING& other);
+	STRING(const STRING& );
+	STRING& operator=(const STRING& );
 
 	//이동생성자와 이동할당연산자 2025.4.14
-	STRING(STRING&& other);
-	STRING& operator=(STRING&& other);
+	STRING(STRING&& );
+	STRING& operator=(STRING&& );
 
-	bool operator<(const STRING& other);
+	bool operator<(const STRING& );
 
 	// 인터페이스 함수들
 	size_t size() const;
@@ -34,6 +34,7 @@ private:
 	std::unique_ptr<char[]> d{};
 	size_t id;
 
-	friend std::ostream& operator<<(std::ostream& os, const STRING& str);
+	friend std::ostream& operator<<(std::ostream& , const STRING& );
+	friend std::istream& operator>>(std::istream& , STRING& );
 	static size_t gid;
 };

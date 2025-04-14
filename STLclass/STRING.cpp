@@ -82,3 +82,14 @@ size_t STRING::size() const {
 	 }
 	 return os;
 }
+
+ std::istream& operator>>(std::istream& is, STRING& str)
+ {
+	 std::string s;
+	 is >> s;
+	 str.s = s.size();
+	 str.d.release();
+	 str.d = std::make_unique<char[]>(str.s);
+	 memcpy(str.d.get(), s.data(), str.s);
+	 return is;
+ }

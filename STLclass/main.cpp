@@ -27,7 +27,7 @@ int main( )
 		return 20250414;
 	}
 
-	std::string s;
+	STRING s;
 	size_t cnt{};
 	while (in >> s) {
 		std::cout << s << std::endl;
