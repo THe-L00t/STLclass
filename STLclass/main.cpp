@@ -39,9 +39,15 @@ int main( )
 	}
 	std::sort(s.begin(), s.end());
 	std::cout << "총 " << cnt << "개의 단어를 읽었습니다. " << std::endl;
-	for (const STRING& s1 : s) {
+	/*for (const STRING& s1 : s) {
 		std::cout << s1 << std::endl;
+	}*/
+	for (auto i = s.rbegin(); i != s.rend(); ++i)
+	{
+
 	}
+
+
 	save("main.cpp");
 	save("STRING.cpp");
 }
