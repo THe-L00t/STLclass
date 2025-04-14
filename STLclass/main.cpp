@@ -31,13 +31,17 @@ int main( )
 		return 20250414;
 	}
 
-	STRING s;
+	std::array<STRING,50> s;
 	size_t cnt{};
-	while (in >> s && cnt < 50) {
-		std::cout << s << std::endl;
+	while (in >> s[cnt] && cnt < 50) {
+		std::cout << s[cnt] << std::endl;
 		++cnt;
 	}
+	std::sort(s.begin(), s.end());
 	std::cout << "총 " << cnt << "개의 단어를 읽었습니다. " << std::endl;
+	for (const STRING& s1 : s) {
+		std::cout << s1 << std::endl;
+	}
 	save("main.cpp");
 	save("STRING.cpp");
 }
