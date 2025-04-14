@@ -3,6 +3,7 @@
 //
 //	2025. 04. 10 - 시작
 //  2025. 04. 14 - 선택적 관찰 전역변수 선언
+//  2025. 04. 14 - 이동의미론 
 //-------------------------------------------
 
 #include "STRING.h"
@@ -45,6 +46,16 @@ STRING& STRING::operator=(const STRING& other) {
 	
 	if (관찰) { std::println("[{:6}] - {:16} 자원수 : {:3}, 주소 : {:12} 자원의 주소 : {:12}", id, "복사할당연산자", s, (void*)this, (void*)d.get()); }
 	return *this;
+}
+
+STRING::STRING(STRING&& other)
+{
+
+}
+
+STRING& STRING::operator=(STRING&& other)
+{
+	// TODO: 여기에 return 문을 삽입합니다.
 }
 
 bool STRING::operator<(const STRING& other)

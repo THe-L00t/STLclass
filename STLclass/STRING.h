@@ -18,8 +18,12 @@ public:
 
 	//복사생성자와 복사할당연산자 2025.4.10
 	STRING(const STRING& other);
-
 	STRING& operator=(const STRING& other);
+
+	//이동생성자와 이동할당연산자 2025.4.14
+	STRING(STRING&& other);
+	STRING& operator=(STRING&& other);
+
 	bool operator<(const STRING& other);
 
 	// 인터페이스 함수들
