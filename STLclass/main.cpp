@@ -15,18 +15,19 @@
 #include "save.h"
 #include "STRING.h"
 
-std::vector<int> v1;
-
 extern bool 관찰;
 int main( ) 
 {
-	std::vector<int> v{1};
-	std::unique_ptr<std::vector<int>> v2 = std::make_unique<std::vector<int>>(1);
+	std::vector<int> v;
+	std::cout << "원소의 개수 " << v.size() << std::endl;
+	std::cout << "담을 수 있는 원소의 개수 " << v.capacity() << std::endl;
+	std::cout << "원소의 위치 " << v.data() << std::endl;
 
-	std::cout << sizeof(v) << " " << addressof(v) << " " << typeid (v).name() << std::endl;
-	//std::cout << sizeof(v) << " " << v.data( ) << " " << typeid (v).name() <<  std::endl;
-	std::cout << sizeof(v1) << " " << addressof(v1) << " " << typeid (v1).name() << std::endl;
-	std::cout << sizeof(*v2.get()) << " " << v2.get() << " " << typeid (v2.get()).name() << std::endl;
- 	//save("main.cpp");
+	std::cout << std::endl;
+	v.push_back(1);
+	std::cout << "원소의 개수 " << v.size() << std::endl;
+	std::cout << "담을 수 있는 원소의 개수 " << v.capacity() << std::endl;
+	std::cout << "원소의 위치 " << v.data() << std::endl;
+ 	save("main.cpp");
 }
 
