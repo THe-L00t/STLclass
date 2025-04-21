@@ -4,8 +4,8 @@
 //---------------------------------------------------------------------------//
 //
 // STL containers - Contianers are objects that store other objects.
-//
-//
+// array
+// vector
 //---------------------------------------------------------------------------
 //
 // 
@@ -19,15 +19,16 @@ extern bool 관찰;
 int main( ) 
 {
 	std::vector<int> v;
-	std::cout << "원소의 개수 " << v.size() << std::endl;
-	std::cout << "담을 수 있는 원소의 개수 " << v.capacity() << std::endl;
-	std::cout << "원소의 위치 " << v.data() << std::endl;
-
-	std::cout << std::endl;
-	v.push_back(1);
-	std::cout << "원소의 개수 " << v.size() << std::endl;
-	std::cout << "담을 수 있는 원소의 개수 " << v.capacity() << std::endl;
-	std::cout << "원소의 위치 " << v.data() << std::endl;
+	int old = v.capacity();
+	for (size_t i = 0; i < 1'0000; i++)
+	{
+		v.push_back(i);
+		if (old != v.capacity()) {
+			std::cout << v.capacity() << std::endl;
+			old = v.capacity();
+		}
+	}
+	
  	save("main.cpp");
 }
 
