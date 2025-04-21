@@ -28,8 +28,9 @@ int main( )
 
 
    //STRING s{ "12345" };
-    v.push_back(STRING{"12345"});   // 이름없는 객체는 스택에 생성된다
-    // 컴파일러는 이름없는 객체를 xvalue로 판단한다. 
+    v.emplace_back("12345"); 
+    // 이동조차 하지 않고 벡터 내에서 free store에 생성자 호출
+    // 사용법 emplace_back( 생성자의 인자만 );
 
  	save("main.cpp");
 }
