@@ -20,18 +20,15 @@
 
 extern bool 관찰;
 
-//[문재]키보드에서 단어를 모두 입력받아 오름차순으로 정렬한 후 출력하라.
 
 int main( ) 
 {
-    std::ifstream in{ "main.cpp" };
+    관찰 = true;
+    std::vector<STRING> v;
 
-    std::vector<std::string> str{ std::istream_iterator<std::string > {in}, {} };
-    std::sort(str.begin(), str.end());
-    for (const std::string c : str)
-    {
-        std::cout << c << std::endl;
-    }
+
+    STRING s{ "12345" };
+    v.push_back(s);
 
  	save("main.cpp");
 }
