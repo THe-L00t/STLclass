@@ -27,8 +27,9 @@ int main( )
     std::vector<STRING> v;
 
 
-    STRING s{ "12345" };
-    v.push_back(s);
+   //STRING s{ "12345" };
+    v.push_back(STRING{"12345"});   // 이름없는 객체는 스택에 생성된다
+    // 컴파일러는 이름없는 객체를 xvalue로 판단한다. 
 
  	save("main.cpp");
 }
