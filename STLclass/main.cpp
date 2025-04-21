@@ -24,7 +24,9 @@ extern bool °üÂû;
 
 int main( ) 
 {
-    std::vector<std::string> str{ std::istream_iterator<std::string > {std::cin}, {} };
+    std::ifstream in{ "main.cpp" };
+
+    std::vector<std::string> str{ std::istream_iterator<std::string > {in}, {} };
     std::sort(str.begin(), str.end());
     for (const std::string c : str)
     {
