@@ -20,12 +20,13 @@ int main( )
 {
 	std::vector<int> v;
 	int old = v.capacity();
+	v.reserve(5000);
 	for (size_t i = 0; i < 1'0000; i++)
 	{
 		v.push_back(i);
 		if (old != v.capacity()) {
-			std::cout << v.capacity() << std::endl;
-			old = v.capacity();
+			std::cout << v.capacity() << std::endl;	// 최대한 재할당 받을 경우를 줄여야 한다
+			old = v.capacity();						// 50퍼센틌기 늘어난다
 		}
 	}
 	
