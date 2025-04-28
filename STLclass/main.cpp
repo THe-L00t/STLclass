@@ -27,7 +27,12 @@ int main( )
         std::cout << "몇 번째 데이터를 원하시나요" << std::endl;
         int num;
         std::cin >> num;
-        std::cout << "찾는 값은 " << a.at(num) << "입니다." << std::endl;
+        try {
+            std::cout << "찾는 값은 " << a.at(num) << "입니다." << std::endl;
+        }
+        catch (std::exception& e) {
+            std::cout << "옳지 않습니다. " << e.what() << std::endl;
+        }
     }
 }
 
