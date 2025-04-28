@@ -11,10 +11,6 @@
 // 
 #include <iostream>	
 #include <vector>
-#include <memory>
-#include <string>
-#include <algorithm>
-#include <fstream>
 #include "save.h"
 #include "STRING.h"
 
@@ -23,7 +19,7 @@ extern bool 관찰;
 
 int main( ) 
 {
-    int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
+   std::vector<int> a = { 1,2,3,4,5,6,7,8,9,10 };
     
  	save("main.cpp");
 
@@ -31,7 +27,7 @@ int main( )
         std::cout << "몇 번째 데이터를 원하시나요" << std::endl;
         int num;
         std::cin >> num;
-        std::cout << "찾는 값은 " << a[num] << "입니다." << std::endl;
+        std::cout << "찾는 값은 " << a.at(num) << "입니다." << std::endl;
     }
 }
 
