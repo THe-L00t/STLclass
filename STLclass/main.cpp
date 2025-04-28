@@ -23,13 +23,15 @@ extern bool 관찰;
 
 int main( ) 
 {
-    int a[10];
+    int a[10] = { 1,2,3,4,5,6,7,8,9,10 };
     
-    for (int i = -10; i < 10; i++) //이 경우 읽기와 쓰기가 다르게 동작한다.
-    {//쓰기의 경우 죽는다
-        std::cout << a[i] << std::endl; //읽기의 경우 c++이 메모리 접근을 모두 허락하기에 정상적으로 동작한다.  
-    }
-
  	save("main.cpp");
+
+    while (true) {
+        std::cout << "몇 번째 데이터를 원하시나요" << std::endl;
+        int num;
+        std::cin >> num;
+        std::cout << "찾는 값은 " << a[num] << "입니다." << std::endl;
+    }
 }
 
