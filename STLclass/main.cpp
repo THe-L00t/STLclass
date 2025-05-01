@@ -20,7 +20,7 @@ extern bool 관찰;
 
 int main( ) 
 {
-    std::vector<int> v{ 1,2,3,4,5};
+    std::vector<STRING> v{ "1","22","333","4444","55555"};
     
     // [문제]v에서 3을 제거하라
 

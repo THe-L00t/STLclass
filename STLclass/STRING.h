@@ -25,6 +25,7 @@ public:
 	STRING& operator=(STRING&& );
 
 	bool operator<(const STRING& ) const;
+	bool operator==(const STRING&) const;
 
 	// 인터페이스 함수들
 	size_t size() const;

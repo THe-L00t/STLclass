@@ -4,6 +4,7 @@
 //	2025. 04. 10 - 시작
 //  2025. 04. 14 - 선택적 관찰 전역변수 선언
 //  2025. 04. 14 - 이동의미론 
+//  2025. 05. 01 - opretor==
 //-------------------------------------------
 
 #include "STRING.h"
@@ -69,6 +70,20 @@ STRING& STRING::operator=(STRING&& other)
 bool STRING::operator<(const STRING& other) const
 {
 	return size() < other.size();
+}
+
+bool STRING::operator==(const STRING& other) const
+{
+	//if (s != other.s) return false;
+	//
+	//for (size_t i = 0; i < s; i++)
+	//{
+	//	if (d[i] != other.d[i]) return false;
+	//}
+	//// for문은 삽질
+	//return true;
+
+	std::equal( d.get(), d.get()+s, &other.d[0], )
 }
 
 size_t STRING::size() const {
