@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------//
-// 2025.   1.  STL 월 910 목 910					4월 3일 월요일		(8주 2일)
-// 
+// 2025.   1.  STL 월 910 목 910					5월 1일 월요일		(9주 1일)
+// 2025. 5. 5 -> 추후 보강 (6/19)
 //---------------------------------------------------------------------------//
 //
 // STL containers - Contianers are objects that store other objects.
@@ -11,6 +11,7 @@
 // 
 #include <iostream>	
 #include <vector>
+#include <algorithm>
 #include "save.h"
 #include "STRING.h"
 
@@ -19,20 +20,23 @@ extern bool 관찰;
 
 int main( ) 
 {
-   std::vector<int> a = { 1,2,3,4,5,6,7,8,9,10 };
+    std::vector<int> v{ 1,2,3,4,5};
     
- 	save("main.cpp");
+    // [문제]v에서 3을 제거하라
 
-    while (true) {
-        std::cout << "몇 번째 데이터를 원하시나요" << std::endl;
-        int num;
-        std::cin >> num;
-        try {
-            std::cout << "찾는 값은 " << a.at(num) << "입니다." << std::endl;
-        }
-        catch (std::exception& e) {
-            std::cout << "옳지 않습니다. " << e.what() << std::endl;
-        }
+    //std::vector<int>::iterator newEnd = std::remove(v.begin(), v.end(), 3); // 새로운 end위치 반환
+    //auto newEnd = std::remove(v.begin(), v.end(), 333);
+    // v.erase(newEnd, v.end());   //vector를 통해 size 조정
+    // v.erase(std::remove(v.begin(), v.end(), 3), v.end());   //erase-remove idiom
+    // C++ 20 
+    erase(v, 3);    // syntatic sugar
+
+
+    for (size_t i = 0; i < v.size(); i++)
+    {
+        std::cout << v[i] << " ";
     }
+    std::cout << std::endl;
+ 	save("main.cpp");
 }
 
