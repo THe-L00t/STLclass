@@ -22,13 +22,11 @@ extern bool 관찰;
 int main( ) 
 {
     std::list<STRING> v{ "1","22","333","4444","55555"};
-   // 똑같이 관찰된 이유 
-    //iterator를 통해 일반화 되어있는 erase를 사용했기에 이전의 vector를 사용했을때와 같이 관찰됨
 
     std::cout << "리스트의 크기 " << sizeof v << std::endl;
 
     관찰 = true;
-    erase(v, "333");    // syntatic sugar
+    v.remove( "333");    
     관찰 = false;
 
     for (const STRING& s : v) {
