@@ -83,7 +83,7 @@ bool STRING::operator==(const STRING& other) const
 	//// for¹®Àº »ðÁú
 	//return true;
 
-	std::equal( d.get(), d.get()+s, &other.d[0], )
+	return std::equal(d.get(), d.get() + s, &other.d[0], &other.d[other.s]);
 }
 
 size_t STRING::size() const {

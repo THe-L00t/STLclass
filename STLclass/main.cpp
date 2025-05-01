@@ -29,7 +29,7 @@ int main( )
     // v.erase(newEnd, v.end());   //vector를 통해 size 조정
     // v.erase(std::remove(v.begin(), v.end(), 3), v.end());   //erase-remove idiom
     // C++ 20 
-    erase(v, 3);    // syntatic sugar
+    erase(v, "333");    // syntatic sugar
 
 
     for (size_t i = 0; i < v.size(); i++)
