@@ -29,8 +29,9 @@ int main( )
     // v.erase(newEnd, v.end());   //vector¸¦ ÅëÇØ size Á¶Á¤
     // v.erase(std::remove(v.begin(), v.end(), 3), v.end());   //erase-remove idiom
     // C++ 20 
+    °üÂû = true;
     erase(v, "333");    // syntatic sugar
-
+    °üÂû = false;
 
     for (size_t i = 0; i < v.size(); i++)
     {
