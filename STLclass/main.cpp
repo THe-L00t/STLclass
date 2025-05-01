@@ -25,8 +25,9 @@ int main( )
 
     std::cout << "¸®½ºÆ®ÀÇ Å©±â " << sizeof v << std::endl;
 
+    STRING t{ "333" };
     °üÂû = true;
-    v.remove( "333");    
+    v.remove(t);    
     °üÂû = false;
 
     for (const STRING& s : v) {
