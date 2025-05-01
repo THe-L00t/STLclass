@@ -22,14 +22,8 @@ extern bool 관찰;
 int main( ) 
 {
     std::list<STRING> v{ "1","22","333","4444","55555"};
-    
-    // [문제]v에서 3을 제거하라
-
-    //std::vector<int>::iterator newEnd = std::remove(v.begin(), v.end(), 3); // 새로운 end위치 반환
-    //auto newEnd = std::remove(v.begin(), v.end(), 333);
-    // v.erase(newEnd, v.end());   //vector를 통해 size 조정
-    // v.erase(std::remove(v.begin(), v.end(), 3), v.end());   //erase-remove idiom
-    // C++ 20 
+   // 똑같이 관찰된 이유 
+    //iterator를 통해 일반화 되어있는 erase를 사용했기에 이전의 vector를 사용했을때와 같이 관찰됨
 
     std::cout << "리스트의 크기 " << sizeof v << std::endl;
 
