@@ -15,6 +15,8 @@
 #include <iostream>	
 #include <fstream>
 #include <list>
+#include <vector>
+#include <algorithm>
 #include "save.h"
 #include "STRING.h"
 
@@ -28,14 +30,14 @@ int main( )
     if (not in) return 2024182028;
 
     std::list<STRING> m{ std::istream_iterator<STRING>{in},{} }; //ÇÑ ÁÙ·Î ÁÙÀÓ
-    /*STRING s;
-    while (in >> s) {
-        m.push_back(s);
+    std::vector<STRING> v{ m.begin(),m.end()};
+    
+    °üÂû = true;
+    std::sort(v.begin(), v.begin()+5);
+    °üÂû = false;
+    /*for (const STRING& s : v) {
+        std::cout << s << std::endl;
     }*/
-    for (const STRING& d : m) {
-        std::cout << d << std::endl;
-    }
-
 
  	save("main.cpp");
 }
