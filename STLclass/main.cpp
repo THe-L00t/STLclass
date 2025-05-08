@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------//
 // 2025.   1.  STL 월 910 목 910					5월 1일 월요일		(9주 1일)
-// 2025. 5. 5 -> 추후 보강 (6/19)
+// 2025. 6. 19 기말 시험
+// 2025. 5. 12 월요일 - 졸업작품 중간발표
 //---------------------------------------------------------------------------//
 //
 // STL containers - Contianers are objects that store other objects.
@@ -13,16 +14,33 @@
 // 
 #include <iostream>	
 #include <algorithm>
+#include <vector>
 #include <deque>
 #include "save.h"
 #include "STRING.h"
 
 extern bool 관찰;
 
+class TEST {
+    char x[1'000'000];
+};
 
 int main( ) 
 {
-    std::deque<int> d;
+    {
+        std::vector<TEST> v;
+        while (true) {
+            try {
+                v.emplace_back();
+            }
+            catch (std::exception& e) {
+                std::cout << "오류 입니다 - " << e.what() << std::endl;
+                std::cout << "vector의 최대 사이즈 - " << v.size() << std::endl;//61447개 
+                break;
+            }
+        }
+    }
+
  	save("main.cpp");
 }
 
