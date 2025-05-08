@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <vector>
 #include <deque>
+#include <list>
 #include "save.h"
 #include "STRING.h"
 
@@ -28,18 +29,32 @@ class TEST {
 int main( ) 
 {
     {
-        std::deque<TEST> v;
+        std::list<TEST> v;
         while (true) {
             try {
                 v.emplace_back();
             }
             catch (std::exception& e) {
                 std::cout << "오류 입니다 - " << e.what() << std::endl;
-                std::cout << "deque의 최대 사이즈 - " << v.size() << std::endl;// 122232개 
+                std::cout << "list의 최대 사이즈 - " << v.size() << std::endl;// 122071개 
                 break;
             }
         }
     }
+
+    //{
+    //    std::deque<TEST> v;
+    //    while (true) {
+    //        try {
+    //            v.emplace_back();
+    //        }
+    //        catch (std::exception& e) {
+    //            std::cout << "오류 입니다 - " << e.what() << std::endl;
+    //            std::cout << "deque의 최대 사이즈 - " << v.size() << std::endl;// 122232개 
+    //            break;
+    //        }
+    //    }
+    //}
 
     //{
     //    std::vector<TEST> v;
