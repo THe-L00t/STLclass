@@ -14,7 +14,6 @@
 // 
 #include <iostream>	
 #include <algorithm>
-#include <vector>
 #include <deque>
 #include <list>
 #include "save.h"
@@ -22,53 +21,20 @@
 
 extern bool 관찰;
 
-class TEST {
-    char x[1'000'000];
-};
 
 int main( ) 
 {
-    {
-        std::list<TEST> v;
-        while (true) {
-            try {
-                v.emplace_back();
-            }
-            catch (std::exception& e) {
-                std::cout << "오류 입니다 - " << e.what() << std::endl;
-                std::cout << "list의 최대 사이즈 - " << v.size() << std::endl;// 122071개 
-                break;
-            }
-        }
-    }
+    std::deque<int> d{ 1,2,3,4 };
 
-    //{
-    //    std::deque<TEST> v;
-    //    while (true) {
-    //        try {
-    //            v.emplace_back();
-    //        }
-    //        catch (std::exception& e) {
-    //            std::cout << "오류 입니다 - " << e.what() << std::endl;
-    //            std::cout << "deque의 최대 사이즈 - " << v.size() << std::endl;// 122232개 
-    //            break;
-    //        }
-    //    }
-    //}
+	d.push_front(0);
+	d.push_front(-1);
+	d.push_back(5);
+	d.push_back(6);
 
-    //{
-    //    std::vector<TEST> v;
-    //    while (true) {
-    //        try {
-    //            v.emplace_back();
-    //        }
-    //        catch (std::exception& e) {
-    //            std::cout << "오류 입니다 - " << e.what() << std::endl;
-    //            std::cout << "vector의 최대 사이즈 - " << v.size() << std::endl;//61447개 
-    //            break;
-    //        }
-    //    }
-    //}
+	for (int i = 0; i < d.size(); i++)
+	{
+		std::cout << std::addressof( d[i]) <<std::endl;
+	}
 
  	save("main.cpp");
 }
