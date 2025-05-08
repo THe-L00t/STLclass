@@ -33,7 +33,7 @@ int main( )
     std::vector<STRING> v{ m.begin(),m.end()};
     
     관찰 = true;
-    std::sort(m.begin(), m.end()); // list의 경우 노드 기준이라 sort로 정렬되지 않는다. sort는 contigues한 메모리에서만 가능하다.
+    m.sort();   // list의 강점 중 하나기 때문에 list에게 시킨다. 
     관찰 = false;
     /*for (const STRING& s : v) {
         std::cout << s << std::endl;
