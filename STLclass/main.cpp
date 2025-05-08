@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <deque>
 #include <list>
+#include <iterator>
 #include "save.h"
 #include "STRING.h"
 
@@ -24,19 +25,21 @@ extern bool 관찰;
 
 int main( ) 
 {
-    std::deque<int> d{ 1,2,3,4 };
+    std::list<STRING> cont{ "1","22","4444","55555" };
+    // [문제]"333"을 추가하라
+    관찰 = true;
+    /*cont.insert(++++cont.begin(), "333");*/
 
-	d.push_front(0);
-	d.push_front(-1);
-	d.push_back(5);
-	d.push_back(6);
+    /*auto point = cont.begin();
+    std::advance(point, 2);
+    cont.insert(point, "333");*/
 
-	for (int i = 0; i < d.size(); i++)
-	{
-		std::cout << std::addressof( d[i]) <<std::endl;
-	}
+    cont.emplace(++++cont.begin(), "333");
+    관찰 = false;
 
-	// deque의 인덱싱은 vector보다 필히 느리다.
+    for (const STRING& s : cont) {
+        std::cout << s << std::endl;
+    }
 
  	save("main.cpp");
 }
