@@ -36,6 +36,8 @@ int main( )
 		std::cout << std::addressof( d[i]) <<std::endl;
 	}
 
+	// dequeÀÇ ÀÎµ¦½ÌÀº vectorº¸´Ù ÇÊÈ÷ ´À¸®´Ù.
+
  	save("main.cpp");
 }
 
