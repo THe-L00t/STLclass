@@ -27,11 +27,11 @@ int main( )
     std::ifstream in{ "main.cpp" };
     if (not in) return 2024182028;
 
-    std::list<STRING> m;
-    STRING s;
+    std::list<STRING> m{ std::istream_iterator<STRING>{in},{} }; //한 줄로 줄임
+    /*STRING s;
     while (in >> s) {
         m.push_back(s);
-    }
+    }*/
     for (const STRING& d : m) {
         std::cout << d << std::endl;
     }
