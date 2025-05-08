@@ -28,18 +28,32 @@ class TEST {
 int main( ) 
 {
     {
-        std::vector<TEST> v;
+        std::deque<TEST> v;
         while (true) {
             try {
                 v.emplace_back();
             }
             catch (std::exception& e) {
                 std::cout << "오류 입니다 - " << e.what() << std::endl;
-                std::cout << "vector의 최대 사이즈 - " << v.size() << std::endl;//61447개 
+                std::cout << "deque의 최대 사이즈 - " << v.size() << std::endl;// 122232개 
                 break;
             }
         }
     }
+
+    //{
+    //    std::vector<TEST> v;
+    //    while (true) {
+    //        try {
+    //            v.emplace_back();
+    //        }
+    //        catch (std::exception& e) {
+    //            std::cout << "오류 입니다 - " << e.what() << std::endl;
+    //            std::cout << "vector의 최대 사이즈 - " << v.size() << std::endl;//61447개 
+    //            break;
+    //        }
+    //    }
+    //}
 
  	save("main.cpp");
 }
