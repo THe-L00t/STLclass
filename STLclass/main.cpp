@@ -30,14 +30,21 @@ int main( )
     if (not in) return 2024182028;
 
     std::list<STRING> m{ std::istream_iterator<STRING>{in},{} }; //한 줄로 줄임
-    std::vector<STRING> v{ m.begin(),m.end()};
     
-    관찰 = true;
-    m.sort();   // list의 강점 중 하나기 때문에 list에게 시킨다. 
-    관찰 = false;
-    /*for (const STRING& s : v) {
-        std::cout << s << std::endl;
-    }*/
+    // [문제] 사용자가 입력한 단어가 리스트에 있는지 알려 주자.
+    // 단어가 없으면 없다라고 출력하고, 있으면 리스트의 몇 번째 단어인지 출력하라
+
+    while (true) {
+        std::cout << "찾을 단어는? :";
+        STRING 단어;
+        std::cin >> 단어;
+
+        auto f = std::find(m.begin(), m.end(), 단어);
+        if () {
+
+        }
+    }
+
 
  	save("main.cpp");
 }
