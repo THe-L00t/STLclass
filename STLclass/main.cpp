@@ -13,10 +13,8 @@
 //
 // 
 #include <iostream>	
-#include <algorithm>
-#include <deque>
+#include <fstream>
 #include <list>
-#include <iterator>
 #include "save.h"
 #include "STRING.h"
 
@@ -25,21 +23,19 @@ extern bool 관찰;
 
 int main( ) 
 {
-    std::list<STRING> cont{ "1","22","4444","55555" };
-    // [문제]"333"을 추가하라
-    관찰 = true;
-    /*cont.insert(++++cont.begin(), "333");*/
+    // [문제] "main.cpp"의 단어를 list에 모두 저장하라.
+    std::ifstream in{ "main.cpp" };
+    if (not in) return 2024182028;
 
-    /*auto point = cont.begin();
-    std::advance(point, 2);
-    cont.insert(point, "333");*/
-
-    cont.emplace(++++cont.begin(), "333");
-    관찰 = false;
-
-    for (const STRING& s : cont) {
-        std::cout << s << std::endl;
+    std::list<STRING> m;
+    STRING s;
+    while (in >> s) {
+        m.push_back(s);
     }
+    for (const STRING& d : m) {
+        std::cout << d << std::endl;
+    }
+
 
  	save("main.cpp");
 }
