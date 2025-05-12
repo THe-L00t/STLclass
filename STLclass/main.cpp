@@ -34,7 +34,7 @@ int main( )
     // [문제] 단어들에서 길이가 5인 것들만 화면에 출력하라.
     // 
 
-    copy(m.begin(), m.end(), []() {}, std::ostream_iterator<STRING>{std::cout});
+    copy(m.begin(), m.end(), std::ostream_iterator<STRING>{std::cout," "}); //스트림 객체 뒤는 구분자
 
 
 
