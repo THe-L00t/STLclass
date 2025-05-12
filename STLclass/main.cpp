@@ -34,9 +34,8 @@ int main( )
     // [문제] 단어들에서 길이가 5인 것들만 화면에 출력하라.
     // 
 
-    for (const STRING& s : m) {
-        if (s.size() == 5) std::cout << s << std::endl;
-    }
+    copy(m.begin(), m.end(), []() {}, std::ostream_iterator<STRING>{std::cout});
+
 
 
  	save("main.cpp");
