@@ -21,12 +21,16 @@ extern bool 관찰;
 
 int main( ) 
 {
-    std::list<STRING> 할일1{ "아가리오", "게임", "설겆이", "컴퓨터 구조"};
-    std::list<STRING> 할일2{ "과제제출", "조명 인수인계", "취침", "등등등"};
+    std::list<STRING> 할일1{ "3333333", "9", "777", "55555", "111111111"};
+    std::list<STRING> 할일2{ "0000000000", "88", "444444", "6666", "22222222"};
 
+    할일1.sort();
+    할일2.sort();
+
+    // 정렬된 알고리즘에서 돌아간다.
     할일1.merge(할일2);
 
-    for (const STRING& s : 할일2) {
+    for (const STRING& s : 할일1) {
         std::cout << s << std::endl;
     }
 
