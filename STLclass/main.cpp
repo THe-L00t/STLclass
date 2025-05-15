@@ -19,6 +19,8 @@ int main( )
 {
     STRING s{ "2025. 5. 15" };
     
+    // [예고] s를 거꾸로 출력하라 
+
     for (char c : s) {
         std::cout << c << "-----";
     }
