@@ -22,7 +22,6 @@
 
 extern bool 관찰;
 
-
 int main( ) 
 {
     // [문제] "main.cpp"의 단어를 list에 모두 저장하라.
@@ -31,10 +30,8 @@ int main( )
 
     std::list<STRING> m{ std::istream_iterator<STRING>{in},{} }; //한 줄로 줄임
     
-    // [문제] 단어들에서 길이가 5인 것들만 화면에 출력하라.
-    // 
+    // [문제] 찾을 단어가 있으면 몇 번째인지 출력 
 
-    copy(m.begin(), m.end(), std::ostream_iterator<STRING>{std::cout," "}); //스트림 객체 뒤는 구분자
 
 
 
