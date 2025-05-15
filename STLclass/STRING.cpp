@@ -6,6 +6,7 @@
 //  2025. 04. 14 - 이동의미론 
 //  2025. 05. 01 - opretor==
 //  2025. 05. 15 - 사전식 정렬 수정
+//  2025. 05. 15 - begin(), end() 구현
 //-------------------------------------------
 
 #include <algorithm>
@@ -91,6 +92,16 @@ bool STRING::operator==(const STRING& other) const
 
 size_t STRING::size() const {
 	return s;
+}
+
+char* STRING::begin() const
+{
+	return d.get();
+}
+
+char* STRING::end() const
+{
+	return d.get() + s;
 }
 
  std::ostream& operator<<(std::ostream& os, const STRING& str) {

@@ -29,6 +29,10 @@ public:
 
 	// 인터페이스 함수들
 	size_t size() const;
+
+	char* begin() const;
+	char* end() const;
+
 	
 private:
 	size_t s{};
