@@ -16,9 +16,13 @@ extern bool °üÂû;
 
 int main( ) 
 {
-    for (const auto& x : C) {
+    /*for (const auto& x : C) { // syntatic sugar
+        std::cout << x << std::endl;
+    }*/
 
-    }
+    for ( auto i = C.cbegin(); i != C.cend(); ++i) {
+        std::cout << *i << std::endl;
+    }_
 
  	save("main.cpp");
 }
