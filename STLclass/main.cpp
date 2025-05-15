@@ -31,9 +31,18 @@ int main( )
     std::list<STRING> m{ std::istream_iterator<STRING>{in},{} }; //한 줄로 줄임
     
     // [문제] 찾을 단어가 있으면 몇 번째인지 출력 
+    std::cout << "찾을 단어 : ";
+    STRING 단어;
+    std::cin >> 단어;
 
-
-
+    auto 위치 = std::find(m.begin(), m.end(), 단어);
+    if (위치 == m.end()) { 
+        std::cout << "없는 단어 입니다. " << std::endl; 
+    }
+    else {
+        std::cout << std::distance(m.begin(), 위치);
+        // 지난 시간 작성한 for루프 코드를 대신 수행 해줌
+    }
 
  	save("main.cpp");
 }
