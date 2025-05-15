@@ -5,8 +5,10 @@
 //  2025. 04. 14 - 선택적 관찰 전역변수 선언
 //  2025. 04. 14 - 이동의미론 
 //  2025. 05. 01 - opretor==
+//  2025. 05. 15 - 사전식 정렬 수정
 //-------------------------------------------
 
+#include <algorithm>
 #include "STRING.h"
 
 size_t STRING::gid{ 0 };
@@ -69,7 +71,8 @@ STRING& STRING::operator=(STRING&& other)
 
 bool STRING::operator<(const STRING& other) const
 {
-	return size() < other.size();
+	// 사전식 정렬
+	return std::lexicographical_compare(d.get(), d.get() + s, &other.d[0], &other.d[other.s]);
 }
 
 bool STRING::operator==(const STRING& other) const

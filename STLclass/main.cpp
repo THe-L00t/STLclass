@@ -22,8 +22,8 @@ extern bool 관찰;
 
 int main( ) 
 {
-    std::list<std::string> 할일1{ "3333333", "9", "777", "55555", "111111111"};
-    std::list<std::string> 할일2{ "0000000000", "88", "444444", "6666", "22222222"};
+    std::list<STRING> 할일1{ "3333333", "9", "777", "55555", "111111111"};
+    std::list<STRING> 할일2{ "0000000000", "88", "444444", "6666", "22222222"};
 
     할일1.sort();
     할일2.sort();
@@ -32,7 +32,7 @@ int main( )
     // 정렬된 알고리즘에서 돌아간다.
     할일1.merge(할일2);
 
-    for (const std::string& s : 할일1) {
+    for (const STRING& s : 할일1) {
         std::cout << s << std::endl;
     }
 
