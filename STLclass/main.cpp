@@ -9,6 +9,10 @@
 // vector<T>    - random access, []연산자 제공, O(1)내에 모든 원소에 access, O(1)에 push_back
 // deaue<T>     - random access, []연산자 제공, O(1)내에 모든 원소에 access, O(1)에 push_front, push_back
 // list<T>      - O(1)에 임의의 위치에 insert, delete가 자유로움, 자료구조를 활동햔 전용함수 제공(remove, sort, splice)
+// forward_list<T> 
+//              - It is intended that forward_list have zero space or time overheaad relative to a hand-written 
+//              C-style singly linked list.
+//              Features that would conflict with that goal have been omitted 
 //---------------------------------------------------------------------------
 //
 // 
