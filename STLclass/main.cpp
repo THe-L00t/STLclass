@@ -40,7 +40,7 @@ int main( )
         std::cout << "없는 단어 입니다. " << std::endl; 
     }
     else {
-        std::cout << std::distance(m.begin(), 위치);
+        std::cout << 단어 << "는 " << std::distance(m.begin(), 위치) + 1 << "번째 단어 입니다." << std::endl;
         // 지난 시간 작성한 for루프 코드를 대신 수행 해줌
     }
 
