@@ -3,7 +3,8 @@
 // 2025. 6. 19 기말 시험
 // 2025. 5. 12 월요일 - 졸업작품 중간발표
 //---------------------------------------------------------------------------//
-//  반복자 - 
+//  반복자 - Iterators are a generalization of pointers that allow a C++ program to work 
+// with different data structures in a uniform manner.
 // 
 //---------------------------------------------------------------------------
 //
@@ -16,13 +17,12 @@ extern bool 관찰;
 
 int main( ) 
 {
-    /*for (const auto& x : C) { // syntatic sugar
-        std::cout << x << std::endl;
-    }*/
-
-    for ( auto i = C.cbegin(); i != C.cend(); ++i) {
-        std::cout << *i << std::endl;
-    }_
+    STRING s{ "2025. 5. 15" };
+    
+    for (char c : s) {
+        std::cout << c << "-----";
+    }
+    std::cout << std::endl;
 
  	save("main.cpp");
 }
