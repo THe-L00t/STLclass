@@ -17,19 +17,16 @@
 extern bool 관찰;
 
 // 반복자는 서로 다르다 - 6개의 category
+// [문제] 함수 f는 반복자를 인자로 받아 어떤 종류의 반복자인지 화면에 출력하는 
+// 함수 f를 정의하라 
+template<class T>
+void f(T what) {
+    std::cout << typeid(what).name() << std::endl;
+}
 
 int main( ) 
 {
-    std::ostream_iterator<char> p{std::cout};
-
-    p = 'A';
-    // uniform한 형식을 맞추기 위해서 아무 행동은 하지 않아도 코딩해둠. uniform하므로 어떤 iterator가 와도 실행됨
-    // 이런 것을 iterator adaptor라고 한다. 
-    ++p;
-    *p = 'Q';   //해당 연산자 
-    ++p;
-    *p = '\n';
-
+    f(std::ostream_iterator<char>{std::cout});
 
  	save("main.cpp");
 }
