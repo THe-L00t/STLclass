@@ -112,7 +112,7 @@ STRING_Reverse_Iterator STRING::rbegin() const
 
 STRING_Reverse_Iterator STRING::rend() const
 {
-	return STRING_Reverse_Iterator(&d[0]);
+	return &d[0];	// 생성자에 의해 자동 형변환
 }
 
  std::ostream& operator<<(std::ostream& os, const STRING& str) {

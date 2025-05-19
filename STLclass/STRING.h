@@ -12,11 +12,12 @@
 // iterator adaptor - 반복자의 인터페이스를 제공하지만 실제로는 다르게 동작
 class STRING_Reverse_Iterator {
 public:
-	STRING_Reverse_Iterator(char* p)
+	explicit STRING_Reverse_Iterator(char* p)
 		:p{ p } {
 	}
 	// 반복자라면 제공해야할 기본동작이 있다. 
-
+	operator++();
+	//operator
 
 
 
