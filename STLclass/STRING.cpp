@@ -79,14 +79,6 @@ bool STRING::operator<(const STRING& other) const
 
 bool STRING::operator==(const STRING& other) const
 {
-	//if (s != other.s) return false;
-	//
-	//for (size_t i = 0; i < s; i++)
-	//{
-	//	if (d[i] != other.d[i]) return false;
-	//}
-	//// for¹®Àº »ðÁú
-	//return true;
 
 	return std::equal(d.get(), d.get() + s, &other.d[0], &other.d[other.s]);
 }
