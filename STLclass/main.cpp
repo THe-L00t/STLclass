@@ -21,6 +21,14 @@ extern bool °üÂû;
 int main( ) 
 {
     std::ostream_iterator<char> p{std::cout};
+
+    *p = 'A';
+    ++p;
+    *p = 'Q';
+    ++p;
+    *p = '\n';
+
+
  	save("main.cpp");
 }
 
