@@ -16,10 +16,17 @@ public:
 		:p{ p } {
 	}
 	// 반복자라면 제공해야할 기본동작이 있다. 
-	operator++();
-	//operator
+	void operator++() {
+		--p;
+	}
+	char operator*() const{
+		return *(p - 1);
+	}
+	bool operator==(const STRING_Reverse_Iterator& rhs) const{
+		return p == rhs.p;
+	}
 
-
+	//operator<=>()	//spaceship연산자, 3방향 비교연산자 
 
 private:
 	char* p;
