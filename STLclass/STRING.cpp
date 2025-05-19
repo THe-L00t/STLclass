@@ -97,17 +97,17 @@ size_t STRING::size() const {
 
 char* STRING::begin() const
 {
-	return d.get();
+	return &d[0];//d.get();
 }
 
 char* STRING::end() const
 {
-	return d.get() + s;
+	return &d[s];//d.get() + s;
 }
 
 char* STRING::rbegin() const
 {
-	return d.get() + s -1;
+	return d.get() + s;
 }
 
 char* STRING::rend() const

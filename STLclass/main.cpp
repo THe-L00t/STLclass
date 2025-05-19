@@ -6,6 +6,7 @@
 //  반복자 - Iterators are a generalization of pointers that allow a C++ program to work 
 // with different data structures in a uniform manner.
 // 
+// 역방향 반복자는 반드시 class로 코딩해야만 한다.
 //---------------------------------------------------------------------------
 //
 // 
@@ -17,9 +18,11 @@ extern bool 관찰;
 
 int main( ) 
 {
-    STRING s{ "2025. 5. 15" };
+    /*STRING s{ "2025. 5. 15" };*/
     
     // [예고] s를 거꾸로 출력하라 
+
+    int s[] = { 1,2,3,4,5,6,7,8,9 };
 
     for (auto i = s.rbegin(); i != s.rend(); ++i) {
         std::cout << *i << " ";
