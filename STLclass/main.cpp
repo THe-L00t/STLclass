@@ -19,9 +19,8 @@ extern bool 관찰;
 // 반복자는 서로 다르다 - 6개의 category
 // [문제] 함수 f는 반복자를 인자로 받아 어떤 종류의 반복자인지 화면에 출력하는 
 // 함수 f를 정의하라 
-template<class T>
-void f(T what) {
-    std::cout << typeid(what).name() << std::endl;
+void f(const std::ostream_iterator<char>& what) {
+    std::cout << typeid(std::ostream_iterator<char>::iterator_category).name() << std::endl;
 }
 
 int main( ) 
