@@ -11,6 +11,7 @@
 //
 // 
 #include <iostream>	
+#include <span>
 #include "save.h"
 #include "STRING.h"
 
@@ -22,7 +23,9 @@ int main( )
     
     // [예고] s를 거꾸로 출력하라 
 
-    int s[] = { 1,2,3,4,5,6,7,8,9 };
+    int a[] = { 1,2,3,4,5,6,7,8,9 };
+
+    std::span<int> s{ a };
 
     for (auto i = s.rbegin(); i != s.rend(); ++i) {
         std::cout << *i << " ";
