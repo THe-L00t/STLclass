@@ -20,7 +20,7 @@ extern bool °üÂû;
 
 int main( ) 
 {
-    std::output_iterator<char> p;
+    std::ostream_iterator<char> p{std::cout};
  	save("main.cpp");
 }
 
