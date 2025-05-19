@@ -9,6 +9,21 @@
 #include <memory>
 #include <print>
 
+// iterator adaptor - 반복자의 인터페이스를 제공하지만 실제로는 다르게 동작
+class STRING_Reverse_Iterator {
+public:
+	STRING_Reverse_Iterator(char* p)
+		:p{ p } {
+	}
+	// 반복자라면 제공해야할 기본동작이 있다. 
+
+
+
+
+private:
+	char* p;
+};
+
 class STRING {
 public:
 	// 스페셜 함수들
@@ -33,8 +48,8 @@ public:
 	char* begin() const;
 	char* end() const;
 
-	char* rbegin() const;
-	char* rend() const;
+	STRING_Reverse_Iterator rbegin() const;
+	STRING_Reverse_Iterator rend() const;
 	
 private:
 	size_t s{};

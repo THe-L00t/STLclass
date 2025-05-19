@@ -19,11 +19,9 @@ extern bool 관찰;
 
 int main( ) 
 {
-    /*STRING s{ "2025. 5. 15" };*/
+    STRING s{ "2025. 5. 15" };
     
     // [예고] s를 거꾸로 출력하라 
-
-    int s[] = { 1,2,3,4,5,6,7,8,9 };
 
     for (auto i = std::rbegin(s); i != std::rend(s); ++i) {
         std::cout << *i << " ";

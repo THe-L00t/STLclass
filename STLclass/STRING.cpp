@@ -7,7 +7,7 @@
 //  2025. 05. 01 - opretor==
 //  2025. 05. 15 - 사전식 정렬 수정
 //  2025. 05. 15 - begin(), end() 구현
-//  2025. 05. 19 - rbegins(), rend() 구현
+//  2025. 05. 19 - rbegins(), rend() 구현 -> class로 코딩해야 한다.
 //-------------------------------------------
 
 #include <algorithm>
@@ -105,14 +105,14 @@ char* STRING::end() const
 	return &d[s];//d.get() + s;
 }
 
-char* STRING::rbegin() const
+STRING_Reverse_Iterator STRING::rbegin() const
 {
-	return d.get() + s;
+	return STRING_Reverse_Iterator(&d[s]);
 }
 
-char* STRING::rend() const
+STRING_Reverse_Iterator STRING::rend() const
 {
-	return d.get()-1;
+	return STRING_Reverse_Iterator(&d[0]);
 }
 
  std::ostream& operator<<(std::ostream& os, const STRING& str) {
