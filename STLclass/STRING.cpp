@@ -7,6 +7,7 @@
 //  2025. 05. 01 - opretor==
 //  2025. 05. 15 - 사전식 정렬 수정
 //  2025. 05. 15 - begin(), end() 구현
+//  2025. 05. 19 - rbegins(), rend() 구현
 //-------------------------------------------
 
 #include <algorithm>
@@ -102,6 +103,16 @@ char* STRING::begin() const
 char* STRING::end() const
 {
 	return d.get() + s;
+}
+
+char* STRING::rbegin() const
+{
+	return d.get() + s -1;
+}
+
+char* STRING::rend() const
+{
+	return d.get()-1;
 }
 
  std::ostream& operator<<(std::ostream& os, const STRING& str) {

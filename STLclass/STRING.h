@@ -33,6 +33,8 @@ public:
 	char* begin() const;
 	char* end() const;
 
+	char* rbegin() const;
+	char* rend() const;
 	
 private:
 	size_t s{};
