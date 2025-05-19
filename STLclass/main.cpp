@@ -10,14 +10,17 @@
 //
 // 
 #include <iostream>	
+#include <iterator>
 #include "save.h"
 #include "STRING.h"
 
 extern bool 관찰;
 
+// 반복자는 서로 다르다 - 6개의 category
+
 int main( ) 
 {
-
+    std::output_iterator<char> p;
  	save("main.cpp");
 }
 
