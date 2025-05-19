@@ -3,15 +3,13 @@
 // 2025. 6. 19 기말 시험
 // 2025. 5. 12 월요일 - 졸업작품 중간발표
 //---------------------------------------------------------------------------//
-//  반복자 - Iterators are a generalization of pointers that allow a C++ program to work 
-// with different data structures in a uniform manner.
-// 
-// 역방향 반복자는 반드시 class로 코딩해야만 한다.
+//  반복자 - 각 컨테이너가 자기가 관리하는 원소를 처음부터 끝까지 빠짐없이 
+//  순회할 수 있도록 제공하는 인터페이스이다.
+// 컨테이너에 따라서(자료구조가 서로 다르니까), 반복자가 할 수 있는 일은 서로 다르다. 
 //---------------------------------------------------------------------------
 //
 // 
 #include <iostream>	
-#include <span>
 #include "save.h"
 #include "STRING.h"
 
@@ -19,14 +17,6 @@ extern bool 관찰;
 
 int main( ) 
 {
-    STRING s{ "2025. 5. 15" };
-    
-    // [예고] s를 거꾸로 출력하라 
-
-    for (auto i = std::rbegin(s); i != std::rend(s); ++i) {
-        std::cout << *i << " ";
-    }
-    std::cout << std::endl;
 
  	save("main.cpp");
 }
