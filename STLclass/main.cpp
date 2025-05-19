@@ -22,9 +22,11 @@ int main( )
 {
     std::ostream_iterator<char> p{std::cout};
 
-    *p = 'A';
+    p = 'A';
+    // uniform한 형식을 맞추기 위해서 아무 행동은 하지 않아도 코딩해둠. uniform하므로 어떤 iterator가 와도 실행됨
+    // 이런 것을 iterator adaptor라고 한다. 
     ++p;
-    *p = 'Q';
+    *p = 'Q';   //해당 연산자 
     ++p;
     *p = '\n';
 
