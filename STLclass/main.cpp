@@ -27,19 +27,15 @@ extern bool 관찰;
 template<class 반복자>
 void f(const 반복자& what) {
     std::cout << typeid(std::iterator_traits<반복자>::iterator_category).name() << std::endl;
-
-    //벡터라면
-    if constexpr( 벡터라면 )    // 조건문을 만족하지 않으면 컴파일 시 코드를 생성하지 않음
-        std::cout << typeid(반복자::iterator_concept).name() << std::endl;
-    //벡터 외 엔 오류난다.
 }
 
 
 
 int main( ) 
 {
-    //벡터의 반복자가 contiguous임을 판단하거나 출력하고 싶다. 
-    f(std::vector<char>{}.cbegin());            //random_access_iterator
+    STRING s;
+
+    f(s.begin());
 
  	save("main.cpp");
 }
