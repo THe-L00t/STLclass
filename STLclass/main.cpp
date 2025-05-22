@@ -39,8 +39,13 @@ int main( )
     f(std::list<char>::iterator{});             //bidirectional_iterator
     std::deque<STRING> d;           
     f(d.rbegin());                              //random_access_iterator
-    f(std::vector<char>{}.cbegin());            //
+    f(std::vector<char>{}.cbegin());            //random_access_iterator
 
+    // vector와 deque의 반복자는 random_access_iterator_tag
+
+
+    int* p;
+    f(p);
  	save("main.cpp");
 }
 
