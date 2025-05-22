@@ -10,7 +10,16 @@
 #include <print>
 
 // iterator adaptor - 반복자의 인터페이스를 제공하지만 실제로는 다르게 동작
+// 표준 반복자라면 해야할 다섯 가지 타입을 제공한다.
+
 class STRING_Reverse_Iterator {
+public:
+	using difference_type = std::ptrdiff_t;
+	using value_type = char;
+	using pointer = char*;
+	using reference = char&;
+	using iterator_category = std::random_access_iterator_tag;
+
 public:
 	explicit STRING_Reverse_Iterator(char* p)
 		:p{ p } {

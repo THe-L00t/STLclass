@@ -11,10 +11,7 @@
 // 
 #include <iostream>	
 #include <iterator>
-#include <forward_list>
-#include <list>
-#include <deque>
-#include <vector>
+
 #include "save.h"
 #include "STRING.h"
 
