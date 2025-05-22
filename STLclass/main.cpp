@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------//
-// 2025.   1.  STL 월 910 목 910					5월 19일 월요일		(11주 1일)
+// 2025.   1.  STL 월 910 목 910					5월 19일 월요일		(11주 2일)
 // 2025. 6. 19 기말 시험
 // 2025. 5. 12 월요일 - 졸업작품 중간발표
 //---------------------------------------------------------------------------//
@@ -19,13 +19,19 @@ extern bool 관찰;
 // 반복자는 서로 다르다 - 6개의 category
 // [문제] 함수 f는 반복자를 인자로 받아 어떤 종류의 반복자인지 화면에 출력하는 
 // 함수 f를 정의하라 
+
 void f(const std::ostream_iterator<char>& what) {
     std::cout << typeid(std::ostream_iterator<char>::iterator_category).name() << std::endl;
+}
+
+void f(const std::istream_iterator<int>& what) {
+    std::cout << typeid(std::istream_iterator<int>::iterator_category).name() << std::endl;
 }
 
 int main( ) 
 {
     f(std::ostream_iterator<char>{std::cout});
+    f(std::istream_iterator<int>{std::cin});
 
  	save("main.cpp");
 }
