@@ -29,7 +29,9 @@ void f(const 반복자& what) {
     std::cout << typeid(std::iterator_traits<반복자>::iterator_category).name() << std::endl;
 
     //벡터라면
-    std::cout << typeid(반복자::iterator_concept).name() << std::endl;
+    if constexpr( 벡터라면 )    // 조건문을 만족하지 않으면 컴파일 시 코드를 생성하지 않음
+        std::cout << typeid(반복자::iterator_concept).name() << std::endl;
+    //벡터 외 엔 오류난다.
 }
 
 
