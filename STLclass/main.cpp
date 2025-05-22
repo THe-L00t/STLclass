@@ -23,7 +23,8 @@ extern bool 관찰;
 
 template<class 반복자>
 void f(const 반복자& what) {
-    std::cout << typeid(std::iterator_traits<반복자>::iterator_category).name() << std::endl;
+    std::cout << typeid(반복자::iterator_category).name() << std::endl;
+    // 반복자를 코딩했으므로 우회하지 않아도 됨
 }
 
 
