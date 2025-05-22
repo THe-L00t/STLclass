@@ -26,7 +26,7 @@ extern bool 관찰;
 
 template<class 반복자>
 void f(const 반복자& what) {
-    std::cout << typeid(반복자::iterator_category).name() << std::endl;
+    std::cout << typeid(std::iterator_traits<반복자>::iterator_category).name() << std::endl;
 }
 
 
