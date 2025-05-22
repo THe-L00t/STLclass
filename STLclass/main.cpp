@@ -35,7 +35,7 @@ int main( )
 {
     STRING s;
 
-    f(s.begin());
+    f(s.rbegin());
 
  	save("main.cpp");
 }
