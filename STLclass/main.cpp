@@ -20,13 +20,12 @@ extern bool 관찰;
 // [문제] 함수 f는 반복자를 인자로 받아 어떤 종류의 반복자인지 화면에 출력하는 
 // 함수 f를 정의하라 
 
-void f(const std::ostream_iterator<char>& what) {
-    std::cout << typeid(std::ostream_iterator<char>::iterator_category).name() << std::endl;
+template<class 반복자>
+void f(const 반복자& what) {
+    std::cout << typeid(반복자::iterator_category).name() << std::endl;
 }
 
-void f(const std::istream_iterator<int>& what) {
-    std::cout << typeid(std::istream_iterator<int>::iterator_category).name() << std::endl;
-}
+
 
 int main( ) 
 {
