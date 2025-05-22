@@ -11,6 +11,10 @@
 // 
 #include <iostream>	
 #include <iterator>
+#include <forward_list>
+#include <list>
+#include <deque>
+#include <vector>
 #include "save.h"
 #include "STRING.h"
 
@@ -29,8 +33,13 @@ void f(const 반복자& what) {
 
 int main( ) 
 {
-    f(std::ostream_iterator<char>{std::cout});
-    f(std::istream_iterator<int>{std::cin});
+    //f(std::istream_iterator<int>{std::cin});    //입력
+    f(std::ostream_iterator<char>{std::cout});  //출력
+    f(std::forward_list<char>{}.begin());       //forward_iterator
+    f(std::list<char>::iterator{});             //bidirectional_iterator
+    std::deque<STRING> d;           
+    f(d.rbegin());                              //random_access_iterator
+    f(std::vector<char>{}.cbegin());            //
 
  	save("main.cpp");
 }
