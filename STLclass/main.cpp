@@ -27,25 +27,18 @@ extern bool 관찰;
 template<class 반복자>
 void f(const 반복자& what) {
     std::cout << typeid(std::iterator_traits<반복자>::iterator_category).name() << std::endl;
+
+    //벡터라면
+    std::cout << typeid(반복자::iterator_concept).name() << std::endl;
 }
 
 
 
 int main( ) 
 {
-    //f(std::istream_iterator<int>{std::cin});    //입력
-    f(std::ostream_iterator<char>{std::cout});  //출력
-    f(std::forward_list<char>{}.begin());       //forward_iterator
-    f(std::list<char>::iterator{});             //bidirectional_iterator
-    std::deque<STRING> d;           
-    f(d.rbegin());                              //random_access_iterator
+    //벡터의 반복자가 contiguous임을 판단하거나 출력하고 싶다. 
     f(std::vector<char>{}.cbegin());            //random_access_iterator
 
-    // vector와 deque의 반복자는 random_access_iterator_tag
-
-
-    int* p;
-    f(p);
  	save("main.cpp");
 }
 
