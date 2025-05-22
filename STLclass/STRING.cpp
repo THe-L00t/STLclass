@@ -89,14 +89,14 @@ size_t STRING::size() const {
 	return s;
 }
 
-char* STRING::begin() const
+STRING_Iterator STRING::begin() const
 {
-	return &d[0];//d.get();
+	return STRING_Iterator(&d[0]); //& d[0];//d.get();
 }
 
-char* STRING::end() const
+STRING_Iterator STRING::end() const
 {
-	return &d[s];//d.get() + s;
+	return STRING_Iterator(&d[s]);//&d[s];//d.get() + s;
 }
 
 STRING_Reverse_Iterator STRING::rbegin() const
