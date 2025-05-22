@@ -27,12 +27,35 @@ public:
 	void operator++() {
 		++p;
 	}
+	void operator--() {
+		--p;
+	}
 	char operator*() const {
 		return *p;
 	}
 	bool operator==(const STRING_Iterator& rhs) const {
 		return p == rhs.p;
 	}
+
+	//sort가 동작하도록 필요 연산자 추가
+
+	difference_type operator-(const STRING_Iterator& rhs) const {
+		return p - rhs.p;
+	}
+
+	/*STRING_Iterator operator+(const int& rhs) const {
+		return STRING_Iterator(p + rhs);
+	}
+
+	STRING_Iterator operator-=(const difference_type rhs) const {
+		return *this + -rhs;
+	}
+
+	STRING_Iterator operator-(const difference_type rhs) const {
+		STRING_Iterator temp = *this;
+		temp -= rhs;
+		return temp;
+	}*/
 
 private:
 	char* p;
@@ -60,7 +83,7 @@ public:
 	bool operator==(const STRING_Reverse_Iterator& rhs) const{
 		return p == rhs.p;
 	}
-
+	
 	//operator<=>()	//spaceship연산자, 3방향 비교연산자 
 
 private:

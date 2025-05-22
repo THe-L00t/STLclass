@@ -11,7 +11,8 @@
 // 
 #include <iostream>	
 #include <iterator>
-
+#include <algorithm>
+#include <vector>
 #include "save.h"
 #include "STRING.h"
 
@@ -31,9 +32,12 @@ void f(const ¹Ýº¹ÀÚ& what) {
 
 int main( ) 
 {
-    STRING s;
+    STRING s{"the quick brown fox jumps over the lazy dog"};
 
-    f(s.rbegin());
+    std::sort(s.begin(), s.end());
+    //f(s.rbegin());
+
+    std::cout << s << std::endl;
 
  	save("main.cpp");
 }
