@@ -99,7 +99,7 @@ public:
 
 	STRING_Iterator operator+(const difference_type& rhs) const {
 		return p + rhs;
-	}
+	} 
 
 
 private:
