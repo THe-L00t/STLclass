@@ -34,6 +34,11 @@ public:
 	char& operator*() {	// l-value여야하기 때문에 & 리턴 및 const 제거
 		return *p;
 	}
+
+	// CV-qualifier는 오버로딩의 대상이다. 
+	char& operator*() const{
+		return *p;
+	}
 	/*bool operator==(const STRING_Iterator& rhs) const {
 		return p == rhs.p;
 	}*/
@@ -89,7 +94,7 @@ public:
 	}
 
 	STRING_Iterator operator+(const difference_type& rhs) const {
-		return STRING_Iterator(p + rhs);
+		return p + rhs;
 	}
 
 
