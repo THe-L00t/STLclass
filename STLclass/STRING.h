@@ -19,7 +19,7 @@ public:
 	using reference = char&;
 	using iterator_category = std::random_access_iterator_tag;
 public:
-	explicit STRING_Iterator(char* p)
+	STRING_Iterator(char* p)
 		:p{ p } {
 	}
 	
@@ -36,12 +36,14 @@ public:
 	bool operator==(const STRING_Iterator& rhs) const {
 		return p == rhs.p;
 	}
+	
 
 	
 	//sort가 동작하도록 필요 연산자 추가
 
-	difference_type operator-(const STRING_Iterator& rhs) const {
-		return p - rhs.p;
+	STRING_Iterator& operator+=(const difference_type off) {
+		p += off;
+		return *this;
 	}
 
 	STRING_Iterator operator+(const difference_type& rhs) const {
@@ -52,22 +54,20 @@ public:
 		return STRING_Iterator(p - rhs);
 	}
 
+	difference_type operator-(const STRING_Iterator& rhs) const {
+		return p - rhs.p;
+	}
+
+	friend STRING_Iterator operator+(const difference_type& off, STRING_Iterator next) {
+		next += off;
+		return next;
+	}
+	
+
 	bool operator<(const STRING_Iterator& rhs) const {
 		return *p < *(rhs.p);
 	}
-	/*STRING_Iterator operator+(const int& rhs) const {
-		return STRING_Iterator(p + rhs);
-	}
-
-	STRING_Iterator operator-=(const difference_type rhs) const {
-		return *this + -rhs;
-	}
-
-	STRING_Iterator operator-(const difference_type rhs) const {
-		STRING_Iterator temp = *this;
-		temp -= rhs;
-		return temp;
-	}*/
+	
 
 private:
 	char* p;
