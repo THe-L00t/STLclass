@@ -39,9 +39,10 @@ public:
 	char& operator*() const{
 		return *p;
 	}
-	/*bool operator==(const STRING_Iterator& rhs) const {
+	// <=>에서 제대로 처리 되지 않아 다시 살림
+	bool operator==(const STRING_Iterator& rhs) const {
 		return p == rhs.p;
-	}*/
+	}
 	
 
 	
@@ -82,6 +83,9 @@ public:
 		return next;
 	}*/
 	
+	STRING_Iterator operator-(const difference_type& rhs) const {
+		return STRING_Iterator(p - rhs);
+	}
 
 	bool operator<(const STRING_Iterator& rhs) const {
 		return *p < *(rhs.p);
