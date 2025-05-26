@@ -88,6 +88,10 @@ public:
 		return p <=> rhs.p;
 	}
 
+	STRING_Iterator operator+(const difference_type& rhs) const {
+		return STRING_Iterator(p + rhs);
+	}
+
 
 private:
 	char* p{};	// = nullptr
