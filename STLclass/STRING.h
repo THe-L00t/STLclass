@@ -25,9 +25,9 @@ public:
 	}
 	
 	// 이건 의미를 제대로 코딩해야한다. 
-	void operator++() {
+	/*void operator++() {
 		++p;
-	}
+	}*/
 	/*void operator--() {
 		--p;
 	}*/
@@ -46,6 +46,10 @@ public:
 		return p - rhs.p;	// 연산의 결과가 클래스의 불변성(invariants)을 해치나 관찰 
 	}
 
+	STRING_Iterator& operator++() {
+		++p;
+		return *this;
+	}
 	STRING_Iterator& operator--() {
 		--p;
 		return *this;
@@ -78,9 +82,11 @@ public:
 		return *p < *(rhs.p);
 	}
 	
+	// 모든 relational operation을 할 수 있게  <=>을 정의해본다
+
 
 private:
-	char* p{};
+	char* p{};	// = nullptr
 };
 
 class STRING_Reverse_Iterator {
