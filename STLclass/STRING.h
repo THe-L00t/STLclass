@@ -30,7 +30,7 @@ public:
 	void operator--() {
 		--p;
 	}
-	char operator*() const {
+	char& operator*() {	// l-value여야하기 때문에 & 리턴 및 const 제거
 		return *p;
 	}
 	bool operator==(const STRING_Iterator& rhs) const {
@@ -40,6 +40,10 @@ public:
 
 	
 	//sort가 동작하도록 필요 연산자 추가
+
+	difference_type operator-(const STRING_Iterator& rhs) const {
+		return p - rhs.p;	// 연산의 결과가 클래스의 불변성(invariants)을 해치나 관찰 
+	}
 
 	/*STRING_Iterator& operator+=(const difference_type off) {
 		p += off;
