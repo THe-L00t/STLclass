@@ -11,7 +11,7 @@
 //
 // 
 #include <iostream>	
-
+#include <algorithm>
 #include "save.h"
 #include "STRING.h"
 
@@ -22,8 +22,17 @@ int main( )
 {
     STRING s{ "2025. 5. 26" };
     //[문제] 한 글자를 입력받아 s에 있는지 없는지, 있다면 몇 번째 글자인지 출력하라
-    
-
+    char c{};
+    std::cin >> c;
+    STRING_Iterator cusor = std::find(s.begin(), s.end(), c);
+    if (cusor != s.end()) {
+        // random access iterator tag 라면 
+        std::cout << cusor - s.begin() + 1 << "번째 입니다." << std::endl;
+        //아니라면 개수를 세 나아가야 한다. 
+    }
+    else {
+        std::cout << "없는 문자 입니다." << std::endl;
+    }
 
  	save("main.cpp");
 }
