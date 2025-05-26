@@ -41,7 +41,7 @@ public:
 	
 	//sort가 동작하도록 필요 연산자 추가
 
-	STRING_Iterator& operator+=(const difference_type off) {
+	/*STRING_Iterator& operator+=(const difference_type off) {
 		p += off;
 		return *this;
 	}
@@ -61,7 +61,7 @@ public:
 	friend STRING_Iterator operator+(const difference_type& off, STRING_Iterator next) {
 		next += off;
 		return next;
-	}
+	}*/
 	
 
 	bool operator<(const STRING_Iterator& rhs) const {
