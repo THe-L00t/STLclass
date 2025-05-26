@@ -34,9 +34,9 @@ public:
 	char& operator*() {	// l-value여야하기 때문에 & 리턴 및 const 제거
 		return *p;
 	}
-	bool operator==(const STRING_Iterator& rhs) const {
+	/*bool operator==(const STRING_Iterator& rhs) const {
 		return p == rhs.p;
-	}
+	}*/
 	
 
 	
@@ -83,6 +83,10 @@ public:
 	}
 	
 	// 모든 relational operation을 할 수 있게  <=>을 정의해본다
+	// < , <= , ==, !=, >=, >
+	auto operator<=>(const STRING_Iterator& rhs) const {
+		return p <=> rhs.p;
+	}
 
 
 private:
