@@ -34,8 +34,9 @@ int main( )
 {
     STRING s{"the quick brown fox jumps over the lazy dog"};
 
-    std::sort(s.begin(), s.end());
-    //f(s.rbegin());
+    std::sort(s.begin(), s.end());  //알고리즘 sort는 랜덤 반복자를 전달받는다. 
+    //따라서 begin과 end는 랜덤 반복자가 지원해야만 하는 모든 연산을 제공하여야 한다. 
+    
 
     std::cout << s << std::endl;
 
