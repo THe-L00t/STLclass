@@ -41,10 +41,10 @@ const It& my_find_if(const It& s, const It& e, T callable) {
 int main( ) 
 {
     STRING s{ "2025. 5. 26" };
-    //[문제] 3보다 큰 숫자를 찾아라.
-    auto p = my_find_if(s.begin(), s.end(), [](char c) {
-        return '3' < c;
-        });
+    //[문제] s가 관리하는 문자들을 화면에 복사하라
+
+    std::copy(s.begin(), s.end(), std::ostream_iterator<char>{ std::cout });
+    
 
  	save("main.cpp");
 }
