@@ -26,9 +26,11 @@ int main( )
     std::cin >> c;
     STRING_Iterator cusor = std::find(s.begin(), s.end(), c);
     if (cusor != s.end()) {
-        // random access iterator tag 라면 
-        std::cout << cusor - s.begin() + 1 << "번째 입니다." << std::endl;
-        //아니라면 개수를 세 나아가야 한다. 
+        //// random access iterator tag 라면 
+        //std::cout << cusor - s.begin() + 1 << "번째 입니다." << std::endl;
+        ////아니라면 개수를 세 나아가야 한다. 
+        //위와 같은 일을 하는 것이 distance함수 이다. 
+        std::cout << std::distance(s.begin(), cusor) + 1 << "번째 입니다." << std::endl;
     }
     else {
         std::cout << "없는 문자 입니다." << std::endl;
