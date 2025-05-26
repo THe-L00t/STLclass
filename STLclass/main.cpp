@@ -16,15 +16,17 @@
 #include "STRING.h"
 
 extern bool 관찰;
-
-STRING_Iterator& my_find(const STRING_Iterator& s, const STRING_Iterator& e, const char& f) {
-    auto now = s;
+template<class It, class T>
+const It& my_find(const It& s, const It& e, const T& val) {
+    It now = s;
     while (now != e) {
-        if (*now == f) return now;
-        else ++now;
+        if (*now == val) return now;
+        ++now;
     }
-
+    return now;
 }
+
+// SFINAE : constexpr 에 대한 설명
 
 int main( ) 
 {
@@ -35,17 +37,19 @@ int main( )
     auto p = my_find(s.begin(), s.end(), c);
     // 해당 함수를 완성하라 
 
-    STRING_Iterator cusor = std::find(s.begin(), s.end(), c);
-    if (cusor != s.end()) {
-        //// random access iterator tag 라면 
-        //std::cout << cusor - s.begin() + 1 << "번째 입니다." << std::endl;
-        ////아니라면 개수를 세 나아가야 한다. 
-        //위와 같은 일을 하는 것이 distance함수 이다. 
-        std::cout << std::distance(s.begin(), cusor) + 1 << "번째 입니다." << std::endl;
-    }
-    else {
-        std::cout << "없는 문자 입니다." << std::endl;
-    }
+    if(p != s.end())  std::cout << std::distance(s.begin(), p) + 1 << "번째 입니다." << std::endl;
+    else  std::cout << "없는 문자 입니다." << std::endl;
+    //STRING_Iterator cusor = std::find(s.begin(), s.end(), c);
+    //if (cusor != s.end()) {
+    //    //// random access iterator tag 라면 
+    //    //std::cout << cusor - s.begin() + 1 << "번째 입니다." << std::endl;
+    //    ////아니라면 개수를 세 나아가야 한다. 
+    //    //위와 같은 일을 하는 것이 distance함수 이다. 
+    //    std::cout << std::distance(s.begin(), cusor) + 1 << "번째 입니다." << std::endl;
+    //}
+    //else {
+    //    std::cout << "없는 문자 입니다." << std::endl;
+    //}
 
  	save("main.cpp");
 }
