@@ -26,13 +26,25 @@ const It& my_find(const It& s, const It& e, const T& val) {
     return now;
 }
 
+template<class It, class T>
+const It& my_find_if(const It& s, const It& e, bool(*f)(T)) {
+    It now = s;
+    while (now != e) {
+        if (f) return now;
+        ++now;
+    }
+    return now;
+}
+
 // SFINAE : constexpr 에 대한 설명
 
 int main( ) 
 {
     STRING s{ "2025. 5. 26" };
     //[문제] 3보다 큰 숫자를 찾아라.
-    
+    auto p = my_find_if(s.begin(), s.end(), [](char c) {
+        return '3' < c;
+        });
 
  	save("main.cpp");
 }
