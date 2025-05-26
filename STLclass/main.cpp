@@ -3,42 +3,27 @@
 // 2025. 6. 19 기말 시험
 // 2025. 5. 12 월요일 - 졸업작품 중간발표
 //---------------------------------------------------------------------------//
-//  반복자 - 각 컨테이너가 자기가 관리하는 원소를 처음부터 끝까지 빠짐없이 
-//  순회할 수 있도록 제공하는 인터페이스이다.
-// 컨테이너에 따라서(자료구조가 서로 다르니까), 반복자가 할 수 있는 일은 서로 다르다. 
+//  반복자와 알고리즘
+//  find() 
+//  find_if()
+//  copy()
 //---------------------------------------------------------------------------
 //
 // 
 #include <iostream>	
-#include <iterator>
-#include <algorithm>
-#include <vector>
+
 #include "save.h"
 #include "STRING.h"
 
 extern bool 관찰;
 
-// 반복자는 서로 다르다 - 6개의 category
-// [문제] 함수 f는 반복자를 인자로 받아 어떤 종류의 반복자인지 화면에 출력하는 
-// 함수 f를 정의하라 
-
-template<class 반복자>
-void f(const 반복자& what) {
-    std::cout << typeid(반복자::iterator_category).name() << std::endl;
-    // 반복자를 코딩했으므로 우회하지 않아도 됨
-}
-
-
 
 int main( ) 
 {
-    STRING s{"the quick brown fox jumps over the lazy dog"};
-
-    std::sort(s.begin(), s.end());  //알고리즘 sort는 랜덤 반복자를 전달받는다. 
-    //따라서 begin과 end는 랜덤 반복자가 지원해야만 하는 모든 연산을 제공하여야 한다. 
+    STRING s{ "2025. 5. 26" };
+    //[문제] 한 글자를 입력받아 s에 있는지 없는지, 있다면 몇 번째 글자인지 출력하라
     
 
-    std::cout << s << std::endl;
 
  	save("main.cpp");
 }
