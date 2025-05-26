@@ -17,6 +17,14 @@
 
 extern bool 관찰;
 
+STRING_Iterator& my_find(const STRING_Iterator& s, const STRING_Iterator& e, const char& f) {
+    auto now = s;
+    while (now != e) {
+        if (*now == f) return now;
+        else ++now;
+    }
+
+}
 
 int main( ) 
 {
@@ -24,6 +32,9 @@ int main( )
     //[문제] 한 글자를 입력받아 s에 있는지 없는지, 있다면 몇 번째 글자인지 출력하라
     char c{};
     std::cin >> c;
+    auto p = my_find(s.begin(), s.end(), c);
+    // 해당 함수를 완성하라 
+
     STRING_Iterator cusor = std::find(s.begin(), s.end(), c);
     if (cusor != s.end()) {
         //// random access iterator tag 라면 
