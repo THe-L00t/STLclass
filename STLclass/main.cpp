@@ -27,10 +27,10 @@ const It& my_find(const It& s, const It& e, const T& val) {
 }
 
 template<class It, class T>
-const It& my_find_if(const It& s, const It& e, bool(*f)(T)) {
+const It& my_find_if(const It& s, const It& e, T callable) {
     It now = s;
     while (now != e) {
-        if (f) return now;
+        if (callable(*now)) return now; // 프레더킷 : 판단해주는 놈
         ++now;
     }
     return now;
