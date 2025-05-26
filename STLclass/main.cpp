@@ -12,6 +12,7 @@
 // 
 #include <iostream>	
 #include <algorithm>
+#include <vector>
 #include "save.h"
 #include "STRING.h"
 
@@ -41,10 +42,12 @@ const It& my_find_if(const It& s, const It& e, T callable) {
 int main( ) 
 {
     STRING s{ "2025. 5. 26" };
-    //[문제] s가 관리하는 문자들을 화면에 복사하라
 
+    std::vector<char> v;
+    //[문제] s가 관리하는 문자들을 v에 복사하라
+
+    std::copy(s.begin(), s.end(), v.begin());
     std::copy(s.begin(), s.end(), std::ostream_iterator<char>{ std::cout });
-    
 
  	save("main.cpp");
 }
