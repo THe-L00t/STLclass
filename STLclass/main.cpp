@@ -41,14 +41,18 @@ const It& my_find_if(const It& s, const It& e, T callable) {
 
 int main( ) 
 {
-    STRING s{ "2025. 5. 26" };
+    STRING s{ "2025. 5. 29" };
 
-    std::vector<char> v(s.size());
+    std::vector<char> v;
+    v.reserve(s.size());
     //[문제] s가 관리하는 문자들을 v에 복사하라
 
     std::copy(s.begin(), s.end(), v.begin());
     // 현재 vector에는 begin이 nullptr을 가리키고 있다. 
-    std::copy(s.begin(), s.end(), std::ostream_iterator<char>{ std::cout });
+    for (char c : s) {
+        std::cout << c << "-";
+    }
+    std::cout << std::endl;
 
  	save("main.cpp");
 }
