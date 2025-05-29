@@ -37,6 +37,16 @@ const It& my_find_if(const It& s, const It& e, T callable) {
     return now;
 }
 
+template<class Fit, class Sit>
+void my_copy(const Fit& s, const Fit& e, const Sit& others) {
+    Fit now = s;
+    Sit otherNow = others;
+    while (now != e) {
+        *otherNow = *now;
+        ++now;
+        ++otherNow;
+    }
+}
 // SFINAE : constexpr 에 대한 설명
 
 int main( ) 
