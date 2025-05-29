@@ -28,7 +28,7 @@ int main( )
     if (not in) { return 404; }
 
     std::vector<STRING> v{ std::istream_iterator<STRING>{in}, std::istream_iterator<STRING>{} };
-
+    std::cout << "총 " << v.size() << "단어 입니다. " << std::endl;
 
  	save("main.cpp");
 }
