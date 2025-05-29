@@ -40,7 +40,7 @@ const It& my_find_if(const It& s, const It& e, T callable) {
 template<class Fit, class Sit>
 void my_copy(Fit s, Fit e, Sit d) {
     while (s not_eq e) {
-        *d = *s;
+        *d = *s;            // vector 사이즈 초기화 안할 시 여기서 즉사
         ++s;
         ++d;
     }
@@ -52,8 +52,8 @@ int main( )
     STRING s{ "2025. 5. 29" };
 
     //[문제] s의 문자를 화면에 복사 
-
-    my_copy(s.begin(), s.end(), std::ostream_iterator<char>{std::cout});
+    std::vector<char> v;
+    my_copy(s.begin(), s.end(), v.begin());
     std::cout << std::endl;
 
  	save("main.cpp");
