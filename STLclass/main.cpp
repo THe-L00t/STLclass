@@ -43,15 +43,9 @@ int main( )
 {
     STRING s{ "2025. 5. 29" };
 
-    std::vector<char> v;
-    v.reserve(s.size());
-    //[문제] s가 관리하는 문자들을 v에 복사하라
+    //[문제] s의 문자를 화면에 복사 
 
-    std::copy(s.begin(), s.end(), v.begin());
-    // 현재 vector에는 begin이 nullptr을 가리키고 있다. 
-    for (char c : s) {
-        std::cout << c << "-";
-    }
+    std::copy(s.begin(), s.end(), std::ostream_iterator<char>{std::cout});
     std::cout << std::endl;
 
  	save("main.cpp");
