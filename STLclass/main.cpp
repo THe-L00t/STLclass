@@ -53,7 +53,13 @@ int main( )
 
     //[문제] s의 문자를 화면에 복사 
     std::vector<char> v;
-    my_copy(s.begin(), s.end(), v.begin());
+
+    my_copy(s.begin(), s.end(), std::back_inserter(v));
+    
+    for (char c : v) {
+        std::cout << c << std::endl;
+    }
+
     std::cout << std::endl;
 
  	save("main.cpp");
