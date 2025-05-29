@@ -40,8 +40,8 @@ const It& my_find_if(const It& s, const It& e, T callable) {
 template<class Fit, class Sit>
 void my_copy(Fit s, Fit e, Sit d) {
     while (s not_eq e) {
-        *d = *s;            // vector 사이즈 초기화 안할 시 여기서 즉사
-        ++s;
+        *d = *s;            // v.push_back(*s);
+        ++s;                // 아무것도 안한다. 
         ++d;
     }
 }
