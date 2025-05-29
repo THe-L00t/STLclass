@@ -45,7 +45,7 @@ int main( )
 
     //[문제] s의 문자를 화면에 복사 
 
-    std::copy(s.begin(), s.end(), std::ostream_iterator<char>{std::cout});
+    my_copy(s.begin(), s.end(), std::ostream_iterator<char>{std::cout});
     std::cout << std::endl;
 
  	save("main.cpp");
