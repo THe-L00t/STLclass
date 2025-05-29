@@ -38,13 +38,11 @@ const It& my_find_if(const It& s, const It& e, T callable) {
 }
 
 template<class Fit, class Sit>
-void my_copy(const Fit& s, const Fit& e, const Sit& others) {
-    Fit now = s;
-    Sit otherNow = others;
-    while (now != e) {
-        *otherNow = *now;
-        ++now;
-        ++otherNow;
+void my_copy(Fit s, Fit e, Sit d) {
+    while (s not_eq e) {
+        *d = *s;
+        ++s;
+        ++d;
     }
 }
 // SFINAE : constexpr 에 대한 설명
