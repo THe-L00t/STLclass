@@ -30,6 +30,8 @@ int main( )
     std::vector<STRING> v{ std::istream_iterator<STRING>{in}, std::istream_iterator<STRING>{} };
     std::cout << "총 " << v.size() << "단어 입니다. " << std::endl;
 
+    //reserve 값 바꿔 비교해보기 
+
  	save("main.cpp");
 }
 
