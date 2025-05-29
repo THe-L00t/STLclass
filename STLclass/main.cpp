@@ -27,9 +27,10 @@ int main( )
     std::ifstream in{ "이상한 나라의 앨리스.txt" };
     if (not in) { return 404; }
 
-    std::vector<STRING> v{ std::istream_iterator<STRING>{in}, std::istream_iterator<STRING>{} };
+    std::vector<STRING> v{ std::istream_iterator<STRING>{in}, std::istream_iterator<STRING>{} };// 메모리 확보 및 이사가 훨씬 많이 발생
     std::cout << "총 " << v.size() << "단어 입니다. " << std::endl;
 
+    // while 사용할 때와 현제 비교해보기 
     //reserve 값 바꿔 비교해보기 
 
  	save("main.cpp");
