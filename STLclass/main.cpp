@@ -56,7 +56,7 @@ int main( )
         STRING 단어;
         std::cin >> 단어;
 
-        auto 위치 = std::find(s.begin(), s.end(), 단어);
+        auto 위치 = s.find( 단어);
         if (위치 != s.end()) {
             
             std::cout << std::distance(s.begin(), 위치)+1 << "번째 글자입니다. " << std::endl;
