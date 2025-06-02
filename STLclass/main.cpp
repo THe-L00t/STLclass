@@ -61,8 +61,11 @@ int main( )
         auto 개수 = s.count( 단어);
         // 이건 아래의 코드를 포장해둔것이다. 
 
-        std::pair<std::multiset<STRING>::const_iterator, std::multiset<STRING>::const_iterator> underNupper= s.equal_range(단어);
-        std::cout << std::distance(underNupper.first, underNupper.second) << std::endl;
+        //std::pair<std::multiset<STRING>::const_iterator, std::multiset<STRING>::const_iterator> underNupper= s.equal_range(단어);
+        //편하게 코딩하기 structured binding
+        auto [under,upper] = s.equal_range(단어);
+        // null 로 막을 수도 있다.
+        std::cout << std::distance(under, upper) << std::endl;
         if (개수 != 0) {
             
             std::cout << 개수 << "번 사용된 글자입니다. " << std::endl;
