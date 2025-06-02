@@ -22,18 +22,19 @@ extern bool 관찰;
 // 1. 파일을 set<STRING> s;에 저장하라.
 // 2. 모두 몇 단어로 만들었는지 출력하라.
 
-template<class T>
-struct less {   // functional object : 함수호출을 정의한 객체 
-    bool operator()(const T& lhs, const T& rhs) {
-       return lhs.size() < rhs;
-    }
-};
-// 템플릿을 특수화 할 수 있다. 
-//struct less<STRING> {  
-//    bool operator()(const STRING& lhs, const STRING& rhs) {
-//        return lhs < rhs;
+//template<class T>
+//struct less {   // functional object : 함수호출을 정의한 객체 
+//    bool operator()(const T& lhs, const T& rhs) {
+//       return lhs.size() < rhs;
 //    }
 //};
+// 템플릿을 특수화 할 수 있다.
+template<>
+struct std::less<STRING> {  
+    bool operator()(const STRING& lhs, const STRING& rhs) const{
+        return lhs.size() < rhs.size();
+    }
+};
 
 
 int main( ) 
@@ -42,15 +43,13 @@ int main( )
     if (not in) { return 404; }
 
     // 스트림에서 읽어올 수 있도록 연산자 오버로딩 해두어 가능
-    std::set<STRING> s{ std::istream_iterator<STRING>{in}, {} };
-    // 이때 사용자 정의 자료형 STRING을 저장하는 set은 
-    // 1. less<STRING> 을 찾는다.
-    // 2. operator<를 찾는다. 
+    std::set<STRING, ????> s{ std::istream_iterator<STRING>{in}, {} };
+    //less 자리에는 호출가능 타입이라면 무엇이든 들어갈 수 있다. 
 
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
-
-    // while 사용할 때와 현재 비교해보기 
-    //reserve 값 바꿔 비교해보기 
+    for (const STRING& c : s) {
+        std::cout << c << std::endl;
+    }
 
  	save("main.cpp");
 }
