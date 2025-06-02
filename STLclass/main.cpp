@@ -22,6 +22,20 @@ extern bool 관찰;
 // 1. 파일을 set<STRING> s;에 저장하라.
 // 2. 모두 몇 단어로 만들었는지 출력하라.
 
+template<class T>
+struct less {   // functional object : 함수호출을 정의한 객체 
+    bool operator()(const T& lhs, const T& rhs) {
+       return lhs.size() < rhs;
+    }
+};
+// 템플릿을 특수화 할 수 있다. 
+//struct less<STRING> {  
+//    bool operator()(const STRING& lhs, const STRING& rhs) {
+//        return lhs < rhs;
+//    }
+//};
+
+
 int main( ) 
 {
     std::ifstream in{ "이상한 나라의 앨리스.txt" };
