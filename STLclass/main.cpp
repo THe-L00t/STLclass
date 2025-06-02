@@ -15,27 +15,11 @@
 #include <vector>
 #include <set>
 #include <algorithm>
+#include <array>
 #include "save.h"
 #include "STRING.h"
 
 extern bool 관찰;
-// [문제] 이상한 나라의 앨리스.txt를 다운받는다.
-// 1. 파일을 set<STRING> s;에 저장하라.
-// 2. 모두 몇 단어로 만들었는지 출력하라.
-
-//template<class T>
-//struct less {   // functional object : 함수호출을 정의한 객체 
-//    bool operator()(const T& lhs, const T& rhs) {
-//       return lhs.size() < rhs;
-//    }
-//};
-// 템플릿을 특수화 할 수 있다.
-//template<>
-//struct std::less<STRING> {  
-//    bool operator()(const STRING& lhs, const STRING& rhs) const{
-//        return lhs.size() < rhs.size();
-//    }
-//};
 
 
 int main( ) 
@@ -43,41 +27,24 @@ int main( )
     std::ifstream in{ "이상한 나라의 앨리스.txt" };
     if (not in) { return 404; }
 
-    // multiset이면 중복 저장한다. 
     std::multiset<STRING> s{ std::istream_iterator<STRING>{in}, {} };
-    //less 자리에는 호출가능 타입이라면 무엇이든 들어갈 수 있다. 
-
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
-    // [문제] 단어를 입력받아서 몇 단어나 있는지 알려주자  
-    /*for (const STRING& c : s) {
-        std::cout << c << " ";
-    }*/
+    // [문제] multiset에 저장된 모든 알파벳의 사용횟수를 다음과 같이 출력하자.
+    // 대문자는 소문자로 바꾸어 취급한다. 
 
-    while (true) {
-        std::cout << "찾을 단어를 입력하세요" << std::endl;
-        STRING 단어;
-        std::cin >> 단어;
+    std::array<size_t, 26> temp{ };
 
-        auto 개수 = s.count( 단어);
-        // 이건 아래의 코드를 포장해둔것이다. 
-
-        //std::pair<std::multiset<STRING>::const_iterator, std::multiset<STRING>::const_iterator> underNupper= s.equal_range(단어);
-        //편하게 코딩하기 structured binding
-        auto [under,upper] = s.equal_range(단어);
-        // null 로 막을 수도 있다.
-        std::cout << std::distance(under, upper) << std::endl;
-        if (개수 != 0) {
-            
-            std::cout << 개수 << "번 사용된 글자입니다. " << std::endl;
+    for (const STRING& c : s) {
+        for (const char& c2 : c) {
+            if (isalpha(c2)) {
+                temp[tolower(c2) - 'a']++;
+            }
         }
-        else std::cout << "사용 된 적 없습니다." << std::endl;
-
- 
     }
-
-
-
-
+    int a = 'a';
+    for (size_t& i : temp) {
+        std::cout << static_cast<char>(a++)<< "의 개수 - " << i << std::endl;
+    }
 
 
  	save("main.cpp");
