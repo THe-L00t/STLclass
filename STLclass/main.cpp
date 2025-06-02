@@ -59,6 +59,10 @@ int main( )
         std::cin >> 단어;
 
         auto 개수 = s.count( 단어);
+        // 이건 아래의 코드를 포장해둔것이다. 
+
+        std::pair<std::multiset<STRING>::const_iterator, std::multiset<STRING>::const_iterator> underNupper= s.equal_range(단어);
+        std::cout << std::distance(underNupper.first, underNupper.second) << std::endl;
         if (개수 != 0) {
             
             std::cout << 개수 << "번 사용된 글자입니다. " << std::endl;
