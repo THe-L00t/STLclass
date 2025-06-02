@@ -27,7 +27,12 @@ int main( )
     std::ifstream in{ "이상한 나라의 앨리스.txt" };
     if (not in) { return 404; }
 
-    std::set<STRING> s{ std::istream_iterator<STRING>{in}, std::istream_iterator<STRING>{} };
+    // 스트림에서 읽어올 수 있도록 연산자 오버로딩 해두어 가능
+    std::set<STRING> s{ std::istream_iterator<STRING>{in}, {} };
+    // 이때 사용자 정의 자료형 STRING을 저장하는 set은 
+    // 1. less<STRING> 을 찾는다.
+    // 2. operator<를 찾는다. 
+
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
 
     // while 사용할 때와 현재 비교해보기 
