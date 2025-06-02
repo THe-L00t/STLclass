@@ -14,6 +14,7 @@
 #include <fstream>
 #include <vector>
 #include <set>
+#include <algorithm>
 #include "save.h"
 #include "STRING.h"
 
@@ -54,15 +55,14 @@ int main( )
         STRING 단어;
         std::cin >> 단어;
 
-        auto temp = s.find(단어);
-        int cnt{ 1 };
-        std::distance(temp, s.begin());
-        for (auto i = s.begin(); i != s.end(); i++) {
-            cnt++;
-            if (temp == i) break;
+        auto 위치 = std::find(s.begin(), s.end(), 단어);
+        if (위치 != s.end()) {
+            
+            std::cout << std::distance(s.begin(), 위치)+1 << "번째 글자입니다. " << std::endl;
         }
-        if (cnt <= s.size()) std::cout << cnt << "번째 글자 "<<*temp<< "입니다. " << std::endl;
         else std::cout << "없습니다." << std::endl;
+
+ 
     }
 
 
