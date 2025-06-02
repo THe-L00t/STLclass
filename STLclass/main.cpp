@@ -43,15 +43,17 @@ int main( )
     std::ifstream in{ "이상한 나라의 앨리스.txt" };
     if (not in) { return 404; }
 
-    // 스트림에서 읽어올 수 있도록 연산자 오버로딩 해두어 가능
-    std::set<STRING> s{ std::istream_iterator<STRING>{in}, {} };
+    // multiset이면 중복 저장한다. 
+    std::multiset<STRING> s{ std::istream_iterator<STRING>{in}, {} };
     //less 자리에는 호출가능 타입이라면 무엇이든 들어갈 수 있다. 
 
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
-    // [문제] 단어를 입력받아서 소설에 있는 단어인지 알려주자 
+    // [문제] 단어를 입력받아서 몇 단어나 있는지 알려주자  
+    for (const STRING& c : s) {
+        std::cout << c << " ";
+    }
 
-
-    while (true) {
+    /*while (true) {
         std::cout << "찾을 단어를 입력하세요" << std::endl;
         STRING 단어;
         std::cin >> 단어;
@@ -64,7 +66,7 @@ int main( )
         else std::cout << "없습니다." << std::endl;
 
  
-    }
+    }*/
 
 
 
