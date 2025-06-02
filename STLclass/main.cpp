@@ -29,12 +29,12 @@ extern bool 관찰;
 //    }
 //};
 // 템플릿을 특수화 할 수 있다.
-template<>
-struct std::less<STRING> {  
-    bool operator()(const STRING& lhs, const STRING& rhs) const{
-        return lhs.size() < rhs.size();
-    }
-};
+//template<>
+//struct std::less<STRING> {  
+//    bool operator()(const STRING& lhs, const STRING& rhs) const{
+//        return lhs.size() < rhs.size();
+//    }
+//};
 
 
 int main( ) 
@@ -43,13 +43,32 @@ int main( )
     if (not in) { return 404; }
 
     // 스트림에서 읽어올 수 있도록 연산자 오버로딩 해두어 가능
-    std::set<STRING, ????> s{ std::istream_iterator<STRING>{in}, {} };
+    std::set<STRING> s{ std::istream_iterator<STRING>{in}, {} };
     //less 자리에는 호출가능 타입이라면 무엇이든 들어갈 수 있다. 
 
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
-    for (const STRING& c : s) {
-        std::cout << c << std::endl;
+    // [문제] 단어를 입력받아서 소설에 있는 단어인지 알려주자 
+
+    while (true) {
+        std::cout << "찾을 단어를 입력하세요" << std::endl;
+        STRING 단어;
+        std::cin >> 단어;
+
+        auto temp = s.find(단어);
+        int cnt{ 1 };
+        std::distance(temp, s.begin());
+        for (auto i = s.begin(); i != s.end(); i++) {
+            cnt++;
+            if (temp == i) break;
+        }
+        if (cnt <= s.size()) std::cout << cnt << "번째 글자 "<<*temp<< "입니다. " << std::endl;
+        else std::cout << "없습니다." << std::endl;
     }
+
+
+
+
+
 
  	save("main.cpp");
 }
