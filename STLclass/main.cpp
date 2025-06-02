@@ -49,24 +49,24 @@ int main( )
 
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
     // [문제] 단어를 입력받아서 몇 단어나 있는지 알려주자  
-    for (const STRING& c : s) {
+    /*for (const STRING& c : s) {
         std::cout << c << " ";
-    }
+    }*/
 
-    /*while (true) {
+    while (true) {
         std::cout << "찾을 단어를 입력하세요" << std::endl;
         STRING 단어;
         std::cin >> 단어;
 
-        auto 위치 = s.find( 단어);
-        if (위치 != s.end()) {
+        auto 개수 = s.count( 단어);
+        if (개수 != 0) {
             
-            std::cout << std::distance(s.begin(), 위치)+1 << "번째 글자입니다. " << std::endl;
+            std::cout << 개수 << "번 사용된 글자입니다. " << std::endl;
         }
-        else std::cout << "없습니다." << std::endl;
+        else std::cout << "사용 된 적 없습니다." << std::endl;
 
  
-    }*/
+    }
 
 
 
