@@ -50,6 +50,7 @@ int main( )
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
     // [문제] 단어를 입력받아서 소설에 있는 단어인지 알려주자 
 
+
     while (true) {
         std::cout << "찾을 단어를 입력하세요" << std::endl;
         STRING 단어;
