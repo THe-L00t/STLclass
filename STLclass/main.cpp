@@ -44,7 +44,7 @@ int main( )
     }*/
 
     // 개수 기준 내림차순으로 출력한다. 
-    std::map<int, char> numNalpha;
+    std::map<size_t, char, std::greater<size_t>> numNalpha;
     for (auto [소문자, 개수] : alphaNnum) {
         numNalpha[개수] = 소문자;
     }
