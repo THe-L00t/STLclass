@@ -29,7 +29,7 @@ int main( )
 
     std::multiset<STRING> s{ std::istream_iterator<STRING>{in}, {} };
     std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
-    // [문제] multiset에 저장된 모든 알파벳의 사용횟수를 다음과 같이 출력하자.
+    // [문제] multiset에 저장된 모든 알파벳의 사용횟수를 내림차순으로 출력하자.
     // 대문자는 소문자로 바꾸어 취급한다. 
 
     std::array<size_t, 26> temp{ };
