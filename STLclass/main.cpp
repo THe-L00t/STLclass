@@ -16,6 +16,7 @@
 #include <set>
 #include <algorithm>
 #include <array>
+#include <map>
 #include "save.h"
 #include "STRING.h"
 
@@ -32,20 +33,12 @@ int main( )
     // [문제] multiset에 저장된 모든 알파벳의 사용횟수를 내림차순으로 출력하자.
     // 대문자는 소문자로 바꾸어 취급한다. 
 
-    std::array<size_t, 26> temp{ };
-
-    for (const STRING& c : s) {
-        for (const char& c2 : c) {
-            if (isalpha(c2)) {
-                temp[tolower(c2) - 'a']++;
-            }
+    std::map<char, size_t> alphaNnum;
+    for (const STRING& s1 : s) {
+        for (const char s2 : s1) {
+            alphaNnum[s2]++;
         }
     }
-    int a = 'a';
-    for (size_t& i : temp) {
-        std::cout << static_cast<char>(a++)<< "의 개수 - " << i << std::endl;
-    }
-
 
  	save("main.cpp");
 }
