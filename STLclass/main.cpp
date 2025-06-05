@@ -39,8 +39,17 @@ int main( )
             if(isalpha(s2)) alphaNnum[tolower(s2)]++;
         }
     }
-    for (std::pair<char, size_t> p : alphaNnum) {
+    /*for (std::pair<char, size_t> p : alphaNnum) {
         std::cout << p.first << " : " << p.second << std::endl;
+    }*/
+
+    // 개수 기준 내림차순으로 출력한다. 
+    std::map<int, char> numNalpha;
+    for (auto [소문자, 개수] : alphaNnum) {
+        numNalpha[개수] = 소문자;
+    }
+    for (auto [개수, 소문자] : numNalpha) {
+        std::cout << 소문자 << " : " << 개수 << std::endl;
     }
 
  	save("main.cpp");
