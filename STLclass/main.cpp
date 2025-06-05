@@ -11,17 +11,24 @@
 // 
 #include <iostream>
 #include <unordered_set>
+#include <string>
 #include "save.h"
 #include "STRING.h"
 
 extern bool °üÂû;
 
 
-std::array<int, 2025'0605> a;
-
 int main( ) 
 {
+    std::unordered_set<std::string> us{ "1", "22", "333", "4444"};
 
+    us.insert("55555");
+    for (const std::string& s : us) {
+        std::cout << s << std::endl;
+    }
+
+    std::cout << std::hash<std::string>{}("55555") << std::endl;
+    std::cout << std::hash<std::string>{}("4444") << std::endl;
  	save("main.cpp");
 }
 
