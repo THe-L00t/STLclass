@@ -39,7 +39,9 @@ int main( )
         단어들[temp]++;
     }
     for (auto [단어, 개수] : 단어들) {
-        //std::cout << 단어 << " : " << 개수 << std::endl;
+        // sorted[개수] = 단어;  - unique key일때만 허용되는 sugar
+        // 정식 :  sorted.insert(std::pair<size_t,STRING>{개수,단어});
+        // 편의 :  sorted.insert(make_pair(개수,단어));
         sorted.insert({개수,단어});
     }
     for (auto [개수, 단어] : sorted) {
