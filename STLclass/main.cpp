@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------//
-// 2025.   1.  STL 월 910 목 910					6월 2일 월요일		(13주 1일)
+// 2025.   1.  STL 월 910 목 910					6월 5일 목요일		(13주 2일)
 // 2025. 6. 19 기말 시험
 // 2025. 5. 12 월요일 - 졸업작품 중간발표
 //---------------------------------------------------------------------------//
@@ -12,10 +12,6 @@
 // 
 #include <iostream>	
 #include <fstream>
-#include <vector>
-#include <set>
-#include <algorithm>
-#include <array>
 #include <map>
 #include "save.h"
 #include "STRING.h"
@@ -28,28 +24,26 @@ int main( )
     std::ifstream in{ "이상한 나라의 앨리스.txt" };
     if (not in) { return 404; }
 
-    std::multiset<STRING> s{ std::istream_iterator<STRING>{in}, {} };
-    std::cout << "총 " << s.size() << "단어 입니다. " << std::endl;
-    // [문제] multiset에 저장된 모든 알파벳의 사용횟수를 내림차순으로 출력하자.
-    // 대문자는 소문자로 바꾸어 취급한다. 
+    // [문제] 소설의 사용된 단어와 단어의 사용횟수를 알고 싶다. 
+    // 다음과 같은 형식으로 출력하자
+    //
+    // the - 1500
+    // a - 1000
+    // ...
+    // zigzag - 1
 
-    std::map<char, size_t> alphaNnum;
-    for (const STRING& s1 : s) {
-        for (const char s2 : s1) {
-            if(isalpha(s2)) alphaNnum[tolower(s2)]++;
-        }
+    std::map<STRING, size_t> 단어들;
+    std::multimap<size_t, STRING, std::greater<size_t>> sorted;
+    STRING temp;
+    while (in >> temp) {
+        단어들[temp]++;
     }
-    /*for (std::pair<char, size_t> p : alphaNnum) {
-        std::cout << p.first << " : " << p.second << std::endl;
-    }*/
-
-    // 개수 기준 내림차순으로 출력한다. 
-    std::map<size_t, char, std::greater<size_t>> numNalpha;
-    for (auto [소문자, 개수] : alphaNnum) {
-        numNalpha[개수] = 소문자;
+    for (auto [단어, 개수] : 단어들) {
+        //std::cout << 단어 << " : " << 개수 << std::endl;
+        sorted.insert({개수,단어});
     }
-    for (auto [개수, 소문자] : numNalpha) {
-        std::cout << 소문자 << " : " << 개수 << std::endl;
+    for (auto [개수, 단어] : sorted) {
+        std::cout << 단어 << " : " << 개수 << std::endl;
     }
 
  	save("main.cpp");
