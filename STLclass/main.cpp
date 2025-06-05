@@ -36,8 +36,11 @@ int main( )
     std::map<char, size_t> alphaNnum;
     for (const STRING& s1 : s) {
         for (const char s2 : s1) {
-            alphaNnum[s2]++;
+            if(isalpha(s2)) alphaNnum[tolower(s2)]++;
         }
+    }
+    for (std::pair<char, size_t> p : alphaNnum) {
+        std::cout << p.first << " : " << p.second << std::endl;
     }
 
  	save("main.cpp");
