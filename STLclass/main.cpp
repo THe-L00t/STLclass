@@ -11,41 +11,36 @@
 //
 // 
 #include <iostream>	
-#include <fstream>
+#include <random>
+#include <array>
 #include <map>
 #include "save.h"
 #include "STRING.h"
 
 extern bool 관찰;
 
+std::default_random_engine dre;
+std::uniform_int_distribution uid{ 0,99'9999 };
+std::normal_distribution nd;  //출력은 double값
+
+// [문제] uniform 분포는 uniform 한가?
+// [문제] normal 분포는 normal 한가?
+
+std::array<int, 2025'0605> a;
 
 int main( ) 
 {
-    std::ifstream in{ "이상한 나라의 앨리스.txt" };
-    if (not in) { return 404; }
-
-    // [문제] 소설의 사용된 단어와 단어의 사용횟수를 알고 싶다. 
-    // 다음과 같은 형식으로 출력하자
-    //
-    // the - 1500
-    // a - 1000
-    // ...
-    // zigzag - 1
-
-    std::map<STRING, size_t> 단어들;
-    std::multimap<size_t, STRING, std::greater<size_t>> sorted;
-    STRING temp;
-    while (in >> temp) {
-        단어들[temp]++;
+    for (int& i : a) {
+        double temp = nd(dre) * 20'0000 + 55'5555;
+        
+        if(0<= temp && temp < 99'9999) i = temp;
     }
-    for (auto [단어, 개수] : 단어들) {
-        // sorted[개수] = 단어;  - unique key일때만 허용되는 sugar
-        // 정식 :  sorted.insert(std::pair<size_t,STRING>{개수,단어});
-        // 편의 :  sorted.insert(make_pair(개수,단어));
-        sorted.insert({개수,단어});
+    std::map<int, size_t> 분포;
+    for (int i : a) {
+        분포[i / 5'0000]++;
     }
-    for (auto [개수, 단어] : sorted) {
-        std::cout << 단어 << " : " << 개수 << std::endl;
+    for (auto [구간, 개수] : 분포) {
+        std::cout << 구간 << "\t - " << 개수 << std::endl;
     }
 
  	save("main.cpp");
