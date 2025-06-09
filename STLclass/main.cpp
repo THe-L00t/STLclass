@@ -57,7 +57,7 @@ int main( )
         std::cout << cnt << "개 찾는데 " << duration.count() << "ms 걸렸습니다. " << std::endl;
     }
     {   // set 찾기 실력
-        std::set<int> s(a.begin(), a.end());
+        std::multiset<int> s(a.begin(), a.end());
         std::cout << "set " << s.size() << "개의 int중에서 " << fa.size() << "개의 원소 찾기" << std::endl;
         size_t cnt{};
         auto oldt = std::chrono::high_resolution_clock::now();
@@ -72,13 +72,28 @@ int main( )
         std::cout << cnt << "개 찾는데 " << duration.count() << "ms 걸렸습니다. " << std::endl;
     }
     {   // unordered_set 찾기 실력
-        std::unordered_set<int> u(a.begin(), a.end());
+        std::unordered_multiset<int> u(a.begin(), a.end());
         std::cout << "unordered_set " << u.size() << "개의 int중에서 " << fa.size() << "개의 원소 찾기" << std::endl;
         size_t cnt{};
         auto oldt = std::chrono::high_resolution_clock::now();
         for (const int& num : fa) {
             auto p = u.find(num);
             if (p not_eq u.end()) {
+                ++cnt;
+            }
+        }
+        auto nowt = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(nowt - oldt);
+        std::cout << cnt << "개 찾는데 " << duration.count() << "ms 걸렸습니다. " << std::endl;
+    }
+    {   // 정렬된 vector 찾기 실력
+        std::vector<int> v(a.begin(), a.end());
+        std::sort(v.begin(), v.end());
+        std::cout << "vector " << v.size() << "개의 int중에서 " << fa.size() << "개의 원소 찾기" << std::endl;
+        size_t cnt{};
+        auto oldt = std::chrono::high_resolution_clock::now();
+        for (const int& num : fa) {
+            if (std::binary_search(v.begin(), v.end(), num)) {
                 ++cnt;
             }
         }
