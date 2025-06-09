@@ -17,13 +17,19 @@
 
 extern bool 관찰;
 
+template<>
+struct std::hash<STRING> {
+    size_t operator()(const STRING& t) {
+        return //STRING 을 std::string으로 바꾸어 가능하면 이상적이다. ;
+    }
+};
 
 int main( ) 
 {
-    std::unordered_set<std::string> us{ "1", "22", "333", "4444"};
+    std::unordered_set<STRING,std::hash<STRING>> us{ "1", "22", "333", "4444"};
 
     us.insert("55555");
-    for (const std::string& s : us) {
+    for (const STRING& s : us) {
         std::cout << s << std::endl;
     }
 
