@@ -17,10 +17,11 @@
 
 extern bool 관찰;
 
+// const consistency
 template<>
 struct std::hash<STRING> {
-    size_t operator()(const STRING& t) {
-        return //STRING 을 std::string으로 바꾸어 가능하면 이상적이다. ;
+    size_t operator()(const STRING& t)const {
+        return std::hash<std::string>{}(std::string(t.begin(),t.end()));//STRING 을 std::string으로 바꾸어 가능하면 이상적이다. ;
     }
 };
 
@@ -33,8 +34,8 @@ int main( )
         std::cout << s << std::endl;
     }
 
+    std::cout << std::hash<STRING>{}("55555") << std::endl;
     std::cout << std::hash<std::string>{}("55555") << std::endl;
-    std::cout << std::hash<std::string>{}("4444") << std::endl;
  	save("main.cpp");
 }
 
