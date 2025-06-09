@@ -12,6 +12,7 @@
 #include <iostream>
 #include <unordered_set>
 #include <string>
+#include <print>
 #include "save.h"
 #include "STRING.h"
 
@@ -27,15 +28,24 @@ struct std::hash<STRING> {
 
 int main( ) 
 {
-    std::unordered_set<STRING,std::hash<STRING>> us{ "1", "22", "333", "4444"};
+    std::unordered_set<STRING> us{ "1", "22", "333", "4444"};
 
-    us.insert("55555");
-    for (const STRING& s : us) {
-        std::cout << s << std::endl;
+    // 언오더드 셋의 메모리 구조를 그대로 화면에 출력한다. 
+    // VS는 vector[N] + list *N
+    while (true) {
+        for (size_t bc = 0; bc < us.bucket_count(); ++bc) {
+            std::print("[{:3}]", bc);
+            for (auto i = us.begin(bc); i not_eq us.end(bc); ++i) {
+                std::print(" -> {:}", std::string(i->begin(), i->end()));
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+        std::cout << "추가할 STRING을 입력하세요 : ";
+        STRING s;
+        std::cin >> s;
     }
 
-    std::cout << std::hash<STRING>{}("55555") << std::endl;
-    std::cout << std::hash<std::string>{}("55555") << std::endl;
  	save("main.cpp");
 }
 
