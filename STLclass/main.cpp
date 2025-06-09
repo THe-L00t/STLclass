@@ -44,6 +44,7 @@ int main( )
         std::cout << "추가할 STRING을 입력하세요 : ";
         STRING s;
         std::cin >> s;
+        us.insert(s);
     }
 
  	save("main.cpp");
