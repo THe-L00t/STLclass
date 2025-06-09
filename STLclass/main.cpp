@@ -36,7 +36,7 @@ int main( )
         for (size_t bc = 0; bc < us.bucket_count(); ++bc) {
             std::print("[{:3}]", bc);
             for (auto i = us.begin(bc); i not_eq us.end(bc); ++i) {
-                std::print(" -> {:}", std::string(i->begin(), i->end()));
+                std::print(" <-> {:}", std::string(i->begin(), i->end()));  //양방향 리스트이다.
             }
             std::cout << std::endl;
         }
