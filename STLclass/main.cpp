@@ -3,18 +3,18 @@
 // 2025. 6. 19 기말 시험
 //---------------------------------------------------------------------------//
 //  
-//  STL Algorithm
+//  STL sort 관련 알고리즘 - 복잡도 순서대로 
+//  1. partition
+//  2. nth_element
+//  3. partial_sort
+//  4. sort
+//  5. stable_sort
+//  6. 
 // 
-// c++20 concept, range, coroutine 등 4가지 큰 변화
 //---------------------------------------------------------------------------
 // 과제 관련 : adjacent_find
 // 
 #include <iostream>
-#include <algorithm>
-#include <string>
-#include <chrono>
-#include <print>
-#include <thread> 
 #include "save.h"
 #include "STRING.h"
 
@@ -25,15 +25,6 @@ extern bool 관찰;
 int main( ) 
 {
 
-    std::string s{ "C++ StandardTemplateLibrary 2025. 06. 12." };
-    while (true) {
-        std::print("{:^80}", s);
-        //100ms 정지
-        this_thread::sleep_for(100ms);
-
-        std::rotate(s.begin(), s.begin() + 1, s.end());
-        std::cout << '\r';
-    }
     
  	save("main.cpp");
 }
