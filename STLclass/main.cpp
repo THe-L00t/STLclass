@@ -37,6 +37,19 @@ int main( )
         for (int i : v)
             print("{:8}", i);
         std::cout << endl;
+        //숫자에 동그라미가 있는 숫자와 아닌 숫자 분리
+        cout << "홀수와 짝수로 분리" << endl;
+        auto position = partition(v.begin(), v.end(), [](int num) {
+            return num & 1;
+            });
+        cout << "홀수" << endl;
+        for (auto i = v.begin(); i < position; ++i) 
+            print("{:8}", *i);
+        std::cout << endl;
+        cout << "홀수" << endl;
+        for (auto i = position; i < v.end(); ++i)
+            print("{:8}", *i);
+        std::cout << endl;
     }
  	save("main.cpp");
 }
