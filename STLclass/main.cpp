@@ -18,7 +18,16 @@ using namespace std;
 
 extern bool 관찰;
 
-
+template<class It>
+iterator_traits<It>::difference_type my_distance(It b, It e) 
+{
+    typename iterator_traits<It>::difference_type  d{}; //typename을 이용해 자료형임을 명시
+    while (b not_eq e) {
+        ++b;
+        ++d;
+    }
+    return d;
+}
 
 int main( ) 
 {
