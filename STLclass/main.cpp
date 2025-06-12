@@ -99,15 +99,10 @@ int main( )
             print("{:8}", i);
         std::cout << endl;
         //숫자에 동그라미가 있는 숫자와 아닌 숫자 분리
-        cout << "40등 까지와 나머지로 분리" << endl;
-        partial_sort(v.begin(), v.begin() + 40, v.end());
-        cout << "앞에서 부터 10개" << endl;
-        for (auto i = v.begin(); i < v.begin() + 40; ++i)
-            print("{:8}", *i);
-        std::cout << endl;
-        cout << "나머지" << endl;
-        for (auto i = v.begin() + 40; i < v.end(); ++i)
-            print("{:8}", *i);
+        cout << "정렬 후" << endl;
+        sort(v.begin(), v.end());
+        for (int i : v)
+            print("{:8}", i);
         std::cout << endl;
     }
  	save("main.cpp");
