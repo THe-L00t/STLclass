@@ -15,17 +15,29 @@
 // 과제 관련 : adjacent_find
 // 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <print>
+#include <random>
+#include <numeric>
 #include "save.h"
 #include "STRING.h"
 
 using namespace std;
-
+std::default_random_engine dre{ std::random_device{}()};
 extern bool 관찰;
 
 int main( ) 
 {
-
-    
+    vector<int> v(100);
+    iota(v.begin(), v.end(),1);
+    {
+        shuffle(v.begin(), v.end(),dre);
+        cout << "partition하기 전" << endl;
+        for (int i : v)
+            print("{:8}", i);
+        std::cout << endl;
+    }
  	save("main.cpp");
 }
 
