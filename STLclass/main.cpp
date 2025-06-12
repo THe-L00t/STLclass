@@ -23,6 +23,8 @@ int main( )
 {
     vector<int> v{ 1,2,3,4,5 };
     cout << distance(v.begin(), v.end()) << endl;
+    list<int> l{ 1,2,3,4,5 };
+    std::cout << distance(l.begin(), l.end()) << endl;
  	save("main.cpp");
 }
 
