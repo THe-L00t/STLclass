@@ -11,15 +11,30 @@
 // 
 #include <iostream>
 #include <algorithm>
+#include <string>
+#include <chrono>
+#include <print>
+#include <thread> 
 #include "save.h"
 #include "STRING.h"
+
+using namespace std;
 
 extern bool °üÂû;
 
 int main( ) 
 {
 
-     
+    std::string s{ "C++ StandardTemplateLibrary 2025. 06. 12." };
+    while (true) {
+        std::print("{:^80}", s);
+        //100ms Á¤Áö
+        this_thread::sleep_for(100ms);
+
+        std::rotate(s.begin(), s.begin() + 1, s.end());
+        std::cout << '\r';
+    }
+    
  	save("main.cpp");
 }
 
