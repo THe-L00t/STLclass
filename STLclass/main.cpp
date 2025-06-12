@@ -52,8 +52,8 @@ int main( )
         cout << d << endl;
     }
 
-    cout << "dogs를 n기준으로 돌아간다" << endl;
-    ranges::sort(dogs, {}, &Dog::n);
+    cout << "상대적인 순서를 유지하며 dogs를 n기준으로 다시 돌아간다" << endl;
+    ranges::stable_sort(dogs, {}, &Dog::n);
     for (const Dog& d : dogs) {
         cout << d << endl;
     }
