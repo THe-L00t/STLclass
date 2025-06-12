@@ -22,9 +22,9 @@ extern bool °üÂû;
 int main( ) 
 {
     vector<int> v{ 1,2,3,4,5 };
-    cout << distance(v.begin(), v.end()) << endl;
+    cout << distance(v.end(), v.begin()) << endl;
     list<int> l{ 1,2,3,4,5 };
-    std::cout << distance(l.begin(), l.end()) << endl;
+    std::cout << distance(l.end(), l.begin()) << endl;
  	save("main.cpp");
 }
 
