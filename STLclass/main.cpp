@@ -19,12 +19,13 @@ using namespace std;
 extern bool °üÂû;
 
 
+
 int main( ) 
 {
     vector<int> v{ 1,2,3,4,5 };
-    cout << distance(v.end(), v.begin()) << endl;
+    cout << my_distance(v.begin(), v.end()) << endl;
     list<int> l{ 1,2,3,4,5 };
-    std::cout << distance(l.end(), l.begin()) << endl;
+    std::cout << my_distance(l.begin(), l.end()) << endl;
  	save("main.cpp");
 }
 
