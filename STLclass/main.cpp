@@ -20,90 +20,42 @@
 #include <print>
 #include <random>
 #include <numeric>
+#include <ranges>
 #include "save.h"
 #include "STRING.h"
 
 using namespace std;
 std::default_random_engine dre{ std::random_device{}()};
+uniform_int_distribution<int> uidChar{ 'A','Z' };
+uniform_int_distribution uid{ 1,50 };
 extern bool 관찰;
+
+struct Dog {
+    char c{static_cast<char>(uidChar(dre))};
+    int n{uid(dre)};
+
+    friend ostream& operator<<(std::ostream& os, const Dog& d) {
+        print(os, "[{:}] - {:3}", d.c, d.n);
+        return os;
+    }
+};
 
 int main( ) 
 {
-    vector<int> v(100);
-    iota(v.begin(), v.end(),1);
-    {
-        shuffle(v.begin(), v.end(),dre);
-        cout << "partition하기 전" << endl;
-        for (int i : v)
-            print("{:8}", i);
-        std::cout << endl;
-        //숫자에 동그라미가 있는 숫자와 아닌 숫자 분리
-        cout << "홀수와 짝수로 분리" << endl;
-        auto position = partition(v.begin(), v.end(), [](int num) {
-            return num & 1;
-            });
-        cout << "홀수" << endl;
-        for (auto i = v.begin(); i < position; ++i) 
-            print("{:8}", *i);
-        std::cout << endl;
-        cout << "홀수" << endl;
-        for (auto i = position; i < v.end(); ++i)
-            print("{:8}", *i);
-        std::cout << endl;
-        std::cout << endl;
+    vector<Dog> dogs(100);
+    /*sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+        return a.c > b.c;
+        });*/
+
+    ranges::sort(dogs, {},&Dog::c);
+    for (const Dog& d : dogs) {
+        cout << d << endl;
     }
 
-
-    {
-        shuffle(v.begin(), v.end(), dre);
-        cout << "nth_element하기 전" << endl;
-        for (int i : v)
-            print("{:8}", i);
-        std::cout << endl;
-        //숫자에 동그라미가 있는 숫자와 아닌 숫자 분리
-        cout << "앞에서 부터 10개와 나머지로 분리" << endl;
-        nth_element(v.begin(), v.begin() + 40, v.end());
-        cout << "앞에서 부터 10개" << endl;
-        for (auto i = v.begin(); i < v.begin()+40; ++i)
-            print("{:8}", *i);
-        std::cout << endl;
-        cout << "나머지" << endl;
-        for (auto i = v.begin()+40; i < v.end(); ++i)
-            print("{:8}", *i);
-        std::cout << endl;
-    }
-    std::cout << endl;
-    {
-        shuffle(v.begin(), v.end(), dre);
-        cout << "partial_sort하기 전" << endl;
-        for (int i : v)
-            print("{:8}", i);
-        std::cout << endl;
-        //숫자에 동그라미가 있는 숫자와 아닌 숫자 분리
-        cout << "40등 까지와 나머지로 분리" << endl;
-        partial_sort(v.begin(), v.begin() + 40, v.end());
-        cout << "앞에서 부터 10개" << endl;
-        for (auto i = v.begin(); i < v.begin() + 40; ++i)
-            print("{:8}", *i);
-        std::cout << endl;
-        cout << "나머지" << endl;
-        for (auto i = v.begin() + 40; i < v.end(); ++i)
-            print("{:8}", *i);
-        std::cout << endl;
-    }
-    std::cout << endl;
-    {
-        shuffle(v.begin(), v.end(), dre);
-        cout << "sort하기 전" << endl;
-        for (int i : v)
-            print("{:8}", i);
-        std::cout << endl;
-        //숫자에 동그라미가 있는 숫자와 아닌 숫자 분리
-        cout << "정렬 후" << endl;
-        sort(v.begin(), v.end());
-        for (int i : v)
-            print("{:8}", i);
-        std::cout << endl;
+    cout << "dogs를 n기준으로 돌아간다" << endl;
+    ranges::sort(dogs, {}, &Dog::n);
+    for (const Dog& d : dogs) {
+        cout << d << endl;
     }
  	save("main.cpp");
 }
