@@ -24,6 +24,7 @@ extern bool 관찰;
 
 int main( ) 
 {
+    // 지연 평가(lazy-evaluation)
     for (int num : views::iota(1))  // 1부터 시작하는 무한한 ranges를 만듦
         cout << num << " ";
     for (int num : views::iota(1) | views::take(1000))  // 1000개만 출력
