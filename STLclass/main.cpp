@@ -35,7 +35,7 @@ iterator_traits<It>::difference_type my_distance(It b, It e)
         }
         return d;
     }
-}
+}   // tag dispatch 각각 경우에 따라 함수를 호출
 
 int main( ) 
 {
