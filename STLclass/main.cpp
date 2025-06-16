@@ -21,23 +21,17 @@ using namespace std;
 
 extern bool 관찰;
 
-template<class T>
-concept ableAdd = integral<T> or floating_point<T> or same_as < typename string, T > ;
-
-template<ableAdd T>
-T add(T a, T b) {
-    return a + b;
-}
 
 int main( ) 
 {
-    vector<int> v{ 3,1,5,2,4 };
-    list<int> l{ 3,1,5,2,4 };
-    ranges::sort(v.begin(), v.end());
-    ranges::sort(l.begin(), l.end());
-    cout << add(1, 2) << endl;
-    cout << add(1.2, 3.4) << endl;
-    cout << add("2025"s, ".06.16"s) << endl;
+    for (int num : views::iota(1))  // 1부터 시작하는 무한한 ranges를 만듦
+        cout << num << " ";
+    for (int num : views::iota(1) | views::take(1000))  // 1000개만 출력
+        cout << num << " ";
+    for (int num : views::iota(1) | views::take_while([](int num){ return num&1;}))  // 홀수가 나올때까지만 출력, predicate이용
+        cout << num << " ";
+    for (int num : views::iota(1) | views::reverse)  // 거꾸로 출력
+        cout << num << " ";
  	save("main.cpp");
 }
 
