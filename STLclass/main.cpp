@@ -3,7 +3,8 @@
 // 2025. 6. 19 기말 시험
 //---------------------------------------------------------------------------//
 //  
-//  concepts - 
+//  concepts - compile-time에 template 함수에 전달된 인자(타입, non-type)가 
+//  concept에 맞는지 아닌지 판단하기 위한 C++언어의 문법
 //---------------------------------------------------------------------------
 // 
 // 
@@ -17,6 +18,9 @@ using namespace std;
 extern bool 관찰;
 
 template<class T>
+concept ableAdd = integral<T> or floating_point<T> or same_as < typename string, T > ;
+
+template<ableAdd T>
 T add(T a, T b) {
     return a + b;
 }
