@@ -10,6 +10,9 @@
 // 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <list>
+#include <algorithm>
 #include "save.h"
 #include "STRING.h"
 
@@ -27,6 +30,10 @@ T add(T a, T b) {
 
 int main( ) 
 {
+    vector<int> v{ 3,1,5,2,4 };
+    list<int> l{ 3,1,5,2,4 };
+    sort(v.begin(), v.end());
+    sort(l.begin(), l.end());
     cout << add(1, 2) << endl;
     cout << add(1.2, 3.4) << endl;
     cout << add("2025"s, ".06.16"s) << endl;
