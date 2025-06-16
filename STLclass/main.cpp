@@ -24,7 +24,7 @@ iterator_traits<It>::difference_type my_distance(It b, It e)
 {
     // 반복자가 random access 반복자라면 
     // c++ 20의 concepts을 사용하면 쉽게 반복자의 타입을 알 수 있다. 
-    if (random_access_iterator<It>) {
+    if constexpr (random_access_iterator<It>) {
         return e - b;
     }
     else {
